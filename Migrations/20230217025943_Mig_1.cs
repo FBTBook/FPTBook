@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LoginFPTBook.Migrations
 {
-    public partial class Mig1 : Migration
+    public partial class Mig_1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -191,6 +191,25 @@ namespace LoginFPTBook.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Carts",
+                columns: table => new
+                {
+                    Cart_ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    User_ID = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Carts", x => x.Cart_ID);
+                    table.ForeignKey(
+                        name: "FK_Carts_AspNetUsers_User_ID",
+                        column: x => x.User_ID,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Orders",
                 columns: table => new
                 {
@@ -221,8 +240,8 @@ namespace LoginFPTBook.Migrations
                     Book_PublishDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Book_NoOfPages = table.Column<int>(type: "int", nullable: false),
                     Book_Quantity = table.Column<int>(type: "int", nullable: false),
-                    Book_SalePrice = table.Column<int>(type: "int", nullable: false),
-                    Book_Price = table.Column<int>(type: "int", nullable: false),
+                    Book_SalePrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Book_Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Book_Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Book_Status = table.Column<int>(type: "int", nullable: false),
                     Book_Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -249,29 +268,29 @@ namespace LoginFPTBook.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Carts",
+                name: "CartDetail",
                 columns: table => new
                 {
-                    Cart_ID = table.Column<int>(type: "int", nullable: false)
+                    CartDetail_ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Cart_Quantity = table.Column<int>(type: "int", nullable: false),
-                    User_ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Cart_ID = table.Column<int>(type: "int", nullable: false),
                     Book_ID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Carts", x => x.Cart_ID);
+                    table.PrimaryKey("PK_CartDetail", x => x.CartDetail_ID);
                     table.ForeignKey(
-                        name: "FK_Carts_AspNetUsers_User_ID",
-                        column: x => x.User_ID,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Carts_Books_Book_ID",
+                        name: "FK_CartDetail_Books_Book_ID",
                         column: x => x.Book_ID,
                         principalTable: "Books",
                         principalColumn: "Book_ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CartDetail_Carts_Cart_ID",
+                        column: x => x.Cart_ID,
+                        principalTable: "Carts",
+                        principalColumn: "Cart_ID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -282,7 +301,7 @@ namespace LoginFPTBook.Migrations
                     OrderDetail_ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     OrderDetail_Quantity = table.Column<int>(type: "int", nullable: false),
-                    OrderDetail_Price = table.Column<int>(type: "int", nullable: false),
+                    OrderDetail_Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Order_ID = table.Column<int>(type: "int", nullable: false),
                     Book_ID = table.Column<int>(type: "int", nullable: false)
                 },
@@ -353,15 +372,20 @@ namespace LoginFPTBook.Migrations
                 column: "Publisher_ID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Carts_Book_ID",
-                table: "Carts",
-                column: "Book_ID",
-                unique: true);
+                name: "IX_CartDetail_Book_ID",
+                table: "CartDetail",
+                column: "Book_ID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CartDetail_Cart_ID",
+                table: "CartDetail",
+                column: "Cart_ID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Carts_User_ID",
                 table: "Carts",
-                column: "User_ID");
+                column: "User_ID",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderDetails_Book_ID",
@@ -397,13 +421,16 @@ namespace LoginFPTBook.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Carts");
+                name: "CartDetail");
 
             migrationBuilder.DropTable(
                 name: "OrderDetails");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Carts");
 
             migrationBuilder.DropTable(
                 name: "Books");

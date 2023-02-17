@@ -13,12 +13,12 @@ namespace LoginFPTBook.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Cart_ID { get; set; }
-        public int Cart_Quantity { get; set; }
+
         public string User_ID { get; set; }
         [ForeignKey("User_ID")]
         public virtual ApplicationUser? ApplicationUser { get; set; }
-        public int Book_ID { get; set; }
-        [ForeignKey("Book_ID")]
-        public virtual Book? Book { get; set; }
+
+        public virtual ICollection<CartDetail>? CartDetail { get; set; }
+
     }
 }

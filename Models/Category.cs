@@ -12,8 +12,20 @@ namespace LoginFPTBook.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Category_ID { get; set; }
+
+        [Required(ErrorMessage = "Please, enter Category Name")]
+        [StringLength(50, ErrorMessage = "Please, enter Category Name length must be between {2} and {1}.", MinimumLength = 1)]
+        [RegularExpression(@"^[A-Za-z]{1,50}$", 
+        ErrorMessage = "Please, enter a valid Category Name")]
         public string Category_Name { get; set; }
+
+        [Required(ErrorMessage = "Please, enter Description")]
+        [StringLength(50, ErrorMessage = "Please, enter Description length must be between {2} and {1}.", MinimumLength = 1)]
+        [RegularExpression(@"^[A-Za-z]{1,50}$", 
+        ErrorMessage = "Please, enter a valid Description")]
         public string Category_Description { get; set; }
+
+        [Required]
         public int Category_Status { get; set; }
         public virtual ICollection<Book>? Book { get; set; }
     }
