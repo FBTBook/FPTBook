@@ -12,7 +12,12 @@ namespace LoginFPTBook.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OrderDetail_ID { get; set; }
+        [Required]
+        [Range(1, 1000000000)]
         public int OrderDetail_Quantity { get; set; }
+
+        [Required]
+        [Range(1, 1000000000)]
         public decimal OrderDetail_Price { get; set; }
         public int Order_ID { get; set; }
         [ForeignKey("Order_ID")]
