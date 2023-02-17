@@ -12,6 +12,9 @@ namespace LoginFPTBook.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CartDetail_ID { get; set; }
+
+        [Required]
+        [Range(1, 1000000000)]
         public int Cart_Quantity { get; set; }
 
         public int Cart_ID { get; set; }

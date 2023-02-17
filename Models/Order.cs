@@ -13,8 +13,11 @@ namespace LoginFPTBook.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Order_ID { get; set; }
+        [Required]
         public DateTime Order_OrderDate { get; set; }
+        [Required]
         public DateTime Order_DeliveryDate { get; set; }
+        [Required]
         public int Order_Status { get; set; }
         public string User_ID { get; set; }
         [ForeignKey("User_ID")]
