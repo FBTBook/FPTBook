@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LoginFPTBook.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230215073449_Mig1")]
-    partial class Mig1
+    [Migration("20230217025943_Mig_1")]
+    partial class Mig_1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -134,8 +134,8 @@ namespace LoginFPTBook.Migrations
                     b.Property<int>("Book_NoOfPages")
                         .HasColumnType("int");
 
-                    b.Property<int>("Book_Price")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Book_Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("Book_PublishDate")
                         .HasColumnType("datetime2");
@@ -143,8 +143,8 @@ namespace LoginFPTBook.Migrations
                     b.Property<int>("Book_Quantity")
                         .HasColumnType("int");
 
-                    b.Property<int>("Book_SalePrice")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Book_SalePrice")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("Book_Status")
                         .HasColumnType("int");
@@ -172,24 +172,42 @@ namespace LoginFPTBook.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Cart_ID"), 1L, 1);
 
-                    b.Property<int>("Book_ID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Cart_Quantity")
-                        .HasColumnType("int");
-
                     b.Property<string>("User_ID")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Cart_ID");
 
-                    b.HasIndex("Book_ID")
+                    b.HasIndex("User_ID")
                         .IsUnique();
 
-                    b.HasIndex("User_ID");
-
                     b.ToTable("Carts");
+                });
+
+            modelBuilder.Entity("LoginFPTBook.Models.CartDetail", b =>
+                {
+                    b.Property<int>("CartDetail_ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CartDetail_ID"), 1L, 1);
+
+                    b.Property<int>("Book_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Cart_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Cart_Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("CartDetail_ID");
+
+                    b.HasIndex("Book_ID");
+
+                    b.HasIndex("Cart_ID");
+
+                    b.ToTable("CartDetail");
                 });
 
             modelBuilder.Entity("LoginFPTBook.Models.Category", b =>
@@ -255,8 +273,8 @@ namespace LoginFPTBook.Migrations
                     b.Property<int>("Book_ID")
                         .HasColumnType("int");
 
-                    b.Property<int>("OrderDetail_Price")
-                        .HasColumnType("int");
+                    b.Property<decimal>("OrderDetail_Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("OrderDetail_Quantity")
                         .HasColumnType("int");
@@ -455,21 +473,32 @@ namespace LoginFPTBook.Migrations
 
             modelBuilder.Entity("LoginFPTBook.Models.Cart", b =>
                 {
-                    b.HasOne("LoginFPTBook.Models.Book", "Book")
-                        .WithOne("Cart")
-                        .HasForeignKey("LoginFPTBook.Models.Cart", "Book_ID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("LoginFPTBook.Data.ApplicationUser", "ApplicationUser")
-                        .WithMany("Cart")
-                        .HasForeignKey("User_ID")
+                        .WithOne("Cart")
+                        .HasForeignKey("LoginFPTBook.Models.Cart", "User_ID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("ApplicationUser");
+                });
+
+            modelBuilder.Entity("LoginFPTBook.Models.CartDetail", b =>
+                {
+                    b.HasOne("LoginFPTBook.Models.Book", "Book")
+                        .WithMany()
+                        .HasForeignKey("Book_ID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LoginFPTBook.Models.Cart", "Cart")
+                        .WithMany("CartDetail")
+                        .HasForeignKey("Cart_ID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Book");
+
+                    b.Navigation("Cart");
                 });
 
             modelBuilder.Entity("LoginFPTBook.Models.Order", b =>
@@ -562,9 +591,12 @@ namespace LoginFPTBook.Migrations
 
             modelBuilder.Entity("LoginFPTBook.Models.Book", b =>
                 {
-                    b.Navigation("Cart");
-
                     b.Navigation("OrderDetail");
+                });
+
+            modelBuilder.Entity("LoginFPTBook.Models.Cart", b =>
+                {
+                    b.Navigation("CartDetail");
                 });
 
             modelBuilder.Entity("LoginFPTBook.Models.Category", b =>
