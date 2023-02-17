@@ -7,16 +7,17 @@ using System.Threading.Tasks;
 
 namespace LoginFPTBook.Models
 {
-    public class OrderDetail
+    public class CartDetail
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int OrderDetail_ID { get; set; }
-        public int OrderDetail_Quantity { get; set; }
-        public decimal OrderDetail_Price { get; set; }
-        public int Order_ID { get; set; }
-        [ForeignKey("Order_ID")]
-        public virtual Order? Order { get; set; }
+        public int CartDetail_ID { get; set; }
+        public int Cart_Quantity { get; set; }
+
+        public int Cart_ID { get; set; }
+        [ForeignKey("Cart_ID")]
+        public virtual Cart? Cart { get; set; }
+
         public int Book_ID { get; set; }
         [ForeignKey("Book_ID")]
         public virtual Book? Book { get; set; }

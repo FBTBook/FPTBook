@@ -13,7 +13,7 @@ namespace LoginFPTBook.Data
         public int User_Status { get; set; }
         public string User_Gender { get; set; }
 
-        public virtual ICollection<Cart>? Cart { get; set; }
+        public virtual Cart? Cart { get; set; }
         public virtual ICollection<Order>? Order { get; set; }
     }
 }
