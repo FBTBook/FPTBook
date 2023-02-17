@@ -1,6 +1,6 @@
 {
-  "SerializedFilePath": "c:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\obj\\Debug\\net6.0\\project.razor.json",
-  "FilePath": "c:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\LoginFPTBook.csproj",
+  "SerializedFilePath": "d:\\Study\\1670\\FPT_Book\\FPTBook\\obj\\Debug\\net6.0\\project.razor.json",
+  "FilePath": "d:\\Study\\1670\\FPT_Book\\FPTBook\\LoginFPTBook.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "6.0",
@@ -18439,8 +18439,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\Areas\\Identity\\Pages\\Account\\Manage\\_ManageNav.cshtml",
-      "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\_ManageNav.cshtml",
+      "FilePath": "d:\\Study\\1670\\FPT_Book\\FPTBook\\Views\\Shared\\_LoginPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_LoginPartial.cshtml",
       "FileKind": "mvc"
     },
     {
