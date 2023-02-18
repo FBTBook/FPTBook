@@ -58,6 +58,7 @@ namespace LoginFPTBook.Areas.Identity.Pages.Account
             [Required(ErrorMessage = "Please, Enter Username")]
             [StringLength(100)]
             public string User_Username { get; set; }
+
             [Required(ErrorMessage = "Please, Enter Fullname")]
             [StringLength(100)]
             public string User_Fullname { get; set; }
@@ -113,8 +114,8 @@ namespace LoginFPTBook.Areas.Identity.Pages.Account
                 user.User_Birthdate = Input.User_Birthdate;
                 user.User_Status = 1;
 
-                // await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
-                // await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
+                await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)

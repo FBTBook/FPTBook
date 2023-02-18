@@ -10,11 +10,25 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
+// builder.Services.AddIdentity<ApplicationUser, IdentityRole>(opt =>
+// {
+//     //previous code removed for clarity reasons
+//     opt.Lockout.AllowedForNewUsers = true;
+//     // opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(2);
+//     // opt.Lockout.MaxFailedAccessAttempts = 3;
+// });
+
 //builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     //.AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(opt =>
+{
+    //previous code removed for clarity reasons
+    opt.Lockout.AllowedForNewUsers = true;
+    opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(2);
+    opt.Lockout.MaxFailedAccessAttempts = 3;
+})
     .AddEntityFrameworkStores<ApplicationDbContext>()
         .AddDefaultUI()
         .AddDefaultTokenProviders();

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LoginFPTBook.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230217040626_Mig_2")]
-    partial class Mig_2
+    [Migration("20230217100135_Mig_1")]
+    partial class Mig_1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -212,7 +212,7 @@ namespace LoginFPTBook.Migrations
 
                     b.HasIndex("Cart_ID");
 
-                    b.ToTable("CartDetail");
+                    b.ToTable("CartDetails");
                 });
 
             modelBuilder.Entity("LoginFPTBook.Models.Category", b =>

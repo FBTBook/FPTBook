@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "OYXCX4esE+a52I1bymx61oBy1mg8RulzvmcQcxv5d74=",
+  "Hash": "h0au6Ss85GI6gdPNdvL0mP78a76B6dufoWcppOwqCe4=",
   "Source": "LoginFPTBook",
   "BasePath": "_content/LoginFPTBook",
   "Mode": "Default",
@@ -1103,6 +1103,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\wwwroot\\img\\LogoFPTBook.jpg",
+      "SourceId": "LoginFPTBook",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\wwwroot\\",
+      "BasePath": "_content/LoginFPTBook",
+      "RelativePath": "img/LogoFPTBook.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\LogoFPTBook.jpg"
     },
     {
       "Identity": "C:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\wwwroot\\js\\site.js",
