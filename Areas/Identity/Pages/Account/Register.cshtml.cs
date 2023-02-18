@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using LoginFPTBook.Constants;
+using LoginFPTBook.Models;
 
 namespace LoginFPTBook.Areas.Identity.Pages.Account
 {
@@ -31,12 +32,15 @@ namespace LoginFPTBook.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
+        private readonly ApplicationDbContext _db;
+
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             IUserStore<ApplicationUser> userStore,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            ApplicationDbContext db)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -44,6 +48,7 @@ namespace LoginFPTBook.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _db = db;
         }
 
         [BindProperty]
@@ -120,6 +125,11 @@ namespace LoginFPTBook.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
+                    Cart cart = new Cart();
+                    cart.User_ID = user.Id;
+                    _db.Carts.Add(cart);
+                    _db.SaveChanges();
+
                     await _userManager.AddToRoleAsync(user, Roles.Customer.ToString());
 
                     _logger.LogInformation("User created a new account with password.");

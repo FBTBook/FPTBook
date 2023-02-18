@@ -24,60 +24,47 @@ namespace LoginFPTBook.Controllers
         public async Task<IActionResult> Index()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
             var findCart = _db.Carts.Where(c => c.User_ID == userId).ToArray();
-
-            // var findCartDetail = (from cd in findCart select cd.Cart_ID).ToString();
-
-            // var cartId = Convert.ToInt32(findCartDetail);
-
             var cartInfor = _db.CartDetails.Where(c => c.Cart_ID == findCart[0].Cart_ID).Include(c => c.Book).ToList();
+
             return View(cartInfor);
         }
-        // public IActionResult AddToCart(int bookId)
-        // {
-        //     var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); 
-        //     // var check = from c in Carts where c.User_ID == userId and c.Book_ID == bookId select c;
 
-        //     var cart = _db.Carts.Where(c => c.User_ID == userId && c.Book_ID == bookId).ToList();
+        public IActionResult AddToCart(int id)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var findCart = _db.Carts.Where(c => c.User_ID == userId).ToArray();
+            var findCartDetail = _db.CartDetails.Where(cd => cd.Cart_ID == findCart[0].Cart_ID).ToArray();
+
+            if(findCartDetail.Count() != 0){
+                findCartDetail[0].Cart_Quantity += 1;
+                _db.CartDetails.Update(findCartDetail[0]);
+            }
+            else{
+
+                CartDetail cartDetail = new CartDetail();
+
+                cartDetail.Cart_Quantity = 1;
+                cartDetail.Cart_ID = findCart[0].Cart_ID;
+                cartDetail.Book_ID = id;
+                _db.CartDetails.Add(cartDetail);
+            }  
+            _db.SaveChanges();
             
-        //     // if(check == null){
-        //         // Cart cart = new Cart();
-        //         // cart.Cart_Quantity = 1;
-        //         // var a = _db.Users.Find(userId);
-        //         // var b = _db.Books.Find(bookId);
-                
-        //         // cart.User_ID = userId;
-        //         // cart.Book_ID = bookId;
-        //         // cart.ApplicationUser = _db.Users.Find(userId);
-        //         // cart.Book = _db.Books.Find(bookId);
-        //         if (cart.Count()<=0)
-        //         {
-        //             _db.Carts.Add(new Cart(){Cart_Quantity = 1, User_ID = userId, Book_ID = 2});
-        //             _db.SaveChanges();
-        //             return RedirectToAction("Index");
-        //         }
-        //         else
-        //         {
-        //             cart[0].Cart_Quantity += 1;
-        //             _db.SaveChanges();
-        //             return RedirectToAction("Index");
-        //         }
-                
+            return RedirectToAction("Index");
+        }
 
-        //     // }else{
-        //     //     return NoContent();
-        //         // check.Cart_Quantity += 1;
-        //     // }
-        //     _db.SaveChanges();
-        //     return RedirectToAction("Index");
-        // }
-        // public IActionResult Delete(int id)
-        // {
-        //    Cart cart = _db.Carts.Find(id);
-        //     _db.Carts.Remove(cart);
-        //     _db.SaveChanges();
-        //     return RedirectToAction("Index");
-        // }
+        public IActionResult DeleteCart(int id)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var findCart = _db.Carts.Where(c => c.User_ID == userId).ToArray();
+            var findCartDetail = _db.CartDetails.Where(cd => cd.Cart_ID == findCart[0].Cart_ID).ToArray();
+
+            _db.CartDetails.Remove(findCartDetail[0]);
+            _db.SaveChanges();
+            
+            return RedirectToAction("Index");
+        }
+        
     }
 }

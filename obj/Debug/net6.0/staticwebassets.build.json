@@ -1,10 +1,6 @@
 {
   "Version": 1,
-<<<<<<< HEAD
-  "Hash": "h0au6Ss85GI6gdPNdvL0mP78a76B6dufoWcppOwqCe4=",
-=======
-  "Hash": "4FBxTND4U9fqibqrCIVSa4O1wUYGeBw8PYvkxVMnWKs=",
->>>>>>> main
+  "Hash": "1XR6GH8rQo723VhU56ogwUzuzyKbwJmuzbEy0e2M+n4=",
   "Source": "LoginFPTBook",
   "BasePath": "_content/LoginFPTBook",
   "Mode": "Default",
@@ -1126,20 +1122,12 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\wwwroot\\img\\LogoFPTBook.jpg",
-=======
       "Identity": "C:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\wwwroot\\img\\banner-bg.jpg",
->>>>>>> main
       "SourceId": "LoginFPTBook",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\wwwroot\\",
       "BasePath": "_content/LoginFPTBook",
-<<<<<<< HEAD
-      "RelativePath": "img/LogoFPTBook.jpg",
-=======
       "RelativePath": "img/banner-bg.jpg",
->>>>>>> main
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1148,9 +1136,6 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-<<<<<<< HEAD
-      "OriginalItemSpec": "wwwroot\\img\\LogoFPTBook.jpg"
-=======
       "OriginalItemSpec": "wwwroot\\img\\banner-bg.jpg"
     },
     {
@@ -1324,6 +1309,23 @@
       "OriginalItemSpec": "wwwroot\\img\\book-9.png"
     },
     {
+      "Identity": "C:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\wwwroot\\img\\LogoFPTBook.jpg",
+      "SourceId": "LoginFPTBook",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\wwwroot\\",
+      "BasePath": "_content/LoginFPTBook",
+      "RelativePath": "img/LogoFPTBook.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\LogoFPTBook.jpg"
+    },
+    {
       "Identity": "C:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\wwwroot\\img\\stand.png",
       "SourceId": "LoginFPTBook",
       "SourceType": "Discovered",
@@ -1339,7 +1341,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\stand.png"
->>>>>>> main
     },
     {
       "Identity": "C:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\wwwroot\\js\\site.js",
