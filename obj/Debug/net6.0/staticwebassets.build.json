@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "TEO3UVCo/oYl2ilPSRKsyEdwc50XusOkms3q7R3KDA4=",
+  "Hash": "btWfXLTdu3//sitA3TqopDaLi8uRUx2CfcqeZQGnXiI=",
   "Source": "LoginFPTBook",
   "BasePath": "_content/LoginFPTBook",
   "Mode": "Default",
@@ -1120,6 +1120,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\Study\\1670\\FPTBook\\wwwroot\\img\\animation.gif",
+      "SourceId": "LoginFPTBook",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Study\\1670\\FPTBook\\wwwroot\\",
+      "BasePath": "_content/LoginFPTBook",
+      "RelativePath": "img/animation.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\animation.gif"
     },
     {
       "Identity": "D:\\Study\\1670\\FPTBook\\wwwroot\\img\\banner-bg.jpg",

@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\Study\\1670\\FPTBook\\wwwroot\\img\\animation.gif",
+      "PackagePath": "staticwebassets\\img\\animation.gif"
+    },
+    {
       "Id": "D:\\Study\\1670\\FPTBook\\wwwroot\\img\\banner-bg.jpg",
       "PackagePath": "staticwebassets\\img\\banner-bg.jpg"
     },
