@@ -30,7 +30,7 @@
                 @if (User.Identity.IsAuthenticated)
                 {
                   <a asp-area="Identity" asp-page="/Account/Manage/Index">Profile</a>
-                  <a href="#" >Log out</a>
+                  <a asp-area="Identity" asp-page="/Account/Logout" >Log out</a>
                 }
                 else{
                   <a asp-area="Identity" asp-page="/Account/Register">Register</a>
@@ -48,7 +48,7 @@
                 <button class="button_dropdown">Management</button>
                 <div class="content_dropdown">
                   <a href="#">Account</a>
-                  <a href="#">Publisher</a>
+                  <a asp-controller="Publisher" asp-action="Index">Publisher</a>
                   <a href="#">Statistical</a>
                   <a href="#">Order</a>
                   <a href="#">Category</a>

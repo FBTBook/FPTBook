@@ -10460,19 +10460,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\KHOI\\.nuget\\packages\\": {}
+    "C:\\Users\\THAI\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\LoginFPTBook.csproj",
+      "projectUniqueName": "d:\\Study\\1670\\FPTBook\\LoginFPTBook.csproj",
       "projectName": "LoginFPTBook",
-      "projectPath": "C:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\LoginFPTBook.csproj",
-      "packagesPath": "C:\\Users\\KHOI\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\obj\\",
+      "projectPath": "d:\\Study\\1670\\FPTBook\\LoginFPTBook.csproj",
+      "packagesPath": "C:\\Users\\THAI\\.nuget\\packages\\",
+      "outputPath": "d:\\Study\\1670\\FPTBook\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\KHOI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\THAI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10548,7 +10553,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.404\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

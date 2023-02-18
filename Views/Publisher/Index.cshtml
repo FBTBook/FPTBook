@@ -1,10 +1,10 @@
 @{
-    ViewData["Title"] = "OrderHistory";
+    ViewData["Title"] = "Index";
 }
 
-    <div id="main">
+        <div id="main">     
                 <div className="page-heading pb-2 mt-4 mb-2 ">
-                    <h3>Order History</h3> <a asp-controller="Home" asp-action="Index"><button type="button" class="btn btn-outline-primary">HomePage</button></a>
+                    <h3>Manage Publisher</h3> <a asp-controller="Publisher" asp-action="addPublisher"><button type="button" class="btn btn-outline-primary">Insert</button></a>
                 </div>
                 <div class="page-content">
                 <div class="container mb-3">
@@ -12,10 +12,9 @@
                         <thead>
                             <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">OrderDate</th>
-                            <th scope="col">DeliveryDate</th>
-                            <th scope="col">Address</th>
-                            <th scope="col">Payment</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">PhoneNumber</th>
                             <th scope="col">Status</th>
                             <th></th>
                             </tr>
@@ -28,10 +27,9 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
                                     <td>
-                                        <a class="btn btn-outline-primary rounded-pill"> Buy More </a>
-                                        <a class="btn btn-outline-primary rounded-pill"> Cancel </a>
+                                        <a asp-controller="Publisher" asp-action="updatePublisher" class="btn btn-outline-primary rounded-pill"> Update </a>
+                                        <a class="btn btn-outline-primary rounded-pill"> Delete </a>
                                     </td>
                                 
                         </tbody>
