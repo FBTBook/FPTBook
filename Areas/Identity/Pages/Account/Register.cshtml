@@ -4,12 +4,24 @@
     ViewData["Title"] = "Register";
 }
 
-<h1>@ViewData["Title"]</h1>
+<style>
+    h2{
+        padding-top: 5px;
+        text-align: center;
+    }
+    #registerForm{
+        padding-left: 450px;
+        padding-right: 450px;
+    }
+    .btnRegister{
+        display: flex;
+    }
+</style>
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="container">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2>Create a new account.</h2>
+            <h2>Register</h2>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-floating">
@@ -17,47 +29,58 @@
                 <label asp-for="Input.Email"></label>
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
+            <br>
             <div class="form-floating">
                 <input asp-for="Input.User_Username" class="form-control" aria-required="true" />
                 <label asp-for="Input.User_Username"></label>
                 <span asp-validation-for="Input.User_Username" class="text-danger"></span>
             </div>
+            <br>
             <div class="form-floating">
                 <input asp-for="Input.Password" class="form-control" aria-required="true" />
                 <label asp-for="Input.Password"></label>
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
+            <br>
             <div class="form-floating">
                 <input asp-for="Input.ConfirmPassword" class="form-control" aria-required="true" />
                 <label asp-for="Input.ConfirmPassword"></label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
+            <br>
             <div class="form-floating">
                 <input asp-for="Input.User_Fullname" class="form-control" aria-required="true" />
                 <label asp-for="Input.User_Fullname"></label>
                 <span asp-validation-for="Input.User_Fullname" class="text-danger"></span>
             </div>
+            <br>
             <div class="form-floating">
                 <input type="radio" asp-for="Input.User_Gender" value="Male" checked> Male 
                 <input type="radio" asp-for="Input.User_Gender" value="Female"> Female
                 <span asp-validation-for="Input.User_Gender" class="text-danger"></span>
             </div>
+            <br>
             <div class="form-floating">
                 <input asp-for="Input.User_Address" class="form-control" aria-required="true" />
                 <label asp-for="Input.User_Address"></label>
                 <span asp-validation-for="Input.User_Address" class="text-danger"></span>
             </div>
+            <br>
             <div class="form-floating">
                 <input asp-for="Input.User_PhoneNumber" class="form-control" aria-required="true" />
                 <label asp-for="Input.User_PhoneNumber"></label>
                 <span asp-validation-for="Input.User_PhoneNumber" class="text-danger"></span>
             </div>
-            <div class="form-floating">
-                <input type="date" asp-for="Input.User_Birthdate"> BirthDate
+            <br>
+            <div class="form-floating"><p>BirthDate:</p> 
+                <input type="date" asp-for="Input.User_Birthdate"> 
                 <span asp-validation-for="Input.User_Birthdate" class="text-danger"></span>
             </div>
-                
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+            <br>
+             <div class="btnRegister">
+                <button id="registerSubmit" type="submit" class="w-50 btn btn-lg btn-primary">Register</button>
+                <button id="cancelSubmit" type="submit" class="w-50 btn btn-lg btn-primary">Cancel</button>
+             </div>              
         </form>
     </div>
 </div>

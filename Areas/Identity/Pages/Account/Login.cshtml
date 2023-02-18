@@ -5,12 +5,25 @@
     ViewData["Title"] = "Log in";
 }
 
-<h1>@ViewData["Title"]</h1>
+<style>
+    h2{
+        text-align: center;
+        padding-top: 5px;
+    }
+    #account{
+        padding-left: 475px;
+        padding-right: 475px;
+    }
+    .btnLogin{
+        display: flex;
+    }
+</style>
+
 <div class="row">
-    <div class="col-md-4">
+    <div class="Container">
         <section>
             <form id="account" method="post">
-                <h2>Use a local account to log in.</h2>
+                <h2>Log In</h2>
                 <hr />
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-floating">
@@ -18,25 +31,21 @@
                     <label asp-for="Input.Email" class="form-label"></label>
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
                 </div>
+                <br>
                 <div class="form-floating">
                     <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
                     <label asp-for="Input.Password" class="form-label"></label>
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
-                <div>
-                    <div class="checkbox">
-                        <label asp-for="Input.RememberMe" class="form-label">
-                            <input class="form-check-input" asp-for="Input.RememberMe" />
-                            @Html.DisplayNameFor(m => m.Input.RememberMe)
-                        </label>
-                    </div>
+                <div class="btnLogin">
+                    <button id="login-submit" type="submit" class="w-50 btn btn-lg btn-primary">Log in</button>
+                    <button id="cancel-submit" type="submit" class="w-50 btn btn-lg btn-primary">Cancel</button>
                 </div>
-                <div>
-                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
-                </div>
-                <div>
+                <div >
+                    <br>
                     <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                        Don't Have An Account ?
+                        <a asp-area="Identity" asp-page="/Account/Register">Create One</a>
                     </p>
                 </div>
             </form>
