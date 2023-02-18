@@ -14,7 +14,7 @@
 
     <div class="header-1">
 
-        <a href="#" class="logo"> <i class="fas fa-book"></i> FPTBook </a>
+        <a class="logo"> <i class="fas fa-book"></i> FPTBook </a>
 
         <form action="" class="search-form">
             <input type="search" name="" placeholder="search here..." id="search-box">
@@ -24,13 +24,18 @@
         <div class="icons">
             <div id="search-btn" class="fas fa-search"></div>
             <a href="#" class="fas fa-heart"></a>
-            <a href="#" class="fas fa-shopping-cart"></a>
+            <a class="fas fa-shopping-cart" asp-controller="Cart" asp-action="Index"></a>
                 <div class="dropdowns fas fa-user">
                 <div class="content_dropdowns">
+                @if (User.Identity.IsAuthenticated)
+                {
                   <a asp-area="Identity" asp-page="/Account/Manage/Index">Profile</a>
+                  <a href="#" >Log out</a>
+                }
+                else{
                   <a asp-area="Identity" asp-page="/Account/Register">Register</a>
                   <a asp-area="Identity" asp-page="/Account/Login">Log in</a>
-                  <a href="#" >Log out</a>
+                }            
                 </div>
             </div>
         </div>

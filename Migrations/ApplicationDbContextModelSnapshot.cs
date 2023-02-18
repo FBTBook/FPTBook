@@ -210,7 +210,7 @@ namespace LoginFPTBook.Migrations
 
                     b.HasIndex("Cart_ID");
 
-                    b.ToTable("CartDetail");
+                    b.ToTable("CartDetails");
                 });
 
             modelBuilder.Entity("LoginFPTBook.Models.Category", b =>

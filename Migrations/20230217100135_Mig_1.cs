@@ -28,9 +28,9 @@ namespace LoginFPTBook.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    User_Fullname = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    User_Fullname = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     User_Birthdate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    User_Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    User_Address = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     User_Status = table.Column<int>(type: "int", nullable: false),
                     User_Gender = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -59,8 +59,8 @@ namespace LoginFPTBook.Migrations
                 {
                     Category_ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Category_Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Category_Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Category_Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Category_Description = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Category_Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -74,7 +74,7 @@ namespace LoginFPTBook.Migrations
                 {
                     Publisher_ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Publisher_Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Publisher_Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Publisher_Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Publisher_Telephone = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Publisher_Status = table.Column<int>(type: "int", nullable: false)
@@ -244,9 +244,9 @@ namespace LoginFPTBook.Migrations
                     Book_Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Book_Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Book_Status = table.Column<int>(type: "int", nullable: false),
-                    Book_Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Book_AuthorName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Book_Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Book_Description = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Book_AuthorName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Book_Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Category_ID = table.Column<int>(type: "int", nullable: false),
                     Publisher_ID = table.Column<int>(type: "int", nullable: false)
                 },
@@ -268,7 +268,7 @@ namespace LoginFPTBook.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CartDetail",
+                name: "CartDetails",
                 columns: table => new
                 {
                     CartDetail_ID = table.Column<int>(type: "int", nullable: false)
@@ -279,15 +279,15 @@ namespace LoginFPTBook.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CartDetail", x => x.CartDetail_ID);
+                    table.PrimaryKey("PK_CartDetails", x => x.CartDetail_ID);
                     table.ForeignKey(
-                        name: "FK_CartDetail_Books_Book_ID",
+                        name: "FK_CartDetails_Books_Book_ID",
                         column: x => x.Book_ID,
                         principalTable: "Books",
                         principalColumn: "Book_ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CartDetail_Carts_Cart_ID",
+                        name: "FK_CartDetails_Carts_Cart_ID",
                         column: x => x.Cart_ID,
                         principalTable: "Carts",
                         principalColumn: "Cart_ID",
@@ -372,13 +372,13 @@ namespace LoginFPTBook.Migrations
                 column: "Publisher_ID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CartDetail_Book_ID",
-                table: "CartDetail",
+                name: "IX_CartDetails_Book_ID",
+                table: "CartDetails",
                 column: "Book_ID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CartDetail_Cart_ID",
-                table: "CartDetail",
+                name: "IX_CartDetails_Cart_ID",
+                table: "CartDetails",
                 column: "Cart_ID");
 
             migrationBuilder.CreateIndex(
@@ -421,7 +421,7 @@ namespace LoginFPTBook.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "CartDetail");
+                name: "CartDetails");
 
             migrationBuilder.DropTable(
                 name: "OrderDetails");
