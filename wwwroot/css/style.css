@@ -358,28 +358,8 @@ section{
 }
 /* end icons */
 
+  
 /* books */
-
-/* #container {
-  width:100%;
-  text-align:center;
-}
-
-#left {
-  float:left;
-  
-}
-
-#center {
-  display: inline-block;
-  margin:0 auto;
-  
-}
-
-#right {
-  float:right;
-  
-} */
 
 .featured .featured-slider .box{
   
@@ -643,5 +623,4 @@ section{
   
   /* End footer */
 
-  /* repsonsive */
-  
+ 
