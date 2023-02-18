@@ -23,7 +23,7 @@ namespace LoginFPTBook.Controllers
         }
 
         [Authorize]
-        public IActionResult Privacy()
+        public IActionResult OrderHistory()
         {
             return View();
         }
