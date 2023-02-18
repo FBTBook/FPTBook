@@ -27,6 +27,14 @@ namespace LoginFPTBook.Controllers
             var findCart = _db.Carts.Where(c => c.User_ID == userId).ToArray();
             var cartInfor = _db.CartDetails.Where(c => c.Cart_ID == findCart[0].Cart_ID).Include(c => c.Book).ToList();
 
+            decimal totalPrie = 0;
+            foreach (var p in cartInfor)
+            {
+                totalPrie += (p.Cart_Quantity*p.Book.Book_SalePrice);
+            }
+
+            ViewData["data"] = totalPrie.ToString();
+
             return View(cartInfor);
         }
 
@@ -65,6 +73,19 @@ namespace LoginFPTBook.Controllers
             
             return RedirectToAction("Index");
         }
+
+        public IActionResult Updatecart(int idCartDetail, CartDetail obj, int idBook, int idCart, int quantity)
+        {
+            obj.CartDetail_ID = idCartDetail;
+            obj.Book_ID = idBook;
+            obj.Cart_ID = idCart;
+            obj.Cart_Quantity = quantity;
+            _db.CartDetails.Update(obj);
+            _db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+        
         
     }
 }
