@@ -18444,6 +18444,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\Study\\1670\\FPTBook\\Views\\Account\\createOwnerAccount.cshtml",
+      "TargetPath": "Views\\Account\\createOwnerAccount.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\Study\\1670\\FPTBook\\Views\\Home\\OrderHistory.cshtml",
       "TargetPath": "Views\\Home\\OrderHistory.cshtml",
       "FileKind": "mvc"
@@ -18559,6 +18564,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\Study\\1670\\FPTBook\\Views\\Account\\Index.cshtml",
+      "TargetPath": "Views\\Account\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\Study\\1670\\FPTBook\\Areas\\Identity\\Pages\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
@@ -18581,6 +18591,11 @@
     {
       "FilePath": "d:\\Study\\1670\\FPTBook\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\Study\\1670\\FPTBook\\Views\\Account\\updateAccount.cshtml",
+      "TargetPath": "Views\\Account\\updateAccount.cshtml",
       "FileKind": "mvc"
     },
     {

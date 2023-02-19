@@ -1,0 +1,83 @@
+@{
+    ViewData["Title"] = "Index";
+}
+<style>
+    h3{
+        padding-top: 10px;
+    }
+    .searching .search-container {
+  float: right;
+}
+ 
+.searching input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 14px;
+  border: none;
+}
+ 
+.searching .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #fff;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+ 
+.searching .search-container button:hover {
+  background: #25aab3;
+}
+</style>
+
+<div id="main">     
+                <div className="page-heading pb-2 mt-4 mb-2 ">
+                    <h3>Manage Account</h3> <a asp-controller="Account" asp-action="createOwnerAccount">
+                        <button type="button" class="btn btn-outline-primary">Create Owner Account</button></a>
+                </div>
+                <div class="searching">
+                    <div class="search-container">
+                        <form action="#">
+                            <input type="text" placeholder="Search for Email..." name="search">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="page-content">
+                <div class="container mb-3">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                            <th scope="col">UserID</th>
+                            <th scope="col">UserName</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">BirthDate</th>
+                            <th scope="col">PhoneNumber</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Role</th>
+                            <th scope="col">Status</th>
+                            <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>                    
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <a asp-controller="Account" asp-action="updateAccount" class="btn btn-outline-primary rounded-pill"> Update </a>
+                                        <a class="btn btn-outline-primary rounded-pill"> Delete </a>
+                                    </td>                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+</div>

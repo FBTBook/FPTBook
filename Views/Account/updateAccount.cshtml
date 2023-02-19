@@ -1,13 +1,12 @@
 @{
-    ViewData["Title"] = "updatePublisher";
+    ViewData["Title"] = "updateAccount";
 }
 
 <style>
     h2{
         padding-top: 5px;
-        @* text-align: center; *@
     }
-    #updatePublisherForm{
+    #updateAccountForm{
         padding-left: 150px;
         padding-right: 150px;
     }
@@ -19,41 +18,30 @@
 
 <div class="row">
     <div class="container">
-        <form id="updatePublisherForm" method="post">
-            <h2>Update Pulisher</h2>
-            <button  asp-controller="Publisher" asp-action="Index" class="w-10 btn btn-lg btn-primary">Back</button>
+        <form id="updateAccountForm" method="post">
+            <h2>Update Account</h2>
+            <button  asp-controller="Account" asp-action="Index" class="w-10 btn btn-lg btn-primary">Back</button>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-floating">
                 <input  class="form-control" aria-required="true" />
-                <label>ID</label>
+                <label>USerID</label>
                 <span  class="text-danger"></span>
             </div>
             <br>
             <div class="form-floating">
                 <input  class="form-control" aria-required="true" />
-                <label >Publisher Name</label>
+                <label >UserName</label>
                 <span  class="text-danger"></span>
             </div>
             <br>
             <div class="form-floating">
                 <input  class="form-control" aria-required="true" />
-                <label >Email</label>
+                <label >Role</label>
                 <span  class="text-danger"></span>
             </div>
             <br>
-            <div class="form-floating">
-                <input  class="form-control" aria-required="true" />
-                <label >Phone Number</label>
-                <span  class="text-danger"></span>
-            </div>
-            <br>
-            @* <div class="form-floating">
-                <input  class="form-control" aria-required="true" />
-                <label ></label>
-                <span  class="text-danger"></span>
-            </div> *@
-            <br>
+         
             <div class="form-floating">
                 <p>Status:</p>
                 <input type="radio"  value="Male" checked> Available
@@ -63,10 +51,6 @@
                 <span  class="text-danger"></span>
             </div>
             <br>
-            @* <div class="form-floating"><p>BirthDate:</p> 
-                <input type="date"> 
-                <span class="text-danger"></span>
-            </div> *@
             
              <div class="btnUpdate">
                 <button id="updateSubmit" type="submit" class="w-10 btn btn-lg btn-primary">Update</button>
