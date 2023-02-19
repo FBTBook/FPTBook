@@ -21,5 +21,11 @@ namespace FPTBook.Controllers
         {
             return View();
         }
+
+        public IActionResult orderDetail()
+        {
+            return View();
+        }
+        
     }
 }

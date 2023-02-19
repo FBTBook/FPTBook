@@ -1,0 +1,87 @@
+@{
+    ViewData["Title"] = "orderDetail";
+}
+
+<style>
+    h2{
+        padding-top: 5px;
+        @* text-align: center; *@
+    }
+    #orderDetailForm{
+        padding-left: 150px;
+        padding-right: 150px;
+    }
+    .btnSubmit{
+        display: flex;
+        text-align: center;
+    }
+</style>
+
+<div class="row">
+    <div class="container">
+        <form id="orderDetailForm" method="post">
+            <h2>Order Detail</h2>
+            <button  asp-controller="Order" asp-action="Index" class="w-10 btn btn-lg btn-primary">Back</button>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating">
+                <input  class="form-control" aria-required="true" style="width: 200px;"/>
+                <label>Order ID:</label>
+                <span  class="text-danger"></span>
+            </div>
+            <br>
+            <div class="page-content">
+                <div class="container mb-3">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                            <th scope="col">User Name</th>
+                            <th scope="col">Order Date</th>
+                            <th scope="col">Delivery Date</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Status</th>
+                            <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>                    
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>    
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <br>
+            <div class="form-floating">
+                <input  class="form-control" aria-required="true" style="width: 200px;"/>
+                <label>Total:</label>
+                <span  class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-floating">
+                <p>Status:</p>
+                <input type="radio"  value="Male" checked> Accept
+                <br>
+                <br>
+                <input type="radio"  value="Female"> Cancel
+                <span  class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-floating">
+                <p>Status:</p>
+                <input type="radio"  value="Male" checked> Delivering
+                <br>
+                <br>
+                <input type="radio"  value="Female"> Delivered
+                <span  class="text-danger"></span>
+            </div>
+            <br>
+            <div class="btnSubmit">
+                <button id="addSubmit" type="submit" class="w-10 btn btn-lg btn-primary">Submit</button>
+             </div>
+        </form>    
