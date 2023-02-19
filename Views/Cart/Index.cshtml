@@ -63,9 +63,23 @@
                     <h5 class="text-uppercase">Total price</h5>
                     <h5>@ViewBag.data<span>&#8363;</span></h5>
                   </div>
-                  <form class="d-flex" method="POST">
-                    <a href="#" class="btn text-light " style= "background-color: rgba(13,92,182,255);" type="submit" value="Payment">Order</a> 
-                </form>
+
+                    @if (@Model.Count() == 0){
+                      <a onclick="myFunction()" class="btn text-light " 
+                      style= "background-color: rgba(13,92,182,255);" type="submit" value="Payment">Order</a>
+                    }
+                    else
+                    {
+                      <a class="btn text-light" asp-controller="Cart" asp-action="OrderCart" 
+                      asp-route-idCart="@Model.ElementAt(0).Cart_ID" onclick = "return confirm('Are sure wants to order?');" 
+                      style= "background-color: rgba(13,92,182,255);">Order</a>
+                    }
+                                  
+                  <script type="text/javascript">
+                    function myFunction() {
+                    alert("Your Cart is empty. Please add a new book to order!!!");
+                  }
+                  </script>            
                 </div>
               </div>
             </div>
