@@ -21,5 +21,17 @@ namespace FPTBook.Controllers
         {
             return View();
         }   
+
+        public IActionResult addCategory()
+        {
+            return View();
+        }
+
+        public IActionResult updateCategory()
+        {
+            return View();
+        }
+        
+        
     }
 }
