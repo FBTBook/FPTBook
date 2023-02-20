@@ -28,5 +28,10 @@ namespace LoginFPTBook.Controllers
             return View();
         }
 
+        public IActionResult resultForSearch()
+        {
+            return View();
+        }
+        
     }
 }
