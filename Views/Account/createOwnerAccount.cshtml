@@ -1,0 +1,81 @@
+@{
+    ViewData["Title"] = "createOwnerAccount";
+}
+
+<style>
+    h2{
+        padding-top: 5px;
+        text-align: center;
+    }
+    #registerForm{
+        padding-left: 450px;
+        padding-right: 450px;
+    }
+    .btnRegister{
+        display: flex;
+    }
+</style>
+
+<div class="row">
+    <div class="container">
+        <form id="registerForm"  method="post">
+            <h2>Create Owner Account</h2>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating">
+                <input class="form-control" aria-required="true" />
+                <label >Email</label>
+                <span class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-floating">
+                <input class="form-control" aria-required="true" />
+                <label >FullName</label>
+                <span class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-floating">
+                <input class="form-control" aria-required="true" />
+                <label >Password</label>
+                <span class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-floating">
+                <input class="form-control" aria-required="true" />
+                <label >ConfirmPassword</label>
+                <span lass="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-floating">
+                <input type="radio" value="Male" checked> Male 
+                <input type="radio" value="Female"> Female
+                <span class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-floating">
+                <input class="form-control" aria-required="true" />
+                <label >Address</label>
+                <span class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-floating">
+                <input class="form-control" aria-required="true" />
+                <label >PhoneNumber</label>
+                <span class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-floating"><p>BirthDate:</p> 
+                <input type="date" > 
+                <span class="text-danger"></span>
+            </div>
+            <br>
+             <div class="btnRegister">
+                <button id="registerSubmit" type="submit" class="w-50 btn btn-lg btn-primary">Create</button>
+             </div>              
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

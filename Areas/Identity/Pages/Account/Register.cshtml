@@ -31,9 +31,9 @@
             </div>
             <br>
             <div class="form-floating">
-                <input asp-for="Input.User_Username" class="form-control" aria-required="true" />
-                <label asp-for="Input.User_Username"></label>
-                <span asp-validation-for="Input.User_Username" class="text-danger"></span>
+                <input asp-for="Input.User_Fullname" class="form-control" aria-required="true" />
+                <label asp-for="Input.User_Fullname"></label>
+                <span asp-validation-for="Input.User_Fullname" class="text-danger"></span>
             </div>
             <br>
             <div class="form-floating">
@@ -46,13 +46,7 @@
                 <input asp-for="Input.ConfirmPassword" class="form-control" aria-required="true" />
                 <label asp-for="Input.ConfirmPassword"></label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-            </div>
-            <br>
-            <div class="form-floating">
-                <input asp-for="Input.User_Fullname" class="form-control" aria-required="true" />
-                <label asp-for="Input.User_Fullname"></label>
-                <span asp-validation-for="Input.User_Fullname" class="text-danger"></span>
-            </div>
+            </div>         
             <br>
             <div class="form-floating">
                 <input type="radio" asp-for="Input.User_Gender" value="Male" checked> Male 

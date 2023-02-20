@@ -1,0 +1,67 @@
+@{
+    ViewData["Title"] = "updateCategory";
+}
+
+@{
+    ViewData["Title"] = "addCategory";
+}
+
+<style>
+    h2{
+        padding-top: 5px;
+        @* text-align: center; *@
+    }
+    #updateCategoryForm{
+        padding-left: 150px;
+        padding-right: 150px;
+    }
+    .btnUpdate{
+        display: flex;
+        text-align: center;
+    }
+</style>
+
+<div class="row">
+    <div class="container">
+        <form id="updateCategoryForm" method="post">
+            <h2>Update Category</h2>
+            <button  asp-controller="Category" asp-action="Index" class="w-10 btn btn-lg btn-primary">Back</button>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating">
+                <input  class="form-control" aria-required="true" />
+                <label>CategoryID</label>
+                <span  class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-floating">
+                <input  class="form-control" aria-required="true" />
+                <label >Category Name</label>
+                <span  class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-floating">
+                <input  class="form-control" aria-required="true" />
+                <label >Description</label>
+                <span  class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-floating">
+                <p>Status:</p>
+                <input type="radio"  value="Male" checked> Accept
+                <br>
+                <br>
+                <input type="radio"  value="Female"> Cancel
+                <span  class="text-danger"></span>
+            </div>
+            <br>    
+             <div class="btnUpdate">
+                <button id="addSubmit" type="submit" class="w-10 btn btn-lg btn-primary">Update</button>
+             </div>              
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

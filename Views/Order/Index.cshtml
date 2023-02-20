@@ -1,0 +1,41 @@
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div id="main">     
+                <div className="page-heading pb-2 mt-4 mb-2 ">
+                    <h3>Manage Order</h3> <a asp-controller="Home" asp-action="Index">
+                        <button type="button" class="btn btn-outline-primary">HomePage</button></a>
+                </div>
+                <div class="page-content">
+                <div class="container mb-3">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">User FullName</th>
+                            <th scope="col">Order Date</th>
+                            <th scope="col">Delivery Date</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Status</th>
+                            <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <a asp-controller="Order" asp-action="orderDetail" class="btn btn-outline-primary rounded-pill">Detail</a>
+                                    </td>
+                                
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+</div>

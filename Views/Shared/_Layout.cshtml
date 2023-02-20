@@ -17,8 +17,10 @@
         <a class="logo"> <i class="fas fa-book"></i> FPTBook </a>
 
         <form action="" class="search-form">
-            <input type="search" name="" placeholder="search here..." id="search-box">
-            <label for="search-box" class="fas fa-search"></label>
+            
+            <input type="search" name="" placeholder="Search here..." id="search-box">
+            <a asp-controller="Home" asp-action="resultForSearch">
+            <label for="search-box" class="fas fa-search"></label></a>
         </form>
 
         <div class="icons">
@@ -30,7 +32,7 @@
                 @if (User.Identity.IsAuthenticated)
                 {
                   <a asp-area="Identity" asp-page="/Account/Manage/Index">Profile</a>
-                  <a href="#" >Log out</a>
+                  <a asp-area="Identity" asp-page="/Account/Logout" >Log out</a>
                 }
                 else{
                   <a asp-area="Identity" asp-page="/Account/Register">Register</a>
@@ -47,12 +49,12 @@
             <div class="dropdown">
                 <button class="button_dropdown">Management</button>
                 <div class="content_dropdown">
-                  <a href="#">Account</a>
-                  <a href="#">Publisher</a>
-                  <a href="#">Statistical</a>
-                  <a href="#">Order</a>
-                  <a href="#">Category</a>
-                  <a href="#">Book</a>
+                  <a asp-controller="Account" asp-action="Index">Account</a>
+                  <a asp-controller="Publisher" asp-action="Index">Publisher</a>
+                  <a asp-controller="Statistics" asp-action="Index">Statistical</a>
+                  <a asp-controller="Order" asp-action="Index">Order</a>
+                  <a asp-controller="Category" asp-action="Index">Category</a>
+                  <a asp-controller="Book" asp-action="Index">Book</a>
                 </div>
               </div>
         </nav>
