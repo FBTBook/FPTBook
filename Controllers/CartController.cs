@@ -113,6 +113,7 @@ namespace LoginFPTBook.Controllers
         public IActionResult OrderCart(int idCart)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            
             Order order = new Order();
             order.Order_OrderDate = DateTime.Now;
             order.Order_DeliveryDate = null;
@@ -129,6 +130,10 @@ namespace LoginFPTBook.Controllers
                 orderDetail.Order_ID = order.Order_ID;
                 orderDetail.Book_ID = od.Book_ID;
                 _db.OrderDetails.Add(orderDetail);
+            }
+            foreach (var od in findCartDetail)
+            {
+                _db.CartDetails.Remove(od);
             }
             _db.SaveChanges();
             return RedirectToAction("Index", "Home");
