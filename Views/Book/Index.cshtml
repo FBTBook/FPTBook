@@ -1,0 +1,30 @@
+@model IEnumerable<Book>
+@{
+    ViewData["Title"] = "Index";
+}
+<a class="btn btn-primary" asp-action="Create">Add new product</a>
+<table class="table">
+    <thead>
+        <th>Book Name</th>
+        <th>Book Image</th>
+        <th>Book Price</th>
+        <th></th>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><a asp-action="Details" asp-route-id="@item.Book_ID">@item.Book_Name</a></td>
+                <td>
+                    <img src="~/img/@item.Book_Image" alt="@item.Book_Image" width="100px">
+                </td>
+                <td>@item.Book_Price</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Book_ID">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.Book_ID" onclick = "return confirm('Are sure wants to delete?');">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

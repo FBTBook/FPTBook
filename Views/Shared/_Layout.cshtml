@@ -25,13 +25,16 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        <form asp-controller="Home" asp-action="Search">
+                            <input name="search" type="text">
+                            <button type="submit" value="submit">Search</button>
+                        </form>
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Cart</a>
                             </li> 
                         }
-
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

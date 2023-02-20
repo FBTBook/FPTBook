@@ -1,0 +1,34 @@
+@model IEnumerable<Publisher>
+@{
+    ViewData["Title"] = "Index";
+}
+<H1>Publisher Index</H1> 
+<a class="btn btn-primary" asp-action="Create">Add new Publisher</a>
+<Table class="table">
+    <thead>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Telephone</th>
+        <th>Starus</th>
+        <th></th>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Publisher_Name</td>
+                <td>@item.Publisher_Email</td>
+                <td>@item.Publisher_Telephone</td>
+                @if(@item.Publisher_Status == 1){
+                    <td>Avilable</td>
+                }else{
+                    <td>Unavilable</td>
+                }
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Publisher_ID">Edit </a>
+                    <a asp-action="Delete" asp-route-id="@item.Publisher_ID" onclick = "return confirm('Are sure wants to delete?');">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</Table>

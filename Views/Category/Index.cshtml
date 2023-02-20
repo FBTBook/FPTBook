@@ -1,0 +1,32 @@
+@model IEnumerable<Category>
+@{
+    ViewData["Title"] = "Index";
+}
+<H1>Category Index</H1> 
+<a class="btn btn-primary" asp-action="Create">Add new Category</a>
+<Table class="table">
+    <thead>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th></th>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Category_Name</td>
+                <td>@item.Category_Description</td>
+                @if(@item.Category_Status == 1){
+                    <td>Avilable</td>
+                }else{
+                    <td>Unavilable</td>
+                }
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Category_ID">Edit </a>
+                    <a asp-action="Delete" asp-route-id="@item.Category_ID" onclick = "return confirm('Are sure wants to delete?');">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</Table>

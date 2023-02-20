@@ -1,13 +1,13 @@
-﻿@model IEnumerable<Book>
+@model IEnumerable<Book>
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Search";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
-<h2>All Book</h2>
+<h2>Search result</h2>
 <div class="row">
     @foreach (var item in Model)
     {

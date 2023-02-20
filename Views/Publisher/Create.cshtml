@@ -1,0 +1,46 @@
+@model Publisher
+@{
+    ViewData["Title"] = "Create";
+}
+<H1>Add new Publisher</H1>
+<hr/>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Publisher_Name" class="control-label"></label>
+                <input asp-for="Publisher_Name" class="form-control" />
+                <span asp-validation-for="Publisher_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Publisher_Email" class="control-label"></label>
+                <input asp-for="Publisher_Email" class="form-control" />
+                <span asp-validation-for="Publisher_Email" class="text-danger"></span>
+            </div>
+                <div class="form-group">
+                <label asp-for="Publisher_Telephone" class="control-label"></label>
+                <input asp-for="Publisher_Telephone" class="form-control" />
+                <span asp-validation-for="Publisher_Telephone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Publisher_Status" class="control-label"></label><br>
+                <input type="radio" id="contactChoice1" value="1" asp-for="Publisher_Status" checked/>
+                <label for="contactChoice1">Available</label>
+                <input type="radio" id="contactChoice2" value="0" asp-for="Publisher_Status"/>
+                <label for="contactChoice2">Unavailable</label>
+            </div>
+                <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+</div>   
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
