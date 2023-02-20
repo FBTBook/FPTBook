@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @model IEnumerable<Category>
 @{
     ViewData["Title"] = "Index";
@@ -30,3 +31,42 @@
         }
     </tbody>
 </Table>
+=======
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div id="main">     
+                <div className="page-heading pb-2 mt-4 mb-2 ">
+                    <h3>Manage Category</h3> <a asp-controller="Category" asp-action="addCategory"><button type="button" class="btn btn-outline-primary">Insert</button></a>
+                </div>
+                <div class="page-content">
+                <div class="container mb-3">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                            <th scope="col">CategoryID</th>
+                            <th scope="col">CategoryName</th>
+                            <th scope="col">Decription</th>
+                            <th scope="col">Status</th>
+                            <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <a asp-controller="Category" asp-action="updateCategory" class="btn btn-outline-primary rounded-pill"> Update </a>
+                                        <a class="btn btn-outline-primary rounded-pill"> Delete </a>
+                                    </td>
+                                
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+</div>
+>>>>>>> refs/remotes/origin/main

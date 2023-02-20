@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LoginFPTBook.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230217091153_172migration")]
-    partial class _172migration
+    [Migration("20230220104357_kietmigration")]
+    partial class kietmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -119,13 +119,11 @@ namespace LoginFPTBook.Migrations
 
                     b.Property<string>("Book_AuthorName")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Book_Description")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Book_Image")
                         .IsRequired()
@@ -133,8 +131,7 @@ namespace LoginFPTBook.Migrations
 
                     b.Property<string>("Book_Name")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Book_NoOfPages")
                         .HasColumnType("int");
@@ -212,7 +209,7 @@ namespace LoginFPTBook.Migrations
 
                     b.HasIndex("Cart_ID");
 
-                    b.ToTable("CartDetail");
+                    b.ToTable("CartDetails");
                 });
 
             modelBuilder.Entity("LoginFPTBook.Models.Category", b =>
@@ -249,7 +246,7 @@ namespace LoginFPTBook.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Order_ID"), 1L, 1);
 
-                    b.Property<DateTime>("Order_DeliveryDate")
+                    b.Property<DateTime?>("Order_DeliveryDate")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("Order_OrderDate")

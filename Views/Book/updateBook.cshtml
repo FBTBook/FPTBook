@@ -1,0 +1,113 @@
+@{
+    ViewData["Title"] = "updateBook";
+}
+
+<style>
+    h2{
+        padding-top: 5px;
+        @* text-align: center; *@
+    }
+    #updateBookForm{
+        padding-left: 150px;
+        padding-right: 150px;
+    }
+    .btnUpdate{
+        display: flex;
+        text-align: center;
+    }
+</style>
+
+<div class="row">
+    <div class="container">
+        <form id="updateBookForm" method="post">
+            <h2>Update Book</h2>
+            <button  asp-controller="Book" asp-action="Index" class="w-10 btn btn-lg btn-primary">Back</button>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating">
+                <input  class="form-control" aria-required="true" />
+                <label>ID</label>
+                <span  class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-floating">
+                <input  class="form-control" aria-required="true" />
+                <label >Name</label>
+                <span  class="text-danger"></span>
+            </div>
+            
+            <br>
+            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" style="font-size: 9px">
+                <option selected style="color: #666;">Choose a Category:</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+            <br>
+            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" style="font-size: 9px">
+                <option selected>Choose a Publisher:</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+            <br>
+            <div class="form-floating">
+                <input  class="form-control" aria-required="true" />
+                <label>Desciption</label>
+                <span  class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-floating">
+                <input  class="form-control" aria-required="true" />
+                <label>NoOfPage</label>
+                <span  class="text-danger"></span>
+            </div>
+             <br>
+            <div class="form-floating">
+                <input  class="form-control" aria-required="true" />
+                <label>Quantity</label>
+                <span  class="text-danger"></span>
+            </div>
+            <br>
+            
+            <div class="form-floating">
+                <input  class="form-control" aria-required="true" />
+                <label>Price</label>
+                <span  class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-floating">
+                <input  class="form-control" aria-required="true" />
+                <label>SellPrice</label>
+                <span  class="text-danger"></span>
+            </div>
+
+            <br>
+            <div class="form-floating">
+                <p>Status:</p>
+                <input type="radio"  value="Male" checked> Available
+                <br>
+                <br>
+                <input type="radio"  value="Female"> Unavailable
+                <span  class="text-danger"></span>
+            </div>
+
+            <br>
+            <p>Choose Image:</p>
+            <div class="form-floating">
+                <input type="file" name="image" id="image" class="form-control" value="" style="width:200px">
+            </div>
+
+            <br>
+            <p>Publisher Date:</p>
+            <div class="form-floating">
+                <input id="timeTo" class="form-control" type="date" name="timeTo" value ="" style="width:200px"/>
+            </div>
+            <br>
+            
+             <div class="btnUpdate">
+                <button id="addSubmit" type="submit" class="w-10 btn btn-lg btn-primary">Update</button>
+             </div>              
+        </form>
+    </div>
+</div>

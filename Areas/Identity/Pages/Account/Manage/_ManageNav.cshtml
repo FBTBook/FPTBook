@@ -2,7 +2,10 @@
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }
+
 <ul class="nav nav-pills flex-column">
-    <li class="nav-item"><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Profile</a></li>
-    <li class="nav-item"><a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Password</a></li>
+    <li class="nav-item"><p></p><a class="btn btn-primary nav-link @ManageNavPages.IndexNavClass(ViewContext)" 
+    id="profile" asp-page="./Index" style="background-color: #25aab3;">Profile</a></li>
+    <li class="nav-item"><a class="btn btn-primary nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" 
+    id="change-password" asp-page="./ChangePassword" style="background-color: #25aab3;">Password</a></li>
 </ul>

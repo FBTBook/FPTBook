@@ -117,13 +117,11 @@ namespace LoginFPTBook.Migrations
 
                     b.Property<string>("Book_AuthorName")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Book_Description")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Book_Image")
                         .IsRequired()
@@ -131,8 +129,7 @@ namespace LoginFPTBook.Migrations
 
                     b.Property<string>("Book_Name")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Book_NoOfPages")
                         .HasColumnType("int");
@@ -210,7 +207,7 @@ namespace LoginFPTBook.Migrations
 
                     b.HasIndex("Cart_ID");
 
-                    b.ToTable("CartDetail");
+                    b.ToTable("CartDetails");
                 });
 
             modelBuilder.Entity("LoginFPTBook.Models.Category", b =>
@@ -247,7 +244,7 @@ namespace LoginFPTBook.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Order_ID"), 1L, 1);
 
-                    b.Property<DateTime>("Order_DeliveryDate")
+                    b.Property<DateTime?>("Order_DeliveryDate")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("Order_OrderDate")

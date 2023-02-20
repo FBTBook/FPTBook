@@ -1,0 +1,80 @@
+@{
+    ViewData["Title"] = "addPublisher";
+}
+
+<style>
+    h2{
+        padding-top: 5px;
+        @* text-align: center; *@
+    }
+    #addPublisherForm{
+        padding-left: 150px;
+        padding-right: 150px;
+    }
+    .btnAdd{
+        display: flex;
+        text-align: center;
+    }
+</style>
+
+<div class="row">
+    <div class="container">
+        <form id="addPublisherForm" method="post">
+            <h2>Add New Pulisher</h2>
+            <button  asp-controller="Publisher" asp-action="Index" class="w-10 btn btn-lg btn-primary">Back</button>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating">
+                <input  class="form-control" aria-required="true" />
+                <label>ID</label>
+                <span  class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-floating">
+                <input  class="form-control" aria-required="true" />
+                <label >Publisher Name</label>
+                <span  class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-floating">
+                <input  class="form-control" aria-required="true" />
+                <label >Email</label>
+                <span  class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-floating">
+                <input  class="form-control" aria-required="true" />
+                <label >Phone Number</label>
+                <span  class="text-danger"></span>
+            </div>
+            <br>
+            @* <div class="form-floating">
+                <input  class="form-control" aria-required="true" />
+                <label ></label>
+                <span  class="text-danger"></span>
+            </div> *@
+            <br>
+            <div class="form-floating">
+                <p>Status:</p>
+                <input type="radio"  value="Male" checked> Available
+                <br>
+                <br>
+                <input type="radio"  value="Female"> Unavailable
+                <span  class="text-danger"></span>
+            </div>
+            <br>
+            @* <div class="form-floating"><p>BirthDate:</p> 
+                <input type="date"> 
+                <span class="text-danger"></span>
+            </div> *@
+            
+             <div class="btnAdd">
+                <button id="addSubmit" type="submit" class="w-10 btn btn-lg btn-primary">Add</button>
+             </div>              
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

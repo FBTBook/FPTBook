@@ -1,0 +1,70 @@
+@model IEnumerable<Order>
+
+@{
+    ViewData["Title"] = "OrderHistory";
+}
+
+    <div id="main">
+                <div className="page-heading pb-2 mt-4 mb-2 ">
+                    <h3>Order History</h3> <a asp-controller="Home" asp-action="Index"><button type="button" class="btn btn-outline-primary">HomePage</button></a>
+                </div>
+                <div class="page-content">
+                <div class="container mb-3">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">OrderDate</th>
+                            <th scope="col">DeliveryDate</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Payment</th>
+                            <th scope="col">Status</th>
+                            <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var o in Model)
+                            {
+                                <tr>
+                                    <td>@o.Order_ID</td>
+                                    <td>@o.Order_OrderDate</td>
+                                    <td>@o.Order_DeliveryDate</td>
+                                    <td>@o.ApplicationUser.User_Address</td>
+                                    <td>
+                                        @{
+                                            var payment = 0;
+
+                                            foreach (var p in @o.OrderDetail)
+                                            {
+                                                int quantity = Convert.ToInt32(p.OrderDetail_Quantity);
+                                                int price = Convert.ToInt32(p.OrderDetail_Price);
+                                                payment = payment + (price*quantity);
+                                            }
+                                        }
+                                        @payment
+                                    </td>
+                                    @if (@o.Order_Status == 0)
+                                        {
+                                    <td>                     
+                                        Waiting Accept                                   
+                                    </td>
+                                     }
+                                    else{
+                                        <td>
+                                            Delivering
+                                        </td>                                        
+                                     }
+                                    <td>
+                                        @if (@o.Order_Status == 0)
+                                        {
+                                            <a class="btn btn-outline-primary rounded-pill"> Cancel</a>  
+                                        }
+                                        <a class="btn btn-outline-primary rounded-pill"> Buy More </a>
+                                    </td>
+                                </tr>
+                            }                                                                                  
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+</div>

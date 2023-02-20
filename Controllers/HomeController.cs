@@ -2,7 +2,9 @@
 using LoginFPTBook.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace LoginFPTBook.Controllers
 {
@@ -27,10 +29,12 @@ namespace LoginFPTBook.Controllers
         }
 
         [Authorize]
-        public IActionResult Privacy()
+        public IActionResult OrderHistory()
         {
-            return View();
-        }
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var findOrder = _db.Orders.Where(c => c.User_ID == userId).Include(c => c.ApplicationUser).Include(c => c.OrderDetail).ToList();
 
+            return View(findOrder);
+        }
     }
 }

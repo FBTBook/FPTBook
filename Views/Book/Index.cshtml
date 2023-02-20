@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @model IEnumerable<Book>
 @{
     ViewData["Title"] = "Index";
@@ -28,3 +29,52 @@
     </tbody>
 </table>
 
+=======
+@{
+    ViewData["Title"] = "Index";
+}
+
+  <div id="main">     
+                <div className="page-heading pb-2 mt-4 mb-2 ">
+                    <h3>Manage Book</h3> <a asp-controller="Book" asp-action="addBook"><button type="button" class="btn btn-outline-primary">Insert</button></a>
+                </div>
+                <div class="page-content">
+                <div class="container mb-3">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Author</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">SellPrice</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Image</th>
+                            <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <a asp-controller="Book" asp-action="updateBook" class="btn btn-outline-primary rounded-pill"> Update </a>
+                                        <a class="btn btn-outline-primary rounded-pill"> Delete </a>
+                                    </td>
+                                
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+</div>
+>>>>>>> refs/remotes/origin/main
