@@ -216,7 +216,7 @@ namespace LoginFPTBook.Migrations
                     Order_ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Order_OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Order_DeliveryDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Order_DeliveryDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Order_Status = table.Column<int>(type: "int", nullable: false),
                     User_ID = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },

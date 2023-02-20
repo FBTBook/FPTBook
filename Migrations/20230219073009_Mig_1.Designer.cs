@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LoginFPTBook.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230217100135_Mig_1")]
+    [Migration("20230219073009_Mig_1")]
     partial class Mig_1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -249,7 +249,7 @@ namespace LoginFPTBook.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Order_ID"), 1L, 1);
 
-                    b.Property<DateTime>("Order_DeliveryDate")
+                    b.Property<DateTime?>("Order_DeliveryDate")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("Order_OrderDate")

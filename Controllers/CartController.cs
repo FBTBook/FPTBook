@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using LoginFPTBook.Data;
 using LoginFPTBook.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -21,6 +22,7 @@ namespace LoginFPTBook.Controllers
             _db = db;
         }
 
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -32,7 +34,6 @@ namespace LoginFPTBook.Controllers
             {
                 totalPrie += (p.Cart_Quantity*p.Book.Book_SalePrice);
             }
-
             ViewData["data"] = totalPrie.ToString();
 
             return View(cartInfor);
@@ -85,7 +86,57 @@ namespace LoginFPTBook.Controllers
 
             return RedirectToAction("Index");
         }
-        
-        
+
+        // public IActionResult OrderCart(List<CartDetail> lstCartDetail)
+        // {
+        //     var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        //     Order order = new Order();
+        //     order.Order_OrderDate = DateTime.Now;
+        //     order.Order_DeliveryDate = null;
+        //     order.Order_Status = 0;
+        //     order.User_ID = userId;
+        //     _db.Orders.Add(order);
+        //     _db.SaveChanges();
+        //     foreach (var od in lstCartDetail)
+        //     {
+        //         OrderDetail orderDetail = new OrderDetail();
+        //         orderDetail.OrderDetail_Quantity = od.Cart_Quantity;
+        //         orderDetail.OrderDetail_Price = od.Book.Book_Price;
+        //         orderDetail.Order_ID = order.Order_ID;
+        //         orderDetail.Book_ID = od.Book_ID;
+        //         _db.OrderDetails.Add(orderDetail);
+        //     }
+        //     _db.SaveChanges();
+        //     return RedirectToAction("Index", "Home");
+        // }
+
+        public IActionResult OrderCart(int idCart)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            
+            Order order = new Order();
+            order.Order_OrderDate = DateTime.Now;
+            order.Order_DeliveryDate = null;
+            order.Order_Status = 0;
+            order.User_ID = userId;
+            _db.Orders.Add(order);
+            _db.SaveChanges();
+            var findCartDetail = _db.CartDetails.Where(cd => cd.Cart_ID == idCart).Include(c => c.Book).ToArray();
+            foreach (var od in findCartDetail)
+            {
+                OrderDetail orderDetail = new OrderDetail();
+                orderDetail.OrderDetail_Quantity = od.Cart_Quantity;
+                orderDetail.OrderDetail_Price = od.Book.Book_SalePrice;
+                orderDetail.Order_ID = order.Order_ID;
+                orderDetail.Book_ID = od.Book_ID;
+                _db.OrderDetails.Add(orderDetail);
+            }
+            foreach (var od in findCartDetail)
+            {
+                _db.CartDetails.Remove(od);
+            }
+            _db.SaveChanges();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
