@@ -2,40 +2,67 @@
 @{
     ViewData["Title"] = "Create";
 }
-<H1>Add new category</H1>
-<hr/>
+<style>
+    h2{
+        padding-top: 5px;
+        @* text-align: center; *@
+    }
+    #addCategoryForm{
+        padding-left: 150px;
+        padding-right: 150px;
+    }
+    .btnAdd{
+        display: flex;
+        text-align: center;
+    }
+</style>
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" method="post">
+    <div class="container">
+        <form id="addCategoryForm" method="post">
+            <h2>Add New Category</h2>
+            <button  asp-controller="Category" asp-action="Index" class="w-10 btn btn-lg btn-primary">Back</button>
+            <hr/>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Category_Name" class="control-label"></label>
-                <input asp-for="Category_Name" class="form-control" />
-                <span asp-validation-for="Category_Name" class="text-danger"></span>
+            @* <div class="form-floating">
+                <input class="form-control" aria-required="true"/>
+                <label>Category ID</label>
+                <span class="text-danger"></span>
+            </div> *@
+            <br>
+            <div class="form-floating">
+                <input class="form-control" aria-required="true" asp-for="Category_Name"/>
+                <label asp-for="Category_Name">Category Name</label>
+                <span class="text-danger" asp-validation-for="Category_Name"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Category_Description" class="control-label"></label>
-                <input asp-for="Category_Description" class="form-control" />
-                <span asp-validation-for="Category_Description" class="text-danger"></span>
+            <br>
+            <div class="form-floating">
+                <input class="form-control" aria-required="true" asp-for="Category_Description"/>
+                <label asp-for="Category_Description">Description</label>
+                <span class="text-danger" asp-validation-for="Category_Description"></span>
             </div>
+            <br>
+            @* <div class="form-floating">
+                <p>Status:</p>
+                <input type="radio" value="1" asp-for="Category_Status" checked> Available
+                <br>
+                <br>
+                <input type="radio" value="0" asp-for="Category_Status"> Unavailable
+                <span class="text-danger"></span>
+            </div> *@
             <div class="form-group">
-                <label asp-for="Category_Status" class="control-label"></label><br>
+                <label asp-for="Category_Status" class="control-label">Category Status</label><br>
                 <input type="radio" id="contactChoice1" value="1" asp-for="Category_Status" checked/>
                 <label for="contactChoice1">Available</label>
                 <input type="radio" id="contactChoice2" value="0" asp-for="Category_Status"/>
                 <label for="contactChoice2">Unavailable</label>
             </div>
-                <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary"/>
-            </div>
+            <br>    
+             <div class="btnAdd">
+                <button id="addSubmit" type="submit" class="w-10 btn btn-lg btn-primary">Add</button>
+             </div>              
         </form>
     </div>
-</div>   
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

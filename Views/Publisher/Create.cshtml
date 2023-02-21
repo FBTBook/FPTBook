@@ -2,45 +2,85 @@
 @{
     ViewData["Title"] = "Create";
 }
-<H1>Add new Publisher</H1>
-<hr/>
+<style>
+    h2{
+        padding-top: 5px;
+        @* text-align: center; *@
+    }
+    #addPublisherForm{
+        padding-left: 150px;
+        padding-right: 150px;
+    }
+    .btnAdd{
+        display: flex;
+        text-align: center;
+    }
+</style>
+
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" method="post">
+    <div class="container">
+        <form id="addPublisherForm" asp-action="Create" method="post">
+            <a asp-action="Index" class="w-10 btn btn-lg btn-primary">Back</a>
+            <h2>Add New Pulisher</h2>
+            <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Publisher_Name" class="control-label"></label>
-                <input asp-for="Publisher_Name" class="form-control" />
+            @* <div class="form-floating">
+                <input asp-for="Publisher_ID" class="form-control" aria-required="true" />
+                <label asp-for="Publisher_ID">ID</label>
+                <span asp-validation-for="Publisher_ID" class="text-danger"></span>
+            </div> *@
+            <br>
+            <div class="form-floating">
+                <input asp-for="Publisher_Name" class="form-control" aria-required="true" />
+                <label asp-for="Publisher_Name">Publisher Name</label>
                 <span asp-validation-for="Publisher_Name" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Publisher_Email" class="control-label"></label>
-                <input asp-for="Publisher_Email" class="form-control" />
+            <br>
+            <div class="form-floating">
+                <input asp-for="Publisher_Email" class="form-control" aria-required="true" />
+                <label asp-for="Publisher_Email">Publisher Email</label>
                 <span asp-validation-for="Publisher_Email" class="text-danger"></span>
             </div>
-                <div class="form-group">
-                <label asp-for="Publisher_Telephone" class="control-label"></label>
-                <input asp-for="Publisher_Telephone" class="form-control" />
+            <br>
+            <div class="form-floating">
+                <input asp-for="Publisher_Telephone" class="form-control" aria-required="true" />
+                <label asp-for="Publisher_Telephone">Phone Number</label>
                 <span asp-validation-for="Publisher_Telephone" class="text-danger"></span>
             </div>
+            <br>
+            @* <div class="form-floating">
+                <input  class="form-control" aria-required="true" />
+                <label ></label>
+                <span  class="text-danger"></span>
+            </div> *@
+            <br>
+            @* <div class="form-floating">
+                <p>Status:</p>
+                <input type="radio"  value="Male" checked> Available
+                <br>
+                <br>
+                <input type="radio"  value="Female"> Unavailable
+                <span  class="text-danger"></span>
+            </div> *@
             <div class="form-group">
-                <label asp-for="Publisher_Status" class="control-label"></label><br>
+                <label asp-for="Publisher_Status" class="control-label">Publisher Status</label><br>
                 <input type="radio" id="contactChoice1" value="1" asp-for="Publisher_Status" checked/>
                 <label for="contactChoice1">Available</label>
                 <input type="radio" id="contactChoice2" value="0" asp-for="Publisher_Status"/>
                 <label for="contactChoice2">Unavailable</label>
             </div>
-                <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary"/>
-            </div>
+            <br>
+            @* <div class="form-floating"><p>BirthDate:</p> 
+                <input type="date"> 
+                <span class="text-danger"></span>
+            </div> *@
+            
+             <div class="btnAdd">
+                <button id="addSubmit" type="submit" class="w-10 btn btn-lg btn-primary">Add</button>
+             </div>              
         </form>
     </div>
-</div>   
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

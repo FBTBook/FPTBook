@@ -1,76 +1,50 @@
-<<<<<<< HEAD
 @model IEnumerable<Publisher>
 @{
     ViewData["Title"] = "Index";
 }
-<H1>Publisher Index</H1> 
-<a class="btn btn-primary" asp-action="Create">Add new Publisher</a>
-<Table class="table">
-    <thead>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Telephone</th>
-        <th>Starus</th>
-        <th></th>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Publisher_Name</td>
-                <td>@item.Publisher_Email</td>
-                <td>@item.Publisher_Telephone</td>
-                @if(@item.Publisher_Status == 1){
-                    <td>Avilable</td>
-                }else{
-                    <td>Unavilable</td>
-                }
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Publisher_ID">Edit </a>
-                    <a asp-action="Delete" asp-route-id="@item.Publisher_ID" onclick = "return confirm('Are sure wants to delete?');">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</Table>
-=======
-@{
-    ViewData["Title"] = "Index";
-}
-
-        <div id="main">     
-                <div className="page-heading pb-2 mt-4 mb-2 ">
-                    <h3>Manage Publisher</h3> <a asp-controller="Publisher" asp-action="addPublisher"><button type="button" class="btn btn-outline-primary">Insert</button></a>
-                </div>
-                <div class="page-content">
-                <div class="container mb-3">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">PhoneNumber</th>
-                            <th scope="col">Status</th>
-                            <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                           
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <a asp-controller="Publisher" asp-action="updatePublisher" class="btn btn-outline-primary rounded-pill"> Update </a>
-                                        <a class="btn btn-outline-primary rounded-pill"> Delete </a>
-                                    </td>
-                                
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+<H1>Publisher Index</H1>
+<div id="main">
+    <div className="page-heading pb-2 mt-4 mb-2 ">
+        <h3>Manage Publisher</h3>
+        <a asp-controller="Publisher" asp-action="Create"><button type="button"
+                class="btn btn-outline-primary">Insert</button></a>
+    </div>
+    <div class="page-content">
+        <div class="container mb-3">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">PhoneNumber</th>
+                        <th scope="col">Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>@foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Publisher_ID</td>
+                            <td>@item.Publisher_Name</td>
+                            <td>@item.Publisher_Email</td>
+                            <td>@item.Publisher_Telephone</td>
+                            @if (@item.Publisher_Status == 1)
+                            {
+                                <td>Avilable</td>
+                            }
+                            else
+                            {
+                                <td>Unavailable</td>
+                            }
+                            <td>
+                                <a asp-controller="Publisher" asp-action="Edit" asp-route-id="@item.Publisher_ID" class="btn btn-outline-primary rounded-pill"> Update </a>
+                                <a asp-controller="Publisher" asp-action="Delete" asp-route-id="@item.Publisher_ID" class="btn btn-outline-primary rounded-pill" onclick="return confirm('Are sure wants to delete?');">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
->>>>>>> refs/remotes/origin/main

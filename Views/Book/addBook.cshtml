@@ -111,3 +111,90 @@
         </form>
     </div>
 </div>
+
+@* <h1>Create new book</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data" method="post" >
+            <div class="form-group">
+                <label asp-for="Book_Name" class="control-label"></label>
+                <input type="text" class="form-control" asp-for="Book_Name"/>
+                <span asp-validation-for="Book_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book_PublishDate" class="control-label"></label>
+                <input type="date" class="form-control" asp-for="Book_PublishDate"/>
+                <span asp-validation-for="Book_PublishDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book_NoOfPages" class="control-label"></label>
+                <input type="number" class="form-control" asp-for="Book_NoOfPages"/>
+                <span asp-validation-for="Book_NoOfPages" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book_Quantity" class="control-label"></label>
+                <input type="Number" class="form-control" asp-for="Book_Quantity"/>
+                <span asp-validation-for="Book_NoOfPages" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book_Price" class="control-label"></label>
+                <input type="Number" class="form-control" asp-for="Book_Price"/>
+                <span asp-validation-for="Book_Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book_SalePrice" class="control-label"></label>
+                <input type="Number" class="form-control" asp-for="Book_SalePrice"/>
+                <span   class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book_Image" class="control-label"></label>
+                <input type="file" class="form-control" asp-for="Book_Image">
+                <span asp-validation-for="Book_SalePrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book_Status" class="control-label"></label><br>
+                <input type="radio" id="contactChoice1" value="1" asp-for="Book_Status" checked/>
+                <label for="contactChoice1">Available</label>
+                <input type="radio" id="contactChoice2" value="0" asp-for="Book_Status"/>
+                <label for="contactChoice2">Unavailable</label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book_Description" class="control-label"></label>
+                <textarea class="form-control" cols="30" rows="10" asp-for="Book_Description"></textarea>
+                <span asp-validation-for="Book_Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book_AuthorName" class="control-label"></label>
+                <input type="text" class="form-control" asp-for="Book_AuthorName"/>
+                <span asp-validation-for="Book_AuthorName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Category_ID" class="control-label"></label>
+                <select asp-for="Category_ID" class="form-control">
+                    @foreach (var item in ViewData["Category"] as IEnumerable<Category>)
+                    {
+                        <option value="@item.Category_ID">@item.Category_Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Publisher_ID" class="control-label"></label>
+                <select asp-for="Publisher_ID" class="form-control">
+                    @foreach (var item in ViewData["Publisher"] as IEnumerable<Publisher>)
+                    {
+                        <option value="@item.Publisher_ID">@item.Publisher_Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="submit" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div> *@
+

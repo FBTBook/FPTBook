@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mfOzbr4kXyFdb0WbEifbMh07KA1TO98lCFWoexOIUB8=",
+  "Hash": "gXezzTUFuSYIAK3NZTAk/4vpPvJCJXs/To4GCkz4BaQ=",
   "Source": "LoginFPTBook",
   "BasePath": "_content/LoginFPTBook",
   "Mode": "Default",
@@ -1579,6 +1579,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\d0a0f85f10ed47f0a66cdfcfd8a0fcab.png"
+    },
+    {
+      "Identity": "D:\\Application_Development(1670)\\FPTBook\\wwwroot\\img\\drbz.jpg",
+      "SourceId": "LoginFPTBook",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Application_Development(1670)\\FPTBook\\wwwroot\\",
+      "BasePath": "_content/LoginFPTBook",
+      "RelativePath": "img/drbz.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\drbz.jpg"
     },
     {
       "Identity": "D:\\Application_Development(1670)\\FPTBook\\wwwroot\\img\\FB_IMG_1654926124627.jpg",

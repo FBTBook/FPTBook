@@ -20,9 +20,9 @@ namespace FPTBook.Controllers
         {
             _db = db;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            IEnumerable<Book> books = _db.Books.ToList();
+            IEnumerable<Book> books = _db.Books.Include(b => b.Category).Include(b => b.Publisher).ToList();
             return View(books);
         }
         public async Task<IActionResult> Details(int id)
@@ -46,33 +46,8 @@ namespace FPTBook.Controllers
             ViewData["Publisher"] = _db.Publishers.Where(p => p.Publisher_Status == 1).ToList();
             return View();
         }
-        // [HttpPost]
-        // public async Task<IActionResult> Create(Book obj, IFormFile Book_Image)
-        // {
-        //     if (!ModelState.IsValid)
-        //     {
-        //         return View(obj);
-        //     }
-        //     else
-        //     {
-        //         var filePaths = new List<string>();
-        //         if (Book_Image.Length > 0)
-        //         {
-        //             var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", Book_Image.FileName);
-        //             filePaths.Add(filePath);
-        //             using (var stream = new FileStream(filePath, FileMode.Create))
-        //             {
-        //                 await Book_Image.CopyToAsync(stream);
-        //             }
-        //         }
-        //         obj.Book_Image = Book_Image.FileName;
-        //         _db.Books.Add(obj);
-        //         _db.SaveChanges();
-        //         return RedirectToAction("Index");
-        //     }
-        // }
         [HttpPost]
-        public IActionResult Create(Book obj, IFormFile Book_Image)
+        public async Task<IActionResult> Create(Book obj, IFormFile Book_Image)
         {
             if (!ModelState.IsValid)
             {
@@ -87,7 +62,7 @@ namespace FPTBook.Controllers
                     filePaths.Add(filePath);
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
-                        Book_Image.CopyTo(stream);
+                        await Book_Image.CopyToAsync(stream);
                     }
                 }
                 obj.Book_Image = Book_Image.FileName;
@@ -96,6 +71,31 @@ namespace FPTBook.Controllers
                 return RedirectToAction("Index");
             }
         }
+        // [HttpPost]
+        // public IActionResult Create(Book obj, IFormFile Book_Image)
+        // {
+        //     if (!ModelState.IsValid)
+        //     {
+        //         return View(obj);
+        //     }
+        //     else
+        //     {
+        //         var filePaths = new List<string>();
+        //         if (Book_Image.Length > 0)
+        //         {
+        //             var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", Book_Image.FileName);
+        //             filePaths.Add(filePath);
+        //             using (var stream = new FileStream(filePath, FileMode.Create))
+        //             {
+        //                 Book_Image.CopyTo(stream);
+        //             }
+        //         }
+        //         obj.Book_Image = Book_Image.FileName;
+        //         _db.Books.Add(obj);
+        //         _db.SaveChanges();
+        //         return RedirectToAction("Index");
+        //     }
+        // }
         public IActionResult Edit(int id)
         {
             Book book = _db.Books.Find(id);

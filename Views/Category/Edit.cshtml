@@ -2,40 +2,75 @@
 @{
     ViewData["Title"] = "Edit";
 }
-<H1>Update category</H1>
-<hr/>
+<style>
+    h2{
+        padding-top: 5px;
+        @* text-align: center; *@
+    }
+    #updateCategoryForm{
+        padding-left: 150px;
+        padding-right: 150px;
+    }
+    .btnUpdate{
+        display: flex;
+        text-align: center;
+    }
+</style>
+
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit" method="post">
+    <div class="container">
+        <form id="updateCategoryForm" asp-action="Edit" method="post">
+            <h2>Update Category</h2>
+            <button asp-controller="Category" asp-action="Index" class="w-10 btn btn-lg btn-primary">Back</button>
+            <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Category_Name" class="control-label"></label>
-                <input asp-for="Category_Name" class="form-control" />
+            @* <div class="form-floating">
+                <input class="form-control" aria-required="true" />
+                <label>CategoryID</label>
+                <span  class="text-danger"></span>
+            </div> *@
+            <br>
+            <div class="form-floating">
+                <input asp-for="Category_Name" class="form-control" aria-required="true" />
+                <label asp-for="Category_Name">Category Name</label>
                 <span asp-validation-for="Category_Name" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Category_Description" class="control-label"></label>
-                <input asp-for="Category_Description" class="form-control" />
+            <br>
+            <div class="form-floating">
+                <input asp-for="Category_Description" class="form-control" aria-required="true" />
+                <label asp-for="Category_Description">Description</label>
                 <span asp-validation-for="Category_Description" class="text-danger"></span>
             </div>
+            <br>
+            @* <div class="form-floating">
+                <p>Status:</p>
+                <input type="radio"  value="Male" checked> Accept
+                <br>
+                <br>
+                <input type="radio"  value="Female"> Cancel
+                <span  class="text-danger"></span>
+            </div> *@
             <div class="form-group">
                 <label asp-for="Category_Status" class="control-label"></label><br>
-                <input type="radio" id="contactChoice1" value="1" asp-for="Category_Status" checked/>
-                <label for="contactChoice1">Available</label>
-                <input type="radio" id="contactChoice2" value="0" asp-for="Category_Status"/>
-                <label for="contactChoice2">Unavailable</label>
+                @if(Model.Category_Status == 1){
+                    <input type="radio" id="contactChoice1" value="1" asp-for="Category_Status" checked/>
+                    <label for="contactChoice1">Available</label>
+                    <input type="radio" id="contactChoice2" value="0" asp-for="Category_Status"/>
+                    <label for="contactChoice2">Unavailable</label>
+                }else{
+                    <input type="radio" id="contactChoice1" value="1" asp-for="Category_Status"/>
+                    <label for="contactChoice1">Available</label>
+                    <input type="radio" id="contactChoice2" value="0" asp-for="Category_Status" checked/>
+                    <label for="contactChoice2">Unavailable</label>
+                }
             </div>
-                <div class="form-group">
-                <input type="submit" value="Edit" class="btn btn-primary"/>
-            </div>
+            <br>    
+             <div class="btnUpdate">
+                <button id="addSubmit" type="submit" class="w-10 btn btn-lg btn-primary">Update</button>
+             </div>              
         </form>
     </div>
-</div>   
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

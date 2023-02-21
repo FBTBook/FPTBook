@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Application_Development(1670)\\FPTBook\\LoginFPTBook.csproj": {}
+    "d:\\Application_Development(1670)\\FPTBook\\LoginFPTBook.csproj": {}
   },
   "projects": {
-    "D:\\Application_Development(1670)\\FPTBook\\LoginFPTBook.csproj": {
+    "d:\\Application_Development(1670)\\FPTBook\\LoginFPTBook.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Application_Development(1670)\\FPTBook\\LoginFPTBook.csproj",
+        "projectUniqueName": "d:\\Application_Development(1670)\\FPTBook\\LoginFPTBook.csproj",
         "projectName": "LoginFPTBook",
-        "projectPath": "D:\\Application_Development(1670)\\FPTBook\\LoginFPTBook.csproj",
+        "projectPath": "d:\\Application_Development(1670)\\FPTBook\\LoginFPTBook.csproj",
         "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-        "outputPath": "D:\\Application_Development(1670)\\FPTBook\\obj\\",
+        "outputPath": "d:\\Application_Development(1670)\\FPTBook\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",

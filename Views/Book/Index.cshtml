@@ -1,80 +1,60 @@
-<<<<<<< HEAD
 @model IEnumerable<Book>
 @{
     ViewData["Title"] = "Index";
 }
-<a class="btn btn-primary" asp-action="Create">Add new product</a>
-<table class="table">
-    <thead>
-        <th>Book Name</th>
-        <th>Book Image</th>
-        <th>Book Price</th>
-        <th></th>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td><a asp-action="Details" asp-route-id="@item.Book_ID">@item.Book_Name</a></td>
-                <td>
-                    <img src="~/img/@item.Book_Image" alt="@item.Book_Image" width="100px">
-                </td>
-                <td>@item.Book_Price</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Book_ID">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@item.Book_ID" onclick = "return confirm('Are sure wants to delete?');">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
-
-=======
-@{
-    ViewData["Title"] = "Index";
-}
-
-  <div id="main">     
-                <div className="page-heading pb-2 mt-4 mb-2 ">
-                    <h3>Manage Book</h3> <a asp-controller="Book" asp-action="addBook"><button type="button" class="btn btn-outline-primary">Insert</button></a>
-                </div>
-                <div class="page-content">
-                <div class="container mb-3">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Author</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">SellPrice</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Image</th>
-                            <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                           
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <a asp-controller="Book" asp-action="updateBook" class="btn btn-outline-primary rounded-pill"> Update </a>
-                                        <a class="btn btn-outline-primary rounded-pill"> Delete </a>
-                                    </td>
-                                
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+<div id="main">
+    <div className="page-heading pb-2 mt-4 mb-2 ">
+        <h3>Manage Book</h3> <a asp-controller="Book" asp-action="Create"><button type="button"
+                class="btn btn-outline-primary">Insert</button></a>
+    </div>
+    <div class="page-content">
+        <div class="container mb-3">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Author</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">SellPrice</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Image</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Book_ID</td>
+                            <td>@item.Book_Name</td>
+                            <td>@item.Category.Category_Name</td>
+                            <td>@item.Book_AuthorName</td>
+                            <td>@item.Book_Price</td>
+                            <td>@item.Book_SalePrice</td>
+                            <td>@item.Book_Quantity</td>
+                            @if (@item.Book_Status == 1)
+                            {
+                                <td>Avalable</td>
+                            }
+                            else
+                            {
+                                <td>Unavailable</td>
+                            }
+                            <td>
+                                <img src="~/img/@item.Book_Image" alt="@item.Book_Image" width="100px">
+                            </td>
+                            <td>
+                                <a class="btn btn-outline-primary rounded-pill" asp-action="Edit" asp-route-id="@item.Book_ID">Edit</a>
+                                <a class="btn btn-outline-primary rounded-pill" asp-action="Delete" asp-route-id="@item.Book_ID"
+                                    onclick="return confirm('Are sure wants to delete?');">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
->>>>>>> refs/remotes/origin/main
