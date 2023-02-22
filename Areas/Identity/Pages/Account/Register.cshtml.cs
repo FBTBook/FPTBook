@@ -60,9 +60,6 @@ namespace LoginFPTBook.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required(ErrorMessage = "Please, Enter Username")]
-            [StringLength(100)]
-            public string User_Username { get; set; }
 
             [Required(ErrorMessage = "Please, Enter Fullname")]
             [StringLength(100)]
@@ -110,7 +107,6 @@ namespace LoginFPTBook.Areas.Identity.Pages.Account
                 var user = CreateUser();
 
                 user.Email = Input.Email;
-                user.UserName = Input.User_Username;
                 user.PasswordHash = Input.Password;
                 user.User_Fullname = Input.User_Fullname;
                 user.User_Gender = Input.User_Gender;
