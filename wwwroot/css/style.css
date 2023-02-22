@@ -188,6 +188,13 @@ section{
 }
 
 /* Management */
+td{
+  font-size: 14px;
+}
+th{
+  font-size: 16px;
+}
+
 
 .button_dropdown {
     background-color: #25aab3;
@@ -618,10 +625,6 @@ section{
   .bottom-details .bottom_text a{
     margin-right: 10px;
   }
-  
-  
-  
-  
-  /* End footer */
+/* End footer */
 
  

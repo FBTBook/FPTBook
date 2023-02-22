@@ -1,0 +1,67 @@
+@model IEnumerable<Book>
+@{
+    ViewData["Title"] = "Search";
+}
+
+<style>
+    h2 {
+        padding-top: 15px;
+        padding-bottom: 30px;
+    }
+</style>
+
+<h2>Result For Search</h2>
+<div class="container">
+    <section class="featured" id="featured">
+        <div class="swiper featured-slider">
+            <div class="swiper-wrapper">
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="swiper-slide box">
+                            <div class="icons">
+                                <a href="#" class="fas fa-search"></a>
+                                <a href="#" class="fas fa-heart"></a>
+                                <a asp-action="Details" asp-route-id="@item.Book_ID" class="fas fa-eye"></a>
+                            </div>
+                            <div class="image">
+                                <a asp-action="Details" asp-route-id="@item.Book_ID">
+                                    <img src="~/img/@item.Book_Image" alt="@item.Book_Image">
+                                </a>
+                            </div>
+                            <div class="content">
+                                <a asp-action="Details" asp-route-id="@item.Book_ID">
+                                    <h3>@item.Book_Name</h3>
+                                </a>
+                                <div class="price">$@item.Book_SalePrice<span>@item.Book_Price</span></div>
+                                <a class="btn" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@item.Book_ID">Add to cart</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@* <div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<h2>Search result</h2>
+<div class="row">
+    @foreach (var item in Model)
+    {
+    <div class="col-md-4">
+        <div class="cart">
+            <img class="cart-img-top" src="~/img/@item.Book_Image" alt="Img: @item.Book_Image"  style="margin: auto;
+                width: 80%;">
+            <div class="card-body align-self-center">
+                <a class="text-decoration-none" asp-controller="Book" asp-action="Details" asp-route-id="@item.Book_ID"><h5 class="card-title text-center">@item.Book_Name</h5></a>
+                <h6 class="card-subtitle mb-2 text-muted text-center">@item.Book_Price</h6>
+                <a class="btn btn-primary" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@item.Book_ID">Add to Cart</a>
+            </div>
+        </div>
+    </div>
+    }
+</div> *@

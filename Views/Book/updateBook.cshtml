@@ -1,3 +1,4 @@
+@model Book
 @{
     ViewData["Title"] = "updateBook";
 }
@@ -111,3 +112,8 @@
         </form>
     </div>
 </div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

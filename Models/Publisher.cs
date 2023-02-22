@@ -15,7 +15,7 @@ namespace LoginFPTBook.Models
 
         [Required(ErrorMessage = "Please, enter a Publisher Name!")]
         [StringLength(50, ErrorMessage = "Please, enter the Publisher Name length must be between {2} and {1}.", MinimumLength = 1)]
-        [RegularExpression(@"^[A-Za-z]{1,50}$", 
+        [RegularExpression(@"^[A-Za-z0-9\s]{1,50}$", 
         ErrorMessage = "Please, enter a valid Publisher Name!")]
         public string Publisher_Name { get; set; }
         [Required]
@@ -23,7 +23,7 @@ namespace LoginFPTBook.Models
         public string Publisher_Email { get; set; }
 
         [Required(ErrorMessage = "Please, Enter the Phone Number!")]
-        [RegularExpression(@"^0[0-9]{9}",
+        [RegularExpression(@"^[A-Za-z0-9\s]{1,50}$",
         ErrorMessage = "Please, enter a valid Phone Number!")]
         public string Publisher_Telephone { get; set; }
 

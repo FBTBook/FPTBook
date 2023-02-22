@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LoginFPTBook.Migrations
 {
-    public partial class Mig_1 : Migration
+    public partial class kietmigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -244,9 +244,9 @@ namespace LoginFPTBook.Migrations
                     Book_Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Book_Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Book_Status = table.Column<int>(type: "int", nullable: false),
-                    Book_Description = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Book_AuthorName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Book_Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Book_Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Book_AuthorName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Book_Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Category_ID = table.Column<int>(type: "int", nullable: false),
                     Publisher_ID = table.Column<int>(type: "int", nullable: false)
                 },

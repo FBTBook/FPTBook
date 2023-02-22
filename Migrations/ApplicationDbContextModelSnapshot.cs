@@ -117,13 +117,11 @@ namespace LoginFPTBook.Migrations
 
                     b.Property<string>("Book_AuthorName")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Book_Description")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Book_Image")
                         .IsRequired()
@@ -131,8 +129,7 @@ namespace LoginFPTBook.Migrations
 
                     b.Property<string>("Book_Name")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Book_NoOfPages")
                         .HasColumnType("int");

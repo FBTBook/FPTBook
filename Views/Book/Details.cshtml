@@ -1,0 +1,37 @@
+@model LoginFPTBook.Models.Book
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12">
+            <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+                <div class="card-body p-0">
+                    <div class="row g-0">
+                        <div class="col-lg-5 p-5">
+                            <div class="image_selected ms-3"><img src="~/img/@Model.Book_Image" alt="@Model.Book_Image"
+                                    style="margin: auto; width: 80%;">
+                            </div>
+                        </div>
+                        <div class="col-lg-7 p-5">
+                            <div class="product_description">
+                                <h2 class="card-title">Name: @Model.Book_Name</h2>
+                                <h4 class="card-title">Price: @Model.Book_Price</h4>
+                                <p>Number of Page: @Model.Book_NoOfPages</p>
+                                <p>Publish date: @Model.Book_PublishDate</p>
+                                <p>Quantity: @Model.Book_Quantity</p>
+                                <p>Category: @Model.Category.Category_Name</p>
+                                <p>Publisher: @Model.Publisher.Publisher_Name</p>
+                                <hr class="singleline">
+                                <div class="card-body align-self-center">
+                                    <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.Book_ID"
+                                        class="btn btn-primary">Add to Cart </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
