@@ -1,0 +1,127 @@
+@model Book
+@{
+    ViewData["Title"] = "Create";
+}
+<style>
+    h2 {
+        padding-top: 5px;
+    @*text-align:center;*@
+    }
+
+    #addBookForm {
+        padding-left: 150px;
+        padding-right: 150px;
+    }
+
+    .btnAdd {
+        display: flex;
+        text-align: center;
+    }
+</style>
+<div class="row">
+    <div class="container">
+        <form asp-action="Create" id="addBookForm" enctype="multipart/form-data" method="post">
+            <h2>Add New Book</h2>
+            <a asp-controller="Book" asp-action="Index" class="w-10 btn btn-lg btn-primary">Back</a>
+            <hr/>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @* <div class="form-floating">
+            <input class="form-control" aria-required="true" />
+            <label>ID</label>
+            <span class="text-danger"></span>
+            </div><br> *@
+            <div class="form-floating">
+                <input asp-for="Book_Name" class="form-control" aria-required="true" />
+                <label asp-for="Book_Name">Name</label>
+                <span asp-validation-for="Book_Name" class="text-danger"></span>
+            </div><br>
+            <div class="form-floating">
+                <input asp-for="Book_AuthorName" class="form-control" aria-required="true" />
+                <label asp-for="Book_AuthorName">AuthorName Name</label>
+                <span asp-validation-for="Book_AuthorName" class="text-danger"></span>
+            </div><br>
+            <div class="form-floating">
+                <select asp-for="Category_ID" class="form-select form-select-lg mb-3"
+                    aria-label=".form-select-lg example" style="font-size: 9px">
+                    <option selected style="color: #666;">Choose a Category:</option>
+                    @foreach (var item in ViewData["Category"] as IEnumerable<Category>)
+                    {
+                        <option value="@item.Category_ID">@item.Category_Name</option>
+                    }
+                </select>
+            </div><br>
+            <div class="form-floating">
+                <select asp-for="Publisher_ID" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" style="font-size: 9px">
+                    <option selected style="color: #666;">Choose a Publisher:</option>
+                    @foreach (var item in ViewData["Publisher"] as IEnumerable<Publisher>)
+                    {
+                        <option value="@item.Publisher_ID">@item.Publisher_Name</option>
+                    }
+                </select>
+            </div><br>
+            <div class="form-floating">
+                <input asp-for="Book_Description" class="form-control" aria-required="true"/>
+                <label asp-for="Book_Description">Desciption</label>
+                <span asp-validation-for="Book_Description" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-floating">
+                <input type="number" asp-for="Book_NoOfPages" class="form-control" aria-required="true" />
+                <label asp-for="Book_NoOfPages">No Of Page</label>
+                <span asp-validation-for="Book_NoOfPages" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-floating">
+                <input type="number" asp-for="Book_Quantity" class="form-control" aria-required="true" />
+                <label asp-for="Book_Quantity">Quantity</label>
+                <span asp-validation-for="Book_NoOfPages" class="text-danger"></span>
+            </div><br>
+            <div class="form-floating">
+                <input asp-for="Book_Price" class="form-control" aria-required="true" />
+                <label asp-for="Book_Price">Price</label>
+                <span asp-validation-for="Book_Price" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-floating">
+                <input asp-for="Book_SalePrice" class="form-control" aria-required="true" />
+                <label asp-for="Book_SalePrice">SellPrice</label>
+                <span asp-validation-for="Book_SalePrice" class="text-danger"></span>
+            </div><br>
+            <div class="form-group">
+                @* <p>Status:</p>
+                <input type="radio" value="Male" checked> Available
+                <br><br>
+                <input type="radio" value="Female"> Unavailable
+                <span class="text-danger"></span> *@
+                <label asp-for="Book_Status" class="control-label">Book Status</label><br>
+                <input type="radio" id="contactChoice1" value="1" asp-for="Book_Status" checked/>
+                <label for="contactChoice1">Available</label>
+                <input type="radio" id="contactChoice2" value="0" asp-for="Book_Status"/>
+                <label for="contactChoice2">Unavailable</label>
+            </div><br>
+            <div class="form-floating">
+                <p>Choose Image:</p>
+                @* <input type="file" name="image" id="image" class="form-control" value="" style="width:200px"> *@
+                @* <label asp-for="Book_Image" class="control-label">Book Image</label> *@
+                <input type="file" class="form-control" asp-for="Book_Image" >
+                <span asp-validation-for="Book_SalePrice" class="text-danger"></span>
+            </div><br>
+            <div class="form-group">
+                <label asp-for="Book_PublishDate" class="control-label">Publish Date</label>
+                <input type="date" class="form-control" asp-for="Book_PublishDate"/>
+                <span asp-validation-for="Book_PublishDate" class="text-danger"></span>
+            </div><br>
+            @* <div class="btnAdd">
+                <button id="addSubmit" type="submit" class="w-10 btn btn-lg btn-primary">Add</button>
+            </div> *@
+            <div class="form-group">
+                <input id="addSubmit" type="submit" value="submit" class="w-10 btn btn-lg btn-primary"/>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -3,38 +3,66 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using LoginFPTBook.Data;
+using LoginFPTBook.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace FPTBook.Controllers
 {
-    // [Route("[controller]")]
     public class PublisherController : Controller
     {
-        private readonly ILogger<PublisherController> _db;
-
-        public PublisherController(ILogger<PublisherController> db)
+        private readonly ApplicationDbContext _db;
+        public PublisherController(ApplicationDbContext db)
         {
             _db = db;
         }
-
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<Publisher> publishers = _db.Publishers.ToList();
+            return View(publishers);
         }
-
-        public IActionResult addPublisher()
+        public IActionResult Create()
         {
-            // TODO: Your code here
             return View();
         }
-
-        public IActionResult updatePublisher()
+        [HttpPost]
+        public IActionResult Create(Publisher obj)
         {
-            // TODO: Your code here
-            return View();
+            if(ModelState.IsValid){
+                _db.Publishers.Add(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(obj);
         }
-        
-        
+        public IActionResult Edit(int id)
+        {
+            Publisher publisher = _db.Publishers.Find(id);
+            if (publisher == null)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(publisher);
+        }
+        [HttpPost]
+        public IActionResult Edit(int id, Publisher obj)
+        {
+            if (ModelState.IsValid)
+            {
+                obj.Publisher_ID = id;
+                _db.Publishers.Update(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(obj);
+        }
+        public IActionResult Delete(int id)
+        {
+            Publisher publisher = _db.Publishers.Find(id);
+            _db.Publishers.Remove(publisher);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        } 
     }
 }

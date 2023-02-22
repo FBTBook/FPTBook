@@ -1,0 +1,55 @@
+@model Category
+@{
+    ViewData["Title"] = "Create";
+}
+<style>
+    h2{
+        padding-top: 5px;
+        @* text-align: center; *@
+    }
+    #addCategoryForm{
+        padding-left: 150px;
+        padding-right: 150px;
+    }
+    .btnAdd{
+        display: flex;
+        text-align: center;
+    }
+</style>
+<div class="row">
+    <div class="container">
+        <form id="addCategoryForm" method="post">
+            <h2>Add New Category</h2>
+            <button  asp-controller="Category" asp-action="Index" class="w-10 btn btn-lg btn-primary">Back</button>
+            <hr/>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <br>
+            <div class="form-floating">
+                <input class="form-control" aria-required="true" asp-for="Category_Name"/>
+                <label asp-for="Category_Name">Category Name</label>
+                <span class="text-danger" asp-validation-for="Category_Name"></span>
+            </div>
+            <br>
+            <div class="form-floating">
+                <input class="form-control" aria-required="true" asp-for="Category_Description"/>
+                <label asp-for="Category_Description">Description</label>
+                <span class="text-danger" asp-validation-for="Category_Description"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="Category_Status" class="control-label">Category Status</label><br>
+                <input type="radio" id="contactChoice1" value="1" asp-for="Category_Status" checked/>
+                <label for="contactChoice1">Available</label>
+                <input type="radio" id="contactChoice2" value="0" asp-for="Category_Status"/>
+                <label for="contactChoice2">Unavailable</label>
+            </div>
+            <br>    
+             <div class="btnAdd">
+                <button id="addSubmit" type="submit" class="w-10 btn btn-lg btn-primary">Add</button>
+             </div>              
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

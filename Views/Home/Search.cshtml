@@ -1,6 +1,6 @@
 @model IEnumerable<Book>
 @{
-    ViewData["Title"] = "resultForSearch";
+    ViewData["Title"] = "Search";
 }
 
 <style>
@@ -43,3 +43,25 @@
         </div>
     </section>
 </div>
+
+@* <div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<h2>Search result</h2>
+<div class="row">
+    @foreach (var item in Model)
+    {
+    <div class="col-md-4">
+        <div class="cart">
+            <img class="cart-img-top" src="~/img/@item.Book_Image" alt="Img: @item.Book_Image"  style="margin: auto;
+                width: 80%;">
+            <div class="card-body align-self-center">
+                <a class="text-decoration-none" asp-controller="Book" asp-action="Details" asp-route-id="@item.Book_ID"><h5 class="card-title text-center">@item.Book_Name</h5></a>
+                <h6 class="card-subtitle mb-2 text-muted text-center">@item.Book_Price</h6>
+                <a class="btn btn-primary" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@item.Book_ID">Add to Cart</a>
+            </div>
+        </div>
+    </div>
+    }
+</div> *@

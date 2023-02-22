@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LoginFPTBook.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230219073009_Mig_1")]
-    partial class Mig_1
+    [Migration("20230220104357_kietmigration")]
+    partial class kietmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -119,13 +119,11 @@ namespace LoginFPTBook.Migrations
 
                     b.Property<string>("Book_AuthorName")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Book_Description")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Book_Image")
                         .IsRequired()
@@ -133,8 +131,7 @@ namespace LoginFPTBook.Migrations
 
                     b.Property<string>("Book_Name")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Book_NoOfPages")
                         .HasColumnType("int");

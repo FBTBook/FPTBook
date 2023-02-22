@@ -1,0 +1,62 @@
+@model Publisher
+@{
+    ViewData["Title"] = "Create";
+}
+<style>
+    h2{
+        padding-top: 5px;
+        @* text-align: center; *@
+    }
+    #addPublisherForm{
+        padding-left: 150px;
+        padding-right: 150px;
+    }
+    .btnAdd{
+        display: flex;
+        text-align: center;
+    }
+</style>
+
+<div class="row">
+    <div class="container">
+        <form id="addPublisherForm" asp-action="Create" method="post">
+            <a asp-action="Index" class="w-10 btn btn-lg btn-primary">Back</a>
+            <h2>Add New Pulisher</h2>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <br>
+            <div class="form-floating">
+                <input asp-for="Publisher_Name" class="form-control" aria-required="true" />
+                <label asp-for="Publisher_Name">Publisher Name</label>
+                <span asp-validation-for="Publisher_Name" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-floating">
+                <input asp-for="Publisher_Email" class="form-control" aria-required="true" />
+                <label asp-for="Publisher_Email">Publisher Email</label>
+                <span asp-validation-for="Publisher_Email" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-floating">
+                <input asp-for="Publisher_Telephone" class="form-control" aria-required="true" />
+                <label asp-for="Publisher_Telephone">Phone Number</label>
+                <span asp-validation-for="Publisher_Telephone" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="Publisher_Status" class="control-label">Publisher Status</label><br>
+                <input type="radio" id="contactChoice1" value="1" asp-for="Publisher_Status" checked/>
+                <label for="contactChoice1">Available</label>
+                <input type="radio" id="contactChoice2" value="0" asp-for="Publisher_Status"/>
+                <label for="contactChoice2">Unavailable</label>
+            </div>
+            <br>
+             <div class="btnAdd">
+                <button id="addSubmit" type="submit" class="w-10 btn btn-lg btn-primary">Add</button>
+             </div>              
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

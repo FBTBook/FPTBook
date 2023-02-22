@@ -1,11 +1,6 @@
 @{
     ViewData["Title"] = "updateCategory";
 }
-
-@{
-    ViewData["Title"] = "addCategory";
-}
-
 <style>
     h2{
         padding-top: 5px;
@@ -23,9 +18,9 @@
 
 <div class="row">
     <div class="container">
-        <form id="updateCategoryForm" method="post">
+        <form id="updateCategoryForm" asp-action="Edit" method="post">
             <h2>Update Category</h2>
-            <button  asp-controller="Category" asp-action="Index" class="w-10 btn btn-lg btn-primary">Back</button>
+            <button asp-controller="Category" asp-action="Index" class="w-10 btn btn-lg btn-primary">Back</button>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-floating">

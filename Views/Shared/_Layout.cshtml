@@ -16,13 +16,10 @@
 
         <a class="logo"> <i class="fas fa-book"></i> FPTBook </a>
 
-        <form action="" class="search-form">
-            
-            <input type="search" name="" placeholder="Search here..." id="search-box">
-            <a asp-controller="Home" asp-action="resultForSearch">
-            <label for="search-box" class="fas fa-search"></label></a>
+        <form asp-controller="Home" asp-action="Search" class="search-form">
+            <input type="search" name="search" placeholder="Search here..." id="search-box" required>
+            <button type="submit"><label for="search-box" class="fas fa-search"></label></button>
         </form>
-
         <div class="icons">
             <div id="search-btn" class="fas fa-search"></div>
             <a href="#" class="fas fa-heart"></a>
