@@ -1,5 +1,4 @@
 C:\Users\KHOI\OneDrive\Documents\Greenwich\1670\LoginFPTBook\LoginFPTBook\bin\Debug\net6.0\appsettings.Development.json
-C:\Users\KHOI\OneDrive\Documents\Greenwich\1670\LoginFPTBook\LoginFPTBook\bin\Debug\net6.0\appsettings.json
 C:\Users\KHOI\OneDrive\Documents\Greenwich\1670\LoginFPTBook\LoginFPTBook\bin\Debug\net6.0\LoginFPTBook.staticwebassets.runtime.json
 C:\Users\KHOI\OneDrive\Documents\Greenwich\1670\LoginFPTBook\LoginFPTBook\bin\Debug\net6.0\LoginFPTBook.exe
 C:\Users\KHOI\OneDrive\Documents\Greenwich\1670\LoginFPTBook\LoginFPTBook\bin\Debug\net6.0\LoginFPTBook.deps.json
