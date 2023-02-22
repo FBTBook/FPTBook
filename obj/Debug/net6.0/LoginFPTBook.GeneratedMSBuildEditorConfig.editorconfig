@@ -187,10 +187,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFx1cGRhdGVBY2NvdW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Application_Development(1670)/FPTBook/Views/Book/addBook.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xhZGRCb29rLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/Application_Development(1670)/FPTBook/Views/Book/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -207,16 +203,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Application_Development(1670)/FPTBook/Views/Book/updateBook.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1x1cGRhdGVCb29rLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/Application_Development(1670)/FPTBook/Views/Cart/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Application_Development(1670)/FPTBook/Views/Category/addCategory.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcYWRkQ2F0ZWdvcnkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Application_Development(1670)/FPTBook/Views/Category/Create.cshtml]
@@ -229,10 +217,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Application_Development(1670)/FPTBook/Views/Category/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Application_Development(1670)/FPTBook/Views/Category/updateCategory.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcdXBkYXRlQ2F0ZWdvcnkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Application_Development(1670)/FPTBook/Views/Home/Index.cshtml]
@@ -259,10 +243,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcb3JkZXJEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Application_Development(1670)/FPTBook/Views/Publisher/addPublisher.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVibGlzaGVyXGFkZFB1Ymxpc2hlci5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/Application_Development(1670)/FPTBook/Views/Publisher/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVibGlzaGVyXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -273,10 +253,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Application_Development(1670)/FPTBook/Views/Publisher/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVibGlzaGVyXEluZGV4LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Application_Development(1670)/FPTBook/Views/Publisher/updatePublisher.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVibGlzaGVyXHVwZGF0ZVB1Ymxpc2hlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Application_Development(1670)/FPTBook/Views/Shared/Error.cshtml]
