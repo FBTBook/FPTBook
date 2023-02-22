@@ -15,14 +15,10 @@ namespace LoginFPTBook.Models
 
         [Required(ErrorMessage = "Please, enter Category Name")]
         [StringLength(50, ErrorMessage = "Please, enter Category Name length must be between {2} and {1}.", MinimumLength = 1)]
-        [RegularExpression(@"^[A-Za-z0-9\s]{1,50}$", 
-        ErrorMessage = "Please, enter a valid Category Name")]
         public string Category_Name { get; set; }
 
         [Required(ErrorMessage = "Please, enter Description")]
         [StringLength(50, ErrorMessage = "Please, enter Description length must be between {2} and {1}.", MinimumLength = 1)]
-        [RegularExpression(@"^[A-Za-z0-9\s]{1,50}$", 
-        ErrorMessage = "Please, enter a valid Description")]
         public string Category_Description { get; set; }
         [Required]
         public int Category_Status { get; set; }

@@ -545,3 +545,4 @@ D:\Application_Development(1670)\FPTBook\obj\Debug\net6.0\refint\LoginFPTBook.dl
 D:\Application_Development(1670)\FPTBook\obj\Debug\net6.0\LoginFPTBook.pdb
 D:\Application_Development(1670)\FPTBook\obj\Debug\net6.0\LoginFPTBook.genruntimeconfig.cache
 D:\Application_Development(1670)\FPTBook\obj\Debug\net6.0\ref\LoginFPTBook.dll
+C:\Users\KHOI\OneDrive\Documents\Greenwich\1670\LoginFPTBook\LoginFPTBook\bin\Debug\net6.0\appsettings.json

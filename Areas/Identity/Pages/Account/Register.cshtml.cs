@@ -64,18 +64,20 @@ namespace LoginFPTBook.Areas.Identity.Pages.Account
             [Required(ErrorMessage = "Please, Enter Fullname")]
             [StringLength(100)]
             public string User_Fullname { get; set; }
+
             [Required(ErrorMessage = "Please, Enter Birthdate")]
             public DateTime User_Birthdate { get; set; }
+
             [Required(ErrorMessage = "Please, Enter Address")]
             public string User_Address { get; set; }
+
             [Required(ErrorMessage = "Please, Enter the phone number!")]
-            [RegularExpression(@"^0[0-9]{9}",
-            ErrorMessage = "Please, enter a valid phone number!")]
+            [DataType(DataType.PhoneNumber)]
             public string User_PhoneNumber { get; set; }            
             public string User_Gender { get; set; }            
 
             [Required]
-            [EmailAddress]
+            [DataType(DataType.EmailAddress)]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
