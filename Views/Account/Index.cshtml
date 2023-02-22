@@ -1,3 +1,6 @@
+
+@model IEnumerable<LoginFPTBook.Data.ApplicationUser>
+
 @{
     ViewData["Title"] = "Index";
 }
@@ -31,7 +34,10 @@
   background: #25aab3;
 }
 </style>
-
+@{
+    var data = ViewData["role"] as IList<string>;    
+    int count = Convert.ToInt32(ViewData["count"]);
+}
 <div id="main">     
                 <div className="page-heading pb-2 mt-4 mb-2 ">
                     <h3>Manage Account</h3> <a asp-controller="Account" asp-action="createOwnerAccount">
@@ -62,20 +68,25 @@
                             <th></th>
                             </tr>
                         </thead>
-                        <tbody>                    
+                        <tbody> 
+                            @for (var i = 0; i < count; i++)
+                            {
+                                
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>@Model.ElementAt(i).Id</td>
+                                    <td>@Model.ElementAt(i).User_Fullname</td>
+                                    <td>@Model.ElementAt(i).Email</td>
+                                    <td>@Model.ElementAt(i).User_Birthdate</td>
+                                    <td>@Model.ElementAt(i).PhoneNumber</td>
+                                    <td>@Model.ElementAt(i).User_Address</td> 
+                                    <td>@data[i]</td>
+                                    <td>@Model.ElementAt(i).User_Status</td>
                                     <td>
-                                        <a asp-controller="Account" asp-action="updateAccount" class="btn btn-outline-primary rounded-pill"> Update </a>
-                                        <a class="btn btn-outline-primary rounded-pill"> Delete </a>
-                                    </td>                            
+                                        <a asp-controller="Account" asp-action="updateAccount" asp-route-id="@Model.ElementAt(i).Id" class="btn btn-outline-primary rounded-pill"> Update </a>
+                                        <a asp-controller="Account" asp-action="Delete" asp-route-id="@Model.ElementAt(i).Id" class="btn btn-outline-primary rounded-pill"> Delete </a>
+                                    </td>
+                                </tr> 
+                            }                                          
                         </tbody>
                     </table>
                 </div>
