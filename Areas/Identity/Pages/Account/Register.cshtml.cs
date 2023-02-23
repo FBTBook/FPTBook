@@ -127,9 +127,13 @@ namespace LoginFPTBook.Areas.Identity.Pages.Account
                     cart.User_ID = user.Id;
                     _db.Carts.Add(cart);
                     _db.SaveChanges();
-
-                    await _userManager.AddToRoleAsync(user, Roles.Customer.ToString());
-
+                    if(TempData["roleAdmin"] != null ){
+                        await _userManager.AddToRoleAsync(user, Roles.Owner.ToString());
+                    }
+                    else{
+                        await _userManager.AddToRoleAsync(user, Roles.Customer.ToString());
+                    }
+                    
                     _logger.LogInformation("User created a new account with password.");
 
                     var userId = await _userManager.GetUserIdAsync(user);

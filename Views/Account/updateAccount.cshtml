@@ -1,3 +1,5 @@
+@model LoginFPTBook.Data.ApplicationUser;
+
 @{
     ViewData["Title"] = "updateAccount";
 }
@@ -18,25 +20,26 @@
 
 <div class="row">
     <div class="container">
-        <form id="updateAccountForm" method="post">
+        <form id="updateAccountForm" method="post" asp-controller="Account" 
+        asp-action="updateAccount" asp-route-idUser="@Model.Id">
             <h2>Update Account</h2>
             <button  asp-controller="Account" asp-action="Index" class="w-10 btn btn-lg btn-primary">Back</button>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-floating">
-                <input  class="form-control" aria-required="true" />
+                <input  class="form-control" aria-required="true" asp-for="Id" readonly/>
                 <label>USerID</label>
                 <span  class="text-danger"></span>
             </div>
             <br>
             <div class="form-floating">
-                <input  class="form-control" aria-required="true" />
+                <input  class="form-control" aria-required="true" asp-for="User_Fullname"/>
                 <label >FullName</label>
                 <span  class="text-danger"></span>
             </div>
             <br>
             <div class="form-floating">
-                <input  class="form-control" aria-required="true" />
+                <input  class="form-control" aria-required="true" value='@TempData["role"]' readonly/>
                 <label >Role</label>
                 <span  class="text-danger"></span>
             </div>
@@ -44,11 +47,26 @@
          
             <div class="form-floating">
                 <p>Status:</p>
-                <input type="radio"  value="Male" checked> Available
-                <br>
-                <br>
-                <input type="radio"  value="Female"> Unavailable
-                <span  class="text-danger"></span>
+                @if (@Model.User_Status == 0)
+                {
+                    <label>Available</label>
+                    <input type="radio"  value="1" name="status"> 
+                    <br>
+                    <br>
+                    <label>Unavailable</label>
+                    <input type="radio"  value="0" name="status" checked> 
+                    <span  class="text-danger"></span>
+                }
+                else{
+                    <label>Available</label>
+                    <input type="radio"  value="1" name="status" checked> 
+                    <br>
+                    <br>
+                    <label>Unavailable</label>
+                    <input type="radio"  value="0" name="status"> 
+                    <span  class="text-danger"></span>
+                }
+                
             </div>
             <br>
             
