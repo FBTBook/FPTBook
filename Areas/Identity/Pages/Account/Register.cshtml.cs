@@ -130,7 +130,7 @@ namespace LoginFPTBook.Areas.Identity.Pages.Account
                     _db.Carts.Add(cart);
                     _db.SaveChanges();
 
-                    await _userManager.AddToRoleAsync(user, Roles.Admin.ToString());
+                    await _userManager.AddToRoleAsync(user, Roles.Customer.ToString());
 
                     _logger.LogInformation("User created a new account with password.");
 

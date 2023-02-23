@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LoginFPTBook.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230220104357_kietmigration")]
-    partial class kietmigration
+    [Migration("20230222085420_MyFirstMigration")]
+    partial class MyFirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
