@@ -49,53 +49,34 @@ namespace FPTBook.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Book obj, IFormFile Book_Image)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(obj);
-            }
-            else
+            if (ModelState.IsValid)
             {
                 var filePaths = new List<string>();
                 if (Book_Image.Length > 0)
                 {
+                    string fileType = Path.GetExtension(Book_Image.FileName).ToLower().Trim();
+                    if (fileType != ".jpg" && fileType != ".png")
+                    {
+                        TempData["msg"] = "File Format Not Supported. Only .jpg and .png !";
+                        return View(obj);
+                    }
                     var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", Book_Image.FileName);
                     filePaths.Add(filePath);
+
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
                         await Book_Image.CopyToAsync(stream);
                     }
+                    obj.Book_Image = Book_Image.FileName;
+                    _db.Books.Add(obj);
+                    _db.SaveChanges();
+                    return RedirectToAction("Index");
                 }
-                obj.Book_Image = Book_Image.FileName;
-                _db.Books.Add(obj);
-                _db.SaveChanges();
-                return RedirectToAction("Index");
             }
+            ViewData["Category"] = _db.Categories.Where(c => c.Category_Status == 1).ToList();
+            ViewData["Publisher"] = _db.Publishers.Where(p => p.Publisher_Status == 1).ToList();
+            return View(obj);
         }
-        // [HttpPost]
-        // public IActionResult Create(Book obj, IFormFile Book_Image)
-        // {
-        //     if (!ModelState.IsValid)
-        //     {
-        //         return View(obj);
-        //     }
-        //     else
-        //     {
-        //         var filePaths = new List<string>();
-        //         if (Book_Image.Length > 0)
-        //         {
-        //             var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", Book_Image.FileName);
-        //             filePaths.Add(filePath);
-        //             using (var stream = new FileStream(filePath, FileMode.Create))
-        //             {
-        //                 Book_Image.CopyTo(stream);
-        //             }
-        //         }
-        //         obj.Book_Image = Book_Image.FileName;
-        //         _db.Books.Add(obj);
-        //         _db.SaveChanges();
-        //         return RedirectToAction("Index");
-        //     }
-        // }
         public IActionResult Edit(int id)
         {
             Book book = _db.Books.Find(id);
@@ -105,8 +86,6 @@ namespace FPTBook.Controllers
             }
             else
             {
-                // Book book = _db.Books.Include(b => b.Category).Include(b => b.Publisher).FirstOrDefault(b => b.Book_ID == id);
-
                 ViewData["Category"] = _db.Categories.Where(c => c.Category_Status == 1).ToList();
                 ViewData["Publisher"] = _db.Publishers.Where(p => p.Publisher_Status == 1).ToList();
 
@@ -141,6 +120,17 @@ namespace FPTBook.Controllers
             }
         }
         public IActionResult Delete(int id)
+        {
+            Book obj = _db.Books.Find(id);
+            if (obj != null)
+            {
+                obj.Book_Status = 0;
+                _db.Books.Update(obj);
+                _db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+        public IActionResult DeleteForever(int id)
         {
             Book obj = _db.Books.Find(id);
             if (obj != null)

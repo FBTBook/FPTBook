@@ -61,9 +61,22 @@ namespace FPTBook.Controllers
         public IActionResult Delete(int id)
         {
             Category category = _db.Categories.Find(id);
-            _db.Categories.Remove(category);
-            _db.SaveChanges();
+            if(category != null){
+                category.Category_Status = 0;
+                _db.Categories.Update(category);
+                _db.SaveChanges();
+            }
             return RedirectToAction("Index");
-        } 
+        }
+        public IActionResult DeleteForever(int id)
+        {
+            Category category = _db.Categories.Find(id);
+            if (category != null)
+            {
+                _db.Categories.Remove(category);
+                _db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
     }
 }

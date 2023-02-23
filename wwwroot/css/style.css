@@ -187,6 +187,33 @@ section{
 
 }
 
+  /* header 3 */
+  .header .header-3{
+    background:#fff;
+    padding:1.5rem 9%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+  .header .header-3{
+    display: none;
+  }
+
+  .header .header-3 .icons div,
+.header .header-3 .icons a{
+    font-size: 2rem;
+    margin-left: 1.5rem;
+    color:var(--black);
+    cursor: pointer;
+    text-decoration:none;
+}
+
+.header .header-3 .icons div:hover,
+.header .header-3 .icons a:hover{
+    color:var(--green);
+}
+/* end header 3 */
+
 /* Management */
 td{
   font-size: 14px;
@@ -228,7 +255,7 @@ th{
     text-decoration: none;
     display: block;
   }
-      
+    
 
   .content_dropdown a:hover {background-color: #27ae60;}
   
@@ -627,4 +654,210 @@ th{
   }
 /* End footer */
 
+
+/* responesive */
+@media (max-width:991px){
+
+  html{
+    scroll-padding-top: 0;
+}
+
+body{
+    padding-bottom: 6rem;
+}
+
+.header .header-1 .icons #heart,
+.header .header-1 .icons #cart,
+.header .header-1 .icons #user
+{
+  display: none;
+}
+
+.header .header-3{
+  display: block;
+}
+
+
+.header .header-2{
+    display:block;
+    padding-top: 60px;
+}
+
+.content_dropdown {
+
+  display: none;
+  position: absolute;
+  background-color: #25aab3;
+  min-width: 120px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.bottom-navbar{
+    display: block;
+}
+
+#search-btn{
+    display: inline-block;     
+}
+
+.header .header-1{
+    box-shadow: var(--box-shadow);
+    position: relative;
+}
+
+.header .header-1 .search-form{
+    position:absolute;
+    top:-115%; right:2rem;
+    width: 90%;
+    box-shadow: var(--box-shadow);
+}
+
+.header .header-1 .search-form.active{
+    top:115%;
+}
+
+.home .row .content{
+    text-align: center;
+}
+
+.home .row .content h3{
+    font-size: 3.5rem;
+}
+
+.header .header-3{
+  display: block;
+  padding-left: 415px;
+}
+
+}
+
+@media (max-width:768px){
+
+  html{
+      scroll-padding-top: 0;
+  }
+
+  body{
+      padding-bottom: 6rem;
+  }
+  
+  .header .header-1 .icons #heart,
+  .header .header-1 .icons #cart,
+  .header .header-1 .icons #user
+  {
+    display: none;
+  }
+  
+  .header .header-3{
+    display: block;
+    padding-left: 185px;
+  }
+
+
+  .header .header-2{
+      display:block;
+      padding-top: 60px;
+  }
+
+  .content_dropdown {
+
+    display: none;
+    position: absolute;
+    background-color: #25aab3;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  .bottom-navbar{
+      display: block;
+  }
+
+  #search-btn{
+      display: inline-block;     
+  }
+
+  .header .header-1{
+      box-shadow: var(--box-shadow);
+      position: relative;
+  }
+
+  .header .header-1 .search-form{
+      position:absolute;
+      top:-115%; right:2rem;
+      width: 90%;
+      box-shadow: var(--box-shadow);
+  }
+
+  .header .header-1 .search-form.active{
+      top:115%;
+  }
+
+  .home .row .content{
+      text-align: center;
+  }
+
+  .home .row .content h3{
+      font-size: 3.5rem;
+  }
+
+  footer{
+    /* position: fixed; */
+    width: 100%;
+    
+  }
+  
+  footer .content{
+    max-width: 900px;
+    margin: auto;
+    padding: 15px 20px 20px 20px;
+  }
+
+  .content .top .logo-details{
+    color: #fff;
+    font-size: 30px;
+  }
+  .content .top .media-icons{
+    display: flex;
+  }
+  .content .link-boxes .box .link_name{
+    color: #fff;
+    font-size: 12px;
+    font-weight: 300;
+    margin-bottom: 5px;
+    position: relative;
+  }
+  .link-boxes .box .link_name::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 2px;
+    width: 35px;
+    background: #fff;
+  }
+  .content .link-boxes .box li{
+    margin: 6px 0;
+    list-style: none;
+  }
+  .content .link-boxes .box li a{
+    color: #fff;
+    font-size: 10px;
+    font-weight: 400;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: all 0.4s ease
+  }
+ 
+}
+
+@media (max-width:450px){
+
+  html{
+      font-size: 50%;
+  }
+
+}
+/* end responsive */
  

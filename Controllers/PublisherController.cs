@@ -60,6 +60,16 @@ namespace FPTBook.Controllers
         public IActionResult Delete(int id)
         {
             Publisher publisher = _db.Publishers.Find(id);
+            if(publisher != null){
+                publisher.Publisher_Status = 0;
+                _db.Publishers.Update(publisher);
+                _db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+        public IActionResult DeleteForever(int id)
+        {
+            Publisher publisher = _db.Publishers.Find(id);
             _db.Publishers.Remove(publisher);
             _db.SaveChanges();
             return RedirectToAction("Index");

@@ -18,13 +18,13 @@
 
         <form asp-controller="Home" asp-action="Search" class="search-form">
             <input type="search" name="search" placeholder="Search here..." id="search-box" required>
-            <button type="submit"><label for="search-box" class="fas fa-search"></label></button>
+            <button style="background-color: #fff;" type="submit"><label for="search-box" class="fas fa-search"></label></button>
         </form>
         <div class="icons">
             <div id="search-btn" class="fas fa-search"></div>
-            <a href="#" class="fas fa-heart"></a>
-            <a class="fas fa-shopping-cart" asp-controller="Cart" asp-action="Index"></a>
-                <div class="dropdowns fas fa-user">
+            <a id="heart" class="fas fa-heart"></a>
+            <a id="cart" class="fas fa-shopping-cart" asp-controller="Cart" asp-action="Index"></a>
+                <div id ="user" class="dropdowns fas fa-user">
                 <div class="content_dropdowns">
                 @if (User.Identity.IsAuthenticated)
                 {
@@ -45,6 +45,15 @@
             </div>
         </div>
     </div>
+
+    @* <div class="header-mid">
+         <form asp-controller="Home" asp-action="Search" class="search-form">
+            <input type="search" name="search" placeholder="Search here..." id="search-box" required>
+            <button style="background-color: #fff;" type="submit"><label for="search-box" class="fas fa-search"></label></button>
+        </form>
+    </div> *@
+    
+
     <div class="header-2">
         <nav class="navbar">
             <a asp-controller="Home" asp-action="Index">home</a>
@@ -62,9 +71,32 @@
               </div>
         </nav>
     </div>
+
+    <div class="header-3">
+
+        <div class="icons">
+
+            <a href="#" class="fas fa-heart"></a>
+            <a class="fas fa-shopping-cart" asp-controller="Cart" asp-action="Index"></a>
+                <div class="dropdowns fas fa-user">
+                <div class="content_dropdowns">
+                @if (User.Identity.IsAuthenticated)
+                {
+                  <a asp-area="Identity" asp-page="/Account/Manage/Index">Profile</a>
+                  <a asp-area="Identity" asp-page="/Account/Logout" >Log out</a>
+                }
+                else{
+                  <a asp-area="Identity" asp-page="/Account/Register">Register</a>
+                  <a asp-area="Identity" asp-page="/Account/Login">Log in</a>
+                }            
+                </div>
+            </div>
+        </div>
+    </div>
+
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
+        <main style="min-height: calc(100vh - 116px - 56px - 246px);" role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
@@ -134,7 +166,7 @@
     </div>
     <div class="bottom-details">
       <div class="bottom_text">
-        <span class="copyright_text">Copyright © 2022 <a href="#">FPTBook</a>All rights reserved</span>
+        <span class="copyright_text">Copyright © 2022 <a href="#">FPTBook</a></span>
         <span class="policy_terms">
           <a href="#">Privacy policy</a>
           <a href="#">Terms & condition</a>
