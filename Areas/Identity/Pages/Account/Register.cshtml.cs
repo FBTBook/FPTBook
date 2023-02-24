@@ -60,25 +60,24 @@ namespace LoginFPTBook.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            // [Required(ErrorMessage = "Please, Enter Username")]
-            // [StringLength(100)]
-            // public string User_Username { get; set; }
 
             [Required(ErrorMessage = "Please, Enter Fullname")]
             [StringLength(100)]
             public string User_Fullname { get; set; }
+
             [Required(ErrorMessage = "Please, Enter Birthdate")]
             public DateTime User_Birthdate { get; set; }
+
             [Required(ErrorMessage = "Please, Enter Address")]
             public string User_Address { get; set; }
+
             [Required(ErrorMessage = "Please, Enter the phone number!")]
-            [RegularExpression(@"^0[0-9]{9}",
-            ErrorMessage = "Please, enter a valid phone number!")]
+            [DataType(DataType.PhoneNumber)]
             public string User_PhoneNumber { get; set; }            
             public string User_Gender { get; set; }            
 
             [Required]
-            [EmailAddress]
+            [DataType(DataType.EmailAddress)]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
@@ -110,7 +109,6 @@ namespace LoginFPTBook.Areas.Identity.Pages.Account
                 var user = CreateUser();
 
                 user.Email = Input.Email;
-                // user.UserName = Input.User_Username;
                 user.PasswordHash = Input.Password;
                 user.User_Fullname = Input.User_Fullname;
                 user.User_Gender = Input.User_Gender;
@@ -129,9 +127,13 @@ namespace LoginFPTBook.Areas.Identity.Pages.Account
                     cart.User_ID = user.Id;
                     _db.Carts.Add(cart);
                     _db.SaveChanges();
-
-                    await _userManager.AddToRoleAsync(user, Roles.Customer.ToString());
-
+                    if(TempData["roleAdmin"] != null ){
+                        await _userManager.AddToRoleAsync(user, Roles.Owner.ToString());
+                    }
+                    else{
+                        await _userManager.AddToRoleAsync(user, Roles.Customer.ToString());
+                    }
+                    
                     _logger.LogInformation("User created a new account with password.");
 
                     var userId = await _userManager.GetUserIdAsync(user);

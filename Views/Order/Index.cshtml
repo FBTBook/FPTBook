@@ -1,3 +1,5 @@
+@model IEnumerable<Order>
+
 @{
     ViewData["Title"] = "Index";
 }
@@ -22,17 +24,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                           
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <a asp-controller="Order" asp-action="orderDetail" class="btn btn-outline-primary rounded-pill">Detail</a>
-                                    </td>
+                           @foreach (var o in Model)
+                           {
+                            <tr>
+                                <td>@o.Order_ID</td>
+                                <td>@o.ApplicationUser.User_Fullname</td>
+                                <td>@o.Order_OrderDate</td>
+                                <td>@o.Order_DeliveryDate</td>
+                                <td>@o.ApplicationUser.User_Address</td>
+                                <td>@o.Order_Status</td>
+                                <td>
+                                    <a asp-route-idOrder="@o.Order_ID" asp-controller="Order" asp-action="orderDetail" 
+                                    class="btn btn-outline-primary rounded-pill">Detail</a>
+                                </td>
+                            </tr>
+                           }
                                 
                         </tbody>
                     </table>

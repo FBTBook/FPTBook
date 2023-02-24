@@ -43,7 +43,7 @@ namespace LoginFPTBook.Controllers
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var findCart = _db.Carts.Where(c => c.User_ID == userId).ToArray();
-            var findCartDetail = _db.CartDetails.Where(cd => cd.Cart_ID == findCart[0].Cart_ID).ToArray();
+            var findCartDetail = _db.CartDetails.Where(cd => cd.Cart_ID == findCart[0].Cart_ID && cd.Book_ID == id).ToArray();
 
             if(findCartDetail.Count() != 0){
                 findCartDetail[0].Cart_Quantity += 1;

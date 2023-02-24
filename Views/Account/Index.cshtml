@@ -41,7 +41,7 @@
 <div id="main">     
                 <div className="page-heading pb-2 mt-4 mb-2 ">
                     <h3>Manage Account</h3> <a asp-controller="Account" asp-action="createOwnerAccount">
-                        <button type="button" class="btn btn-outline-primary">Create Owner Account</button></a>
+                        <button  type="button" class="btn btn-outline-primary">Create Owner Account</button></a>
                 </div>
                 <div class="searching">
                     <div class="search-container">
@@ -83,7 +83,6 @@
                                     <td>@Model.ElementAt(i).User_Status</td>
                                     <td>
                                         <a asp-controller="Account" asp-action="updateAccount" asp-route-id="@Model.ElementAt(i).Id" class="btn btn-outline-primary rounded-pill"> Update </a>
-                                        <a asp-controller="Account" asp-action="Delete" asp-route-id="@Model.ElementAt(i).Id" class="btn btn-outline-primary rounded-pill"> Delete </a>
                                     </td>
                                 </tr> 
                             }                                         

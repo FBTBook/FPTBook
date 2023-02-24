@@ -19,7 +19,7 @@ namespace LoginFPTBook.Models
         public DateTime? Order_DeliveryDate { get; set; }
         [Required]
         public int Order_Status { get; set; }
-        public string User_ID { get; set; }
+        public string? User_ID { get; set; }
         [ForeignKey("User_ID")]
         public virtual ApplicationUser? ApplicationUser { get; set; }
         public virtual ICollection<OrderDetail>? OrderDetail { get; set; }

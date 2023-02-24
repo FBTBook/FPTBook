@@ -1,3 +1,5 @@
+@model IEnumerable<OrderDetail>
+
 @{
     ViewData["Title"] = "orderDetail";
 }
@@ -19,14 +21,16 @@
 
 <div class="row">
     <div class="container">
-        <form id="orderDetailForm" method="post">
+        <form id="orderDetailForm" method="post" asp-controller="Order" asp-action="EditOrderdetail" 
+        asp-route-idUser="@Model.ElementAt(0).Order.ApplicationUser.Id" >
             <h2>Order Detail</h2>
             <button  asp-controller="Order" asp-action="Index" class="w-10 btn btn-lg btn-primary">Back</button>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-floating">
-                <input  class="form-control" aria-required="true" style="width: 200px;"/>
-                <label>Order ID:</label>
+                <input asp-for="@Model.ElementAt(0).Order_ID" 
+                class="form-control" aria-required="true" style="width: 200px;" readonly/>
+                <label>Order ID: </label>
                 <span  class="text-danger"></span>
             </div>
             <br>
@@ -43,43 +47,75 @@
                             <th></th>
                             </tr>
                         </thead>
-                        <tbody>                    
+                        <tbody>
+                            @foreach (var o in Model)
+                            {
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>    
+                                    <td>@o.Order.ApplicationUser.User_Fullname</td>
+                                    <td>@o.Order.Order_OrderDate</td>
+                                    <td>@o.Order.Order_DeliveryDate</td>
+                                    <td>@o.Order.ApplicationUser.User_Address</td>
+                                    <td>@o.Order.Order_Status</td>
+                                </tr>
+                            }                    
+                                    
                         </tbody>
                     </table>
                 </div>
             </div>
             <br>
+            @{
+                    int total = 0;
+
+                    foreach (var o in Model)
+                    {
+                        int quantity = Convert.ToInt32(o.OrderDetail_Quantity);
+                        int price = Convert.ToInt32(o.OrderDetail_Price);
+                        total = total + (price*quantity);
+                    }
+                }
             <div class="form-floating">
-                <input  class="form-control" aria-required="true" style="width: 200px;"/>
-                <label>Total:</label>
+                <input value="@total" class="form-control" aria-required="true" readonly style="width: 200px;"/>
+                
+                <label >Total: </label>
                 <span  class="text-danger"></span>
             </div>
             <br>
-            <div class="form-floating">
-                <p>Status:</p>
-                <input type="radio"  value="Male" checked> Accept
-                <br>
-                <br>
-                <input type="radio"  value="Female"> Cancel
-                <span  class="text-danger"></span>
-            </div>
+            @if (@Model.ElementAt(0).Order.Order_Status == 0)
+            {
+                <div class="form-floating">
+                    <p>Status:</p>
+                    <input id="contactChoice" type="radio"  value="1" asp-for="@Model.ElementAt(0).Order.Order_Status" name="status"> Accept
+                    <br>
+                    <br>
+                    <input id="contactChoice" type="radio"  value="0" asp-for="@Model.ElementAt(0).Order.Order_Status" name="status" checked> Cancel
+                    <span  class="text-danger"></span>
+                </div>
+            }
+            else{
             <br>
             <div class="form-floating">
                 <p>Status:</p>
-                <input type="radio"  value="Male" checked> Delivering
-                <br>
-                <br>
-                <input type="radio"  value="Female"> Delivered
-                <span  class="text-danger"></span>
+                @if (@Model.ElementAt(0).Order.Order_Status == 1)
+                {
+                    <label>Delivering</label>
+                    <input id="contactChoice1" type="radio" value="1" asp-for="@Model.ElementAt(0).Order.Order_Status" name="status" checked> 
+                    <br>
+                    <br>
+                    <label>Delivered</label>
+                    <input id="contactChoice1" type="radio" asp-for="@Model.ElementAt(0).Order.Order_Status" name="status" value="2"> 
+                }
+                else{
+                    <label>Delivering</label>
+                    <input id="contactChoice1" type="radio"  value="1" asp-for="@Model.ElementAt(0).Order.Order_Status" name="status"> 
+                    <br>
+                    <br>
+                    <label>Delivered</label>
+                    <input id="contactChoice1" type="radio"  value="2" asp-for="@Model.ElementAt(0).Order.Order_Status" name="status" checked> 
+                }
             </div>
+            }
+            
             <br>
             <div class="btnSubmit">
                 <button id="addSubmit" type="submit" class="w-10 btn btn-lg btn-primary">Submit</button>

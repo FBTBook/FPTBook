@@ -5,7 +5,8 @@ using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using LoginFPTBook.Data;
-using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -23,40 +24,61 @@ namespace FPTBook.Controllers
             _db = db;
         }
 
-        public async Task<ActionResult> Index()
+        [Authorize(Roles="Admin")]
+        public  async Task<ActionResult> Index()
         {
-            // ViewData["Role"] = _db.Roles.ToList();
-            // ViewData["UserRole"] = _db.UserRoles.ToList();
-
-            // IEnumerable<IdentityRole> lstRole = _role.Roles;
             IEnumerable<ApplicationUser> lstAccount = _db.Users.ToList();
             int count = _db.Users.Count();
             ViewData["count"] = count;
             IList<string> lstRoles = new List<string>();
             foreach (var item in lstAccount)
             {
-                lstRoles = await _userManager.GetRolesAsync(item);
+                var role =  await _userManager.GetRolesAsync(item);
+                lstRoles.Add(role[0]);
             }
             ViewData["role"] = lstRoles.ToList();
 
             return View(lstAccount);
-            // return Json(ViewData["role"]);
         }
 
-        // public IActionResult ActionName()
-        // {
-        //     string query = "Select u.id, u.User_Fullname, r.name as Role From AspNetUsers u, AspNetRoles r, AspNetUserRoles ur Where u.id = ur.UserId and r.Id = ur.RoleId";
-        //     var LstUsers = _db.Users.FromSqlRaw(query).ToList();
-        //     return Ok(LstUsers);
-        // }
-
-        public IActionResult updateAccount()
+        [Authorize(Roles="Admin")]
+        public async Task<IActionResult> updateAccount(string id)
         {
+            var user = _db.Users.Find(id);
+            
+            var role = await _userManager.GetRolesAsync(user);
+
+            TempData["role"] = role[0];
+            return View(user);
+        }
+
+        [HttpPost]
+        [Authorize(Roles="Admin")]
+        public IActionResult updateAccount(int status, string idUser)
+        {
+            if(ModelState.IsValid){
+                var user = _db.Users.Find(idUser);
+                user.User_Status = status;
+                if(status == 0){                
+                    var dateBanEnd = Convert.ToDateTime("1/1/3000");
+                    _userManager.SetLockoutEndDateAsync(user, dateBanEnd);
+                }
+                else{
+                    _userManager.SetLockoutEndDateAsync(user, null);
+                }
+                    _db.Users.Update(user);
+                    _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
             return View();
         }
+        
+        
+        [Authorize(Roles="Admin")]
         public IActionResult createOwnerAccount()
         {
-            return View();
+            TempData["roleAdmin"] = "Admin";
+            return RedirectToPage("/Account/Register", new { area = "Identity" });
         }
         public async Task<IActionResult> SearchUser(string search)
         {

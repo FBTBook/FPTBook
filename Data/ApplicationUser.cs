@@ -9,8 +9,6 @@ namespace LoginFPTBook.Data
     {
         [Required(ErrorMessage = "Please, enter Fullname")]
         [StringLength(50, ErrorMessage = "Please, enter Fullname length must be between {2} and {1}.", MinimumLength = 1)]
-        [RegularExpression(@"^[A-Za-z]{1,50}$", 
-        ErrorMessage = "Please, enter a valid Fullname")]
         public string User_Fullname { get; set; }
 
         [Required]
@@ -18,8 +16,6 @@ namespace LoginFPTBook.Data
 
         [Required(ErrorMessage = "Please, enter a Address")]
         [StringLength(50, ErrorMessage = "Please, enter Address length must be between {2} and {1}.", MinimumLength = 1)]
-        [RegularExpression(@"^[A-Za-z]{1,50}$", 
-        ErrorMessage = "Please, enter a valid Address")]
         public string User_Address { get; set; }
 
         [Required]
