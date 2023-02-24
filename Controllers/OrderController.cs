@@ -29,7 +29,7 @@ namespace FPTBook.Controllers
 
         public IActionResult orderDetail(int idOrder)
         {
-            var orderDetails = _db.OrderDetails.Where(o => o.Order_ID == idOrder).Include(o => o.Order.ApplicationUser);
+            var orderDetails = _db.OrderDetails.Where(o => o.Order_ID == idOrder).Include(o => o.Order.ApplicationUser).Include(o => o.Book);
             return View(orderDetails);
             // ViewData["OrderDetail"] = _db.OrderDetails.Where(o => o.Order_ID == idOrder).Include(o => o.Order.ApplicationUser);
             // return View();
