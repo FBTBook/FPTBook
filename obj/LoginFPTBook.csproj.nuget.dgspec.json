@@ -1,6 +1,10 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> main
     "c:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\LoginFPTBook.csproj": {}
   },
   "projects": {
@@ -12,6 +16,22 @@
         "projectPath": "c:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\LoginFPTBook.csproj",
         "packagesPath": "C:\\Users\\KHOI\\.nuget\\packages\\",
         "outputPath": "c:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\obj\\",
+<<<<<<< HEAD
+=======
+=======
+    "d:\\Application_Development(1670)\\FPTBook\\LoginFPTBook.csproj": {}
+  },
+  "projects": {
+    "d:\\Application_Development(1670)\\FPTBook\\LoginFPTBook.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "d:\\Application_Development(1670)\\FPTBook\\LoginFPTBook.csproj",
+        "projectName": "LoginFPTBook",
+        "projectPath": "d:\\Application_Development(1670)\\FPTBook\\LoginFPTBook.csproj",
+        "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
+        "outputPath": "d:\\Application_Development(1670)\\FPTBook\\obj\\",
+>>>>>>> refs/remotes/origin/main
+>>>>>>> main
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\KHOI\\AppData\\Roaming\\NuGet\\NuGet.Config",

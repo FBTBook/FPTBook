@@ -45,7 +45,7 @@
                 </div>
                 <div class="searching">
                     <div class="search-container">
-                        <form action="#">
+                        <form asp-controller="Account" asp-action="SearchUser">
                             <input type="text" placeholder="Search for Email..." name="search">
                             <button type="submit"><i class="fa fa-search"></i></button>
                         </form>
@@ -85,7 +85,7 @@
                                         <a asp-controller="Account" asp-action="updateAccount" asp-route-id="@Model.ElementAt(i).Id" class="btn btn-outline-primary rounded-pill"> Update </a>
                                     </td>
                                 </tr> 
-                            }                                          
+                            }                                         
                         </tbody>
                     </table>
                 </div>

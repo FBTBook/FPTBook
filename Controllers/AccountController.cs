@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using LoginFPTBook.Data;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -36,7 +37,7 @@ namespace FPTBook.Controllers
                 lstRoles.Add(role[0]);
             }
             ViewData["role"] = lstRoles.ToList();
-            
+
             return View(lstAccount);
         }
 
@@ -78,6 +79,20 @@ namespace FPTBook.Controllers
         {
             TempData["roleAdmin"] = "Admin";
             return RedirectToPage("/Account/Register", new { area = "Identity" });
+        }
+        public async Task<IActionResult> SearchUser(string search)
+        {
+            IEnumerable<ApplicationUser> lstAccount = _db.Users.Where(u => u.Email == search || u.Email.Contains(search) || u.Email.StartsWith(search) || u.Email.EndsWith(search)).ToList();
+            int count = _db.Users.Count();
+            ViewData["count"] = count;
+            IList<string> lstRoles = new List<string>();
+            foreach (var item in lstAccount)
+            {
+                lstRoles = await _userManager.GetRolesAsync(item);
+            }
+            ViewData["role"] = lstRoles.ToList();
+
+            return View(lstAccount);
         }
         
     }

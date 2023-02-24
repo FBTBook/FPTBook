@@ -1,0 +1,97 @@
+@model IEnumerable<LoginFPTBook.Data.ApplicationUser>
+
+@{
+    ViewData["Title"] = "SearchUser";
+}
+<style>
+    h3 {
+        padding-top: 10px;
+    }
+
+    .searching .search-container {
+        float: right;
+    }
+
+    .searching input[type=text] {
+        padding: 6px;
+        margin-top: 8px;
+        font-size: 14px;
+        border: none;
+    }
+
+    .searching .search-container button {
+        float: right;
+        padding: 6px 10px;
+        margin-top: 8px;
+        margin-right: 16px;
+        background: #fff;
+        font-size: 14px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .searching .search-container button:hover {
+        background: #25aab3;
+    }
+</style>
+@{
+    var data = ViewData["role"] as IList<string>;
+    int count = Convert.ToInt32(ViewData["count"]);
+}
+<div id="main">
+    <div className="page-heading pb-2 mt-4 mb-2 ">
+        <h3>Result for search: </h3>
+        @* <a asp-controller="Account" class="btn btn-outline-primary" asp-action="createOwnerAccount">Create Owner
+        Account</a> *@
+    </div>
+    <div class="searching">
+        <div class="search-container">
+            <form asp-controller="Account" asp-action="SearchUser">
+                <input type="text" placeholder="Search for Email..." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <div class="page-content">
+        <div class="container mb-3">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">UserID</th>
+                        <th scope="col">Fullname</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">BirthDate</th>
+                        <th scope="col">PhoneNumber</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.User_Fullname</td>
+                            <td>@item.Email</td>
+                            <td>@item.User_Birthdate</td>
+                            <td>@item.PhoneNumber</td>
+                            <td>@item.User_Address</td>
+                            <td>Chưa xử lý được!!!</td>
+                            @if (@item.User_Status == 1)
+                            {
+                                <td>Avilable</td>
+                            }
+                            else
+                            {
+                                <td>Unavilable</td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
