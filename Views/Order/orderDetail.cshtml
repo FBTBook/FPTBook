@@ -30,7 +30,25 @@
             <div class="form-floating">
                 <input asp-for="@Model.ElementAt(0).Order_ID" 
                 class="form-control" aria-required="true" style="width: 200px;" readonly/>
-                <label>Order ID: </label>
+                <label>Order ID:</label>
+                <span  class="text-danger"></span>
+            </div><br>
+            <div class="form-floating">
+                <input asp-for="@Model.ElementAt(0).Order.ApplicationUser.User_Fullname" 
+                class="form-control" aria-required="true" style="width: 200px;" readonly/>
+                <label>User Name:</label>
+                <span  class="text-danger"></span>
+            </div><br>
+            <div class="form-floating">
+                <input type="date" asp-for="@Model.ElementAt(0).Order.Order_OrderDate" 
+                class="form-control" aria-required="true" style="width: 200px;" readonly/>
+                <label>Order Date:</label>
+                <span  class="text-danger"></span>
+            </div><br>
+            <div class="form-floating">
+                <input type="text" asp-for="@Model.ElementAt(0).Order.ApplicationUser.User_Address" 
+                class="form-control" aria-required="true" style="width: 200px;" readonly/>
+                <label>Address:</label>
                 <span  class="text-danger"></span>
             </div>
             <br>
@@ -39,11 +57,11 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                            <th scope="col">User FullName</th>
-                            <th scope="col">Order Date</th>
-                            <th scope="col">Delivery Date</th>
-                            <th scope="col">Address</th>
-                            <th scope="col">Status</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Total</th>
                             <th></th>
                             </tr>
                         </thead>
@@ -51,11 +69,13 @@
                             @foreach (var o in Model)
                             {
                                 <tr>
-                                    <td>@o.Order.ApplicationUser.User_Fullname</td>
-                                    <td>@o.Order.Order_OrderDate</td>
-                                    <td>@o.Order.Order_DeliveryDate</td>
-                                    <td>@o.Order.ApplicationUser.User_Address</td>
-                                    <td>@o.Order.Order_Status</td>
+                                    <td>
+                                        <img src="~/img/@o.Book.Book_Image" alt="" width="100">
+                                    </td>
+                                    <td>@o.Book.Book_Name</td>
+                                    <td>@o.OrderDetail_Quantity</td>
+                                    <td>@o.Book.Book_Price</td>
+                                    <td>@(o.Book.Book_Price * @o.OrderDetail_Quantity)</td>
                                 </tr>
                             }                    
                                     
@@ -98,19 +118,19 @@
                 <p>Status:</p>
                 @if (@Model.ElementAt(0).Order.Order_Status == 1)
                 {
-                    <label>Delivering</label>
+                    <p>Delivering</p>
                     <input id="contactChoice1" type="radio" value="1" asp-for="@Model.ElementAt(0).Order.Order_Status" name="status" checked> 
                     <br>
                     <br>
-                    <label>Delivered</label>
+                    <p>Delivered</p>
                     <input id="contactChoice1" type="radio" asp-for="@Model.ElementAt(0).Order.Order_Status" name="status" value="2"> 
                 }
                 else{
-                    <label>Delivering</label>
+                    <p>Delivering</p>
                     <input id="contactChoice1" type="radio"  value="1" asp-for="@Model.ElementAt(0).Order.Order_Status" name="status"> 
                     <br>
                     <br>
-                    <label>Delivered</label>
+                    <p>Delivered</p>
                     <input id="contactChoice1" type="radio"  value="2" asp-for="@Model.ElementAt(0).Order.Order_Status" name="status" checked> 
                 }
             </div>

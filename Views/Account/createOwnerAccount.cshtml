@@ -1,3 +1,4 @@
+@model LoginFPTBook.Data.ApplicationUser
 @{
     ViewData["Title"] = "createOwnerAccount";
 }
@@ -18,26 +19,26 @@
 
 <div class="row">
     <div class="container">
-        <form id="registerForm"  method="post">
+        <form id="registerForm" asp-controller="Account" asp-action="createOwnerAccount" method="post">
             <h2>Create Owner Account</h2>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-floating">
-                <input class="form-control" aria-required="true" />
-                <label >Email</label>
-                <span class="text-danger"></span>
+                <input class="form-control" aria-required="true" asp-for="Email"/>
+                <label asp-for="Email">Email</label>
+                <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <br>
             <div class="form-floating">
-                <input class="form-control" aria-required="true" />
-                <label >FullName</label>
-                <span class="text-danger"></span>
+                <input class="form-control" aria-required="true" asp-for="User_Fullname"/>
+                <label asp-for="User_Fullname">FullName</label>
+                <span asp-validation-for="User_Fullname" class="text-danger"></span>
             </div>
             <br>
             <div class="form-floating">
-                <input class="form-control" aria-required="true" />
-                <label >Password</label>
-                <span class="text-danger"></span>
+                <input class="form-control" aria-required="true" asp-for="PasswordHash"/>
+                <label asp-for="PasswordHash">Password</label>
+                <span class="text-danger" asp-validation-for="PasswordHash"></span>
             </div>
             <br>
             <div class="form-floating">
@@ -47,26 +48,26 @@
             </div>
             <br>
             <div class="form-floating">
-                <input type="radio" value="Male" checked> Male 
-                <input type="radio" value="Female"> Female
-                <span class="text-danger"></span>
+                <input type="radio" value="Male" checked asp-for="User_Gender"> Male 
+                <input type="radio" value="Female" asp-for="User_Gender"> Female
+                <span class="text-danger" asp-validation-for="User_Gender"></span>
             </div>
             <br>
             <div class="form-floating">
-                <input class="form-control" aria-required="true" />
-                <label >Address</label>
-                <span class="text-danger"></span>
+                <input class="form-control" aria-required="true" asp-for="User_Address"/>
+                <label asp-for="User_Address">Address</label>
+                <span class="text-danger" asp-validation-for="User_Address"></span>
             </div>
             <br>
             <div class="form-floating">
-                <input class="form-control" aria-required="true" />
-                <label >PhoneNumber</label>
-                <span class="text-danger"></span>
+                <input class="form-control" aria-required="true" asp-for="PhoneNumber"/>
+                <label asp-for="PhoneNumber">PhoneNumber</label>
+                <span class="text-danger" asp-validation-for="PhoneNumber"></span>
             </div>
             <br>
             <div class="form-floating"><p>BirthDate:</p> 
-                <input type="date" > 
-                <span class="text-danger"></span>
+                <input type="date" asp-for="User_Birthdate"> 
+                <span class="text-danger" asp-validation-for="User_Birthdate"></span>
             </div>
             <br>
              <div class="btnRegister">
