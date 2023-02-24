@@ -152,10 +152,13 @@ namespace LoginFPTBook.Areas.Identity.Pages.Account
                     {
                         return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
                     }
-                    else
+                    else if(TempData["roleAdmin"] == null)
                     {
                         await _signInManager.SignInAsync(user, isPersistent: false);
                         return LocalRedirect(returnUrl);
+                    }
+                    else{
+                        return RedirectToAction("Index", "Account");
                     }
                 }
                 foreach (var error in result.Errors)
