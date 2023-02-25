@@ -30,6 +30,9 @@
             <label>ID</label>
             <span class="text-danger"></span>
             </div><br> *@
+            @if(TempData["msg"] != null){
+                <p>@TempData["msg"]</p>
+            }
             <div class="form-floating">
                 <input asp-for="Book_Name" class="form-control" aria-required="true" />
                 <label asp-for="Book_Name">Name</label>

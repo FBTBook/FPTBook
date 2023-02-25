@@ -49,6 +49,8 @@ namespace FPTBook.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Book obj, IFormFile Book_Image)
         {
+            ViewData["Category"] = _db.Categories.Where(c => c.Category_Status == 1).ToList();
+            ViewData["Publisher"] = _db.Publishers.Where(p => p.Publisher_Status == 1).ToList();
             if (ModelState.IsValid)
             {
                 var filePaths = new List<string>();
@@ -73,8 +75,6 @@ namespace FPTBook.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            ViewData["Category"] = _db.Categories.Where(c => c.Category_Status == 1).ToList();
-            ViewData["Publisher"] = _db.Publishers.Where(p => p.Publisher_Status == 1).ToList();
             return View(obj);
         }
         public IActionResult Edit(int id)
@@ -88,7 +88,6 @@ namespace FPTBook.Controllers
             {
                 ViewData["Category"] = _db.Categories.Where(c => c.Category_Status == 1).ToList();
                 ViewData["Publisher"] = _db.Publishers.Where(p => p.Publisher_Status == 1).ToList();
-
                 // ViewData["Category_ID"] = new SelectList(_db.Categories, "Category_ID", "Category_Name", book.Category_ID);
                 // ViewData["Publisher_ID"] = new SelectList(_db.Publishers, "Publisher_ID", "Publisher_Name", book.Publisher_ID);
                 return View(book);
@@ -99,6 +98,8 @@ namespace FPTBook.Controllers
         {
             if (!ModelState.IsValid)
             {
+                ViewData["Category"] = _db.Categories.Where(c => c.Category_Status == 1).ToList();
+                ViewData["Publisher"] = _db.Publishers.Where(p => p.Publisher_Status == 1).ToList();
                 return RedirectToAction("Edit", new { id = obj.Book_ID });
             }
             else
