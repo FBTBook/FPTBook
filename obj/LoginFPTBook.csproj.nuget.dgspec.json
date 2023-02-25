@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\Application_Development(1670)\\FPTBook\\LoginFPTBook.csproj": {}
+    "C:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\LoginFPTBook.csproj": {}
   },
   "projects": {
-    "d:\\Application_Development(1670)\\FPTBook\\LoginFPTBook.csproj": {
+    "C:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\LoginFPTBook.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Application_Development(1670)\\FPTBook\\LoginFPTBook.csproj",
+        "projectUniqueName": "C:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\LoginFPTBook.csproj",
         "projectName": "LoginFPTBook",
-        "projectPath": "d:\\Application_Development(1670)\\FPTBook\\LoginFPTBook.csproj",
-        "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-        "outputPath": "d:\\Application_Development(1670)\\FPTBook\\obj\\",
+        "projectPath": "C:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\LoginFPTBook.csproj",
+        "packagesPath": "C:\\Users\\KHOI\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
