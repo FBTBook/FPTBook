@@ -31,18 +31,13 @@ namespace FPTBook.Controllers
         }
         public async Task<IActionResult> Details(int id)
         {
-            if (id == null || _db.Books == null)
-            {
-                return NotFound();
-            }
+            if(ModelState.IsValid){
             var product = await _db.Books
                 .Include(p => p.Category).Include(p => p.Publisher)
                 .FirstOrDefaultAsync(m => m.Book_ID == id);
-            if (product == null)
-            {
-                return NotFound();
+            return View(product);                
             }
-            return View(product);
+            return RedirectToAction("Index");
         }
 
         [Authorize(Roles="Admin, Owner")]
@@ -89,6 +84,7 @@ namespace FPTBook.Controllers
         [Authorize(Roles="Admin, Owner")]
         public IActionResult Edit(int id)
         {
+            if(ModelState.IsValid){
             Book book = _db.Books.Find(id);
             if (book == null)
             {
@@ -99,7 +95,9 @@ namespace FPTBook.Controllers
                 ViewData["Category"] = _db.Categories.Where(c => c.Category_Status == 1).ToList();
                 ViewData["Publisher"] = _db.Publishers.Where(p => p.Publisher_Status == 1).ToList();
                 return View(book);
+            }                
             }
+            return RedirectToAction("Index");
         }
         [HttpPost]
         [Authorize(Roles="Admin, Owner")]
@@ -123,6 +121,15 @@ namespace FPTBook.Controllers
                         await UpdateImg.CopyToAsync(stream);
                     }
                     obj.Book_Image = UpdateImg.FileName;
+                }
+                if(obj.Book_Status == 0){
+                    var findCartDetail = _db.CartDetails.ToArray();
+                    foreach (var item in findCartDetail)
+                    {
+                        if(obj.Book_ID == item.Book_ID){
+                            _db.CartDetails.Remove(item);
+                        }
+                    }
                 }
                 _db.Books.Update(obj);
                 _db.SaveChanges();

@@ -47,12 +47,15 @@ namespace FPTBook.Controllers
         [Authorize(Roles="Admin, Owner")]
         public IActionResult Edit(int id)
         {
+            if(ModelState.IsValid){
             Category category = _db.Categories.Find(id);
             if (category == null)
             {
                 return RedirectToAction("Index");
             }
-            return View(category);
+            return View(category);                
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpPost]

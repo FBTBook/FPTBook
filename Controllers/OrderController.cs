@@ -32,8 +32,11 @@ namespace FPTBook.Controllers
         [Authorize(Roles="Admin, Owner")]
         public IActionResult orderDetail(int idOrder)
         {
+            if(ModelState.IsValid){
             var orderDetails = _db.OrderDetails.Where(o => o.Order_ID == idOrder).Include(o => o.Order.ApplicationUser).Include(o => o.Book);
-            return View(orderDetails);
+            return View(orderDetails);                
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
