@@ -36,5 +36,18 @@ namespace LoginFPTBook.Controllers
 
             return View(findOrder);
         }
+
+        [Authorize]
+        public IActionResult CancelOrder(int idOrder)
+        {
+            if(ModelState.IsValid){
+                var findOrder = _db.Orders.Find(idOrder);
+                findOrder.Order_Status = 1;
+                _db.Orders.Update(findOrder);
+                _db.SaveChanges();
+            }
+            return RedirectToAction("OrderHistory");
+        }
+        
     }
 }

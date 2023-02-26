@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "q6KahsPvuTU6S/X+/mveVkiiRa5XmQIgcl1jbRZiiG2XlD461NvZastAwwVkvqQLPxmQ616lEyOjtZA/cNu9Zg==",
+  "dgSpecHash": "r1YpvHhE+g5+ZNluTDZx92Y4HleCb5GVt00udQhZtUfvPm/S8TwIcMlgk8wh6AaYjvTsc8zML58M6hVU1MC0pg==",
   "success": true,
-  "projectFilePath": "D:\\Study\\1670\\FPTBook\\LoginFPTBook.csproj",
+  "projectFilePath": "d:\\Study\\1670\\FPTBook\\LoginFPTBook.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\THAI\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\THAI\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
@@ -186,5 +186,12 @@
     "C:\\Users\\THAI\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\THAI\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file d:\\Study\\1670\\FPTBook\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

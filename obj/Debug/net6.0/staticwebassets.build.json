@@ -1,6 +1,10 @@
 {
   "Version": 1,
+<<<<<<< HEAD
   "Hash": "c5ebh/g0BN531Uwes5advS22JLzXxElcqNjmDuiaPAQ=",
+=======
+  "Hash": "r4554eaGILaRFa/XF0ULHrTqZDbXYW3H3edRXKwHBBM=",
+>>>>>>> refs/remotes/origin/main
   "Source": "LoginFPTBook",
   "BasePath": "_content/LoginFPTBook",
   "Mode": "Default",
@@ -1768,7 +1772,28 @@
       "OriginalItemSpec": "wwwroot\\img\\than-dieu-dai-hiep-top-6-cao-thu-out-trinh-duong-qua-gom-nhung-ai_6305f807422e8.png"
     },
     {
+<<<<<<< HEAD
       "Identity": "D:\\Study\\1670\\FPTBook\\wwwroot\\img\\z3516059442309_e64d3855a51b08e9b30e516e1c06a3b7.jpg",
+=======
+      "Identity": "C:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\wwwroot\\img\\VLHDKy8m4BttL-G82lu0Xs50gpCSL1pGgvEsAqJJf9DiHnp7_susjQ4rnGk4bxTlF_AMXKLki2vbag102UnslRtI-Zr9SicjPNHcNmbZv_wuIjab4mgPHzPr9eNTfnp1mVI5eWH_TQyVNjTy1xRXU-onvieb-Un06ovXRKHEy.png",
+      "SourceId": "LoginFPTBook",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\wwwroot\\",
+      "BasePath": "_content/LoginFPTBook",
+      "RelativePath": "img/VLHDKy8m4BttL-G82lu0Xs50gpCSL1pGgvEsAqJJf9DiHnp7_susjQ4rnGk4bxTlF_AMXKLki2vbag102UnslRtI-Zr9SicjPNHcNmbZv_wuIjab4mgPHzPr9eNTfnp1mVI5eWH_TQyVNjTy1xRXU-onvieb-Un06ovXRKHEy.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\VLHDKy8m4BttL-G82lu0Xs50gpCSL1pGgvEsAqJJf9DiHnp7_susjQ4rnGk4bxTlF_AMXKLki2vbag102UnslRtI-Zr9SicjPNHcNmbZv_wuIjab4mgPHzPr9eNTfnp1mVI5eWH_TQyVNjTy1xRXU-onvieb-Un06ovXRKHEy.png"
+    },
+    {
+      "Identity": "C:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\wwwroot\\img\\z3516059442309_e64d3855a51b08e9b30e516e1c06a3b7.jpg",
+>>>>>>> refs/remotes/origin/main
       "SourceId": "LoginFPTBook",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Study\\1670\\FPTBook\\wwwroot\\",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Study\\1670\\FPTBook\\LoginFPTBook.csproj": {}
+    "d:\\Study\\1670\\FPTBook\\LoginFPTBook.csproj": {}
   },
   "projects": {
-    "D:\\Study\\1670\\FPTBook\\LoginFPTBook.csproj": {
+    "d:\\Study\\1670\\FPTBook\\LoginFPTBook.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Study\\1670\\FPTBook\\LoginFPTBook.csproj",
+        "projectUniqueName": "d:\\Study\\1670\\FPTBook\\LoginFPTBook.csproj",
         "projectName": "LoginFPTBook",
-        "projectPath": "D:\\Study\\1670\\FPTBook\\LoginFPTBook.csproj",
+        "projectPath": "d:\\Study\\1670\\FPTBook\\LoginFPTBook.csproj",
         "packagesPath": "C:\\Users\\THAI\\.nuget\\packages\\",
-        "outputPath": "D:\\Study\\1670\\FPTBook\\obj\\",
+        "outputPath": "d:\\Study\\1670\\FPTBook\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

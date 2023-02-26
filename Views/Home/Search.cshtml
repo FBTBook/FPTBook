@@ -12,37 +12,35 @@
 
 <h2>Result For Search</h2>
 <div class="container">
-    <section class="featured" id="featured">
-        <div class="swiper featured-slider">
-            <div class="swiper-wrapper">
-                <div class="row">
-                    @foreach (var item in Model)
-                    {
-                        <div class="swiper-slide box">
-                            <div class="icons">
-                                <a href="#" class="fas fa-search"></a>
-                                <a href="#" class="fas fa-heart"></a>
-                                <a asp-action="Details" asp-route-id="@item.Book_ID" class="fas fa-eye"></a>
-                            </div>
-                            <div class="image">
-                                <a asp-action="Details" asp-route-id="@item.Book_ID">
-                                    <img src="~/img/@item.Book_Image" alt="@item.Book_Image">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <a asp-action="Details" asp-route-id="@item.Book_ID">
+        <section class="featured" id="featured">
+            <div class="swiper featured-slider">
+                <div class="swiper-wrapper">
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+                            <div class="swiper-slide box">
+                                <div class="icons">
+                                    <a href="#" class="fas fa-search"></a>
+                                    <a href="#" class="fas fa-heart"></a>
+                                    <a asp-controller="Book" asp-action="Details" asp-route-id="@item.Book_ID" class="fas fa-eye"></a>
+                                </div>
+                                <div class="image">
+                                    <a asp-controller="Book" asp-action="Details" asp-route-id="@item.Book_ID">
+                                        <img src="~/img/@item.Book_Image" alt="@item.Book_Image" width="200px">
+                                    </a>
+                                </div>
+                                <div class="content">
                                     <h3>@item.Book_Name</h3>
-                                </a>
-                                <div class="price">$@item.Book_SalePrice<span>@item.Book_Price</span></div>
-                                <a class="btn" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@item.Book_ID">Add to cart</a>
+                                    <div class="price">$@item.Book_SalePrice<span>$@item.Book_Price</span></div>
+                                    <a class="btn" asp-controller="Book" asp-action="Details" asp-route-id="@item.Book_ID">View Detail</a>
+                                </div>
                             </div>
-                        </div>
-                    }
+                        }
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-</div>
+        </section>    
+    </div>
 
 @* <div class="text-center">
     <h1 class="display-4">Welcome</h1>

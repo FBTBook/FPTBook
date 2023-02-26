@@ -21,8 +21,13 @@
 <div class="row">
     <div class="container">
         <form asp-action="Edit" id="addBookForm" enctype="multipart/form-data" method="post">
+<<<<<<< HEAD
             <h2>Update Book</h2>
             <a asp-controller="Book" asp-action="Index" class="w-10 btn btn-lg btn-primary">Back</a>
+=======
+            <h2>Add New Book</h2>
+            <a asp-controller="Book" asp-action="Index" class="w-10 btn btn-lg btn-primary">Back to Index</a>
+>>>>>>> refs/remotes/origin/main
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-floating">
@@ -50,6 +55,7 @@
                     }
                 </select>
             </div><br>
+            
             <div class="form-floating">
                 <select asp-for="Publisher_ID" class="form-select form-select-lg mb-3"
                     aria-label=".form-select-lg example" style="font-size: 9px">
@@ -108,9 +114,6 @@
                 <input type="date" class="form-control" asp-for="Book_PublishDate" />
                 <span asp-validation-for="Book_PublishDate" class="text-danger"></span>
             </div><br>
-            @* <div class="btnAdd">
-            <button id="addSubmit" type="submit" class="w-10 btn btn-lg btn-primary">Add</button>
-            </div> *@
             <div class="form-group">
                 <input id="addSubmit" type="submit" value="submit" class="w-10 btn btn-lg btn-primary" />
             </div>

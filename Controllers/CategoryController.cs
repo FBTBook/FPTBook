@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using LoginFPTBook.Data;
 using LoginFPTBook.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -17,16 +18,21 @@ namespace FPTBook.Controllers
         {
             _db = db;
         }
+
+        [Authorize(Roles="Admin, Owner")]
         public IActionResult Index()
         {
             IEnumerable<Category> categories = _db.Categories.ToList();
             return View(categories);
         }
+
+        [Authorize(Roles="Admin, Owner")]
         public IActionResult Create()
         {
             return View();
         }
         [HttpPost]
+        [Authorize(Roles="Admin, Owner")]
         public IActionResult Create(Category obj)
         {
             if (ModelState.IsValid)
@@ -37,6 +43,8 @@ namespace FPTBook.Controllers
             }
             return View(obj);
         }
+
+        [Authorize(Roles="Admin, Owner")]
         public IActionResult Edit(int id)
         {
             Category category = _db.Categories.Find(id);
@@ -46,7 +54,9 @@ namespace FPTBook.Controllers
             }
             return View(category);
         }
+
         [HttpPost]
+        [Authorize(Roles="Admin, Owner")]
         public IActionResult Edit(int id, Category obj)
         {
             obj.Category_ID = id;
@@ -57,26 +67,6 @@ namespace FPTBook.Controllers
                 return RedirectToAction("Index");
             }
             return View(obj);
-        }
-        public IActionResult Delete(int id)
-        {
-            Category category = _db.Categories.Find(id);
-            if(category != null){
-                category.Category_Status = 0;
-                _db.Categories.Update(category);
-                _db.SaveChanges();
-            }
-            return RedirectToAction("Index");
-        }
-        public IActionResult DeleteForever(int id)
-        {
-            Category category = _db.Categories.Find(id);
-            if (category != null)
-            {
-                _db.Categories.Remove(category);
-                _db.SaveChanges();
-            }
-            return RedirectToAction("Index");
         }
     }
 }

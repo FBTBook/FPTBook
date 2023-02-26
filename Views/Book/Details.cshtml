@@ -24,8 +24,15 @@
                                 <p>Publisher: @Model.Publisher.Publisher_Name</p>
                                 <hr class="singleline">
                                 <div class="card-body align-self-center">
-                                    <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.Book_ID"
+                                    @if (@Model.Book_Quantity > 0)
+                                    {
+                                        <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.Book_ID"
                                         class="btn btn-primary">Add to Cart </a>
+                                    }
+                                    else{
+                                        <h1>Out of stock</h1>
+                                    }
+                                    
                                 </div>
                             </div>
                         </div>

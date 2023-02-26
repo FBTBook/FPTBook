@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using LoginFPTBook.Constants;
 using LoginFPTBook.Data;
 using LoginFPTBook.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -17,16 +19,22 @@ namespace FPTBook.Controllers
         {
             _db = db;
         }
+
+        [Authorize(Roles="Admin")]
         public IActionResult Index()
         {
             IEnumerable<Publisher> publishers = _db.Publishers.ToList();
             return View(publishers);
         }
+
+        [Authorize(Roles="Admin")]
         public IActionResult Create()
         {
             return View();
         }
+
         [HttpPost]
+        [Authorize(Roles="Admin")]
         public IActionResult Create(Publisher obj)
         {
             if(ModelState.IsValid){
@@ -36,6 +44,8 @@ namespace FPTBook.Controllers
             }
             return View(obj);
         }
+
+        [Authorize(Roles="Admin")]
         public IActionResult Edit(int id)
         {
             Publisher publisher = _db.Publishers.Find(id);
@@ -45,7 +55,9 @@ namespace FPTBook.Controllers
             }
             return View(publisher);
         }
+
         [HttpPost]
+        [Authorize(Roles="Admin")]
         public IActionResult Edit(int id, Publisher obj)
         {
             if (ModelState.IsValid)
@@ -57,22 +69,5 @@ namespace FPTBook.Controllers
             }
             return View(obj);
         }
-        public IActionResult Delete(int id)
-        {
-            Publisher publisher = _db.Publishers.Find(id);
-            if(publisher != null){
-                publisher.Publisher_Status = 0;
-                _db.Publishers.Update(publisher);
-                _db.SaveChanges();
-            }
-            return RedirectToAction("Index");
-        }
-        public IActionResult DeleteForever(int id)
-        {
-            Publisher publisher = _db.Publishers.Find(id);
-            _db.Publishers.Remove(publisher);
-            _db.SaveChanges();
-            return RedirectToAction("Index");
-        } 
     }
 }
