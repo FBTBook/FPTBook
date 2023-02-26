@@ -131,7 +131,7 @@ namespace LoginFPTBook.Areas.Identity.Pages.Account
                         await _userManager.AddToRoleAsync(user, Roles.Owner.ToString());
                     }
                     else{
-                        await _userManager.AddToRoleAsync(user, Roles.Customer.ToString());
+                        await _userManager.AddToRoleAsync(user, Roles.Admin.ToString());
                     }
                     
                     _logger.LogInformation("User created a new account with password.");

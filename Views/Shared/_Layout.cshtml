@@ -29,11 +29,17 @@
                 @if (User.Identity.IsAuthenticated)
                 {
                   <a asp-area="Identity" asp-page="/Account/Manage/Index">Profile</a>
-                  <form class="form-inline" asp-area="Identity"
+                  <form  asp-area="Identity"
                                 asp-page="/Account/Logout"
                                 asp-route-returnUrl="@Url.Action("Index",
                                 "Home", new { area = "" })">
+<<<<<<< HEAD
+                                        <button type="submit" class="btn"
+                                        style="font-size: 2rem; margin-left: 1.5rem; color: var(--black); cursor: pointer; text-decoration: none;">
+                                        LogOut</button> 
+=======
                                       <button type="submit" id="logoutandlogin" style="background-color: #25aab3;"><a style="font-weight: bold;">Logout</a></button>
+>>>>>>> refs/remotes/origin/main
                                     </form>
                 }
                 else{

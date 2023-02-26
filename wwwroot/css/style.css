@@ -302,10 +302,11 @@ th{
     padding: 8px 8px;
     text-decoration: none;
     display: block;
+    text-align: center;
   }
       
 
-  .content_dropdowns a:hover {background-color: #fff;}
+  .content_dropdowns a:hover {background-color: #15828a; color: black;}
   
 
   .dropdowns:hover .content_dropdowns {display: block;}
