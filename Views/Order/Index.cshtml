@@ -32,7 +32,27 @@
                                 <td>@o.Order_OrderDate</td>
                                 <td>@o.Order_DeliveryDate</td>
                                 <td>@o.ApplicationUser.User_Address</td>
-                                <td>@o.Order_Status</td>
+                                @if (@o.Order_Status == 0)
+                                {
+                                    <td>                     
+                                        Waiting Accept                                   
+                                    </td>
+                                }
+                                else if(@o.Order_Status == 1){
+                                    <td>                     
+                                        Cancel                                   
+                                    </td>
+                                }
+                                else if(@o.Order_Status == 2){
+                                    <td>                     
+                                        Delivering                                   
+                                    </td>
+                                }
+                                else{
+                                    <td>
+                                        Delivered
+                                    </td>                                        
+                                }
                                 <td>
                                     <a asp-route-idOrder="@o.Order_ID" asp-controller="Order" asp-action="orderDetail" 
                                     class="btn btn-outline-primary rounded-pill">Detail</a>

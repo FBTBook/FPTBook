@@ -80,8 +80,7 @@
                                 <div class="content">
                                     <h3>@item.Book_Name</h3>
                                     <div class="price">$@item.Book_SalePrice<span>$@item.Book_Price</span></div>
-                                    <a class="btn" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@item.Book_ID">Add to
-                                        cart</a>
+                                    <a class="btn" asp-controller="Book" asp-action="Details" asp-route-id="@item.Book_ID">View Detail</a>
                                 </div>
                             </div>
                         }

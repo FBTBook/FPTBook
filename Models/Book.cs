@@ -21,7 +21,7 @@ namespace LoginFPTBook.Models
         public int Book_NoOfPages { get; set; }
 
         [Required]
-        [Range(1, 1000000000)]
+        [Range(0, 1000000000)]
         public int Book_Quantity { get; set; }
 
         [Required]
