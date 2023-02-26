@@ -24,7 +24,7 @@
         <form id="orderDetailForm" method="post" asp-controller="Order" asp-action="EditOrderdetail" 
         asp-route-idUser="@Model.ElementAt(0).Order.ApplicationUser.Id" >
             <h2>Order Detail</h2>
-            <button  asp-controller="Order" asp-action="Index" class="w-10 btn btn-lg btn-primary">Back</button>
+            <button  asp-controller="Order" asp-action="Index" class="w-10 btn btn-lg btn-primary">Back to Index</button>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-floating">

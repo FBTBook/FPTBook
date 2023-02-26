@@ -17,10 +17,10 @@
     }
 </style>
 <div class="row">
-    <div class="container">
-        <form id="addCategoryForm" method="post">
+    <div class="container">      
+        <form id="addCategoryForm" asp-controller="Category" asp-action="Create" method="post">
             <h2>Add New Category</h2>
-            <button  asp-controller="Category" asp-action="Index" class="w-10 btn btn-lg btn-primary">Back</button>
+            <a asp-controller="Category" asp-action="Index" class="w-10 btn btn-lg btn-primary">Back to Index</a>
             <hr/>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <br>
@@ -36,13 +36,20 @@
                 <span class="text-danger" asp-validation-for="Category_Description"></span>
             </div>
             <br>
-            <div class="form-group">
+            @if (User.IsInRole("Admin"))
+            {
+                <div class="form-group">
                 <label asp-for="Category_Status" class="control-label">Category Status</label><br>
-                <input type="radio" id="contactChoice1" value="1" asp-for="Category_Status" checked/>
+                <input type="radio" id="contactChoice1" value="1" asp-for="Category_Status"/>
                 <label for="contactChoice1">Available</label>
-                <input type="radio" id="contactChoice2" value="0" asp-for="Category_Status"/>
+                <input type="radio" id="contactChoice2" value="0" asp-for="Category_Status" checked/>
                 <label for="contactChoice2">Unavailable</label>
-            </div>
+                </div>
+            }
+            else{
+                <input asp-for="Category_Status" value="0" hidden/>
+            }
+            
             <br>    
              <div class="btnAdd">
                 <button id="addSubmit" type="submit" class="w-10 btn btn-lg btn-primary">Add</button>
