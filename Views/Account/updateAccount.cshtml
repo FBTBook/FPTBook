@@ -23,7 +23,7 @@
         <form id="updateAccountForm" method="post" asp-controller="Account" 
         asp-action="updateAccount" asp-route-idUser="@Model.Id">
             <h2>Update Account</h2>
-            <button  asp-controller="Account" asp-action="Index" class="w-10 btn btn-lg btn-primary">Back</button>
+            <button  asp-controller="Account" asp-action="Index" class="w-10 btn btn-lg btn-primary">Back to Index</button>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-floating">
@@ -33,7 +33,7 @@
             </div>
             <br>
             <div class="form-floating">
-                <input  class="form-control" aria-required="true" asp-for="User_Fullname"/>
+                <input  class="form-control" aria-required="true" asp-for="User_Fullname" readonly/>
                 <label >FullName</label>
                 <span  class="text-danger"></span>
             </div>
@@ -45,28 +45,19 @@
             </div>
             <br>
          
-            <div class="form-floating">
-                <p>Status:</p>
-                @if (@Model.User_Status == 0)
-                {
-                    <label>Available</label>
-                    <input type="radio"  value="1" name="status"> 
-                    <br>
-                    <br>
-                    <label>Unavailable</label>
-                    <input type="radio"  value="0" name="status" checked> 
-                    <span  class="text-danger"></span>
+            <div class="form-group">
+                <label asp-for="User_Status" class="control-label"></label><br>
+                @if(Model.User_Status == 1){
+                    <input type="radio" id="contactChoice1" value="1" asp-for="User_Status" name="status" checked/>
+                    <label for="contactChoice1">Available</label>
+                    <input type="radio" id="contactChoice2" value="0" asp-for="User_Status" name="status"/>
+                    <label for="contactChoice2">Unavailable</label>
+                }else{
+                    <input type="radio" id="contactChoice1" value="1" asp-for="User_Status" name="status"/>
+                    <label for="contactChoice1">Available</label>
+                    <input type="radio" id="contactChoice2" value="0" asp-for="User_Status" name="status" checked/>
+                    <label for="contactChoice2">Unavailable</label>
                 }
-                else{
-                    <label>Available</label>
-                    <input type="radio"  value="1" name="status" checked> 
-                    <br>
-                    <br>
-                    <label>Unavailable</label>
-                    <input type="radio"  value="0" name="status"> 
-                    <span  class="text-danger"></span>
-                }
-                
             </div>
             <br>
             
