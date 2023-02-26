@@ -44,12 +44,16 @@ namespace FPTBook.Controllers
         [Authorize(Roles="Admin")]
         public async Task<IActionResult> updateAccount(string id)
         {
-            var user = _db.Users.Find(id);
+            if(ModelState.IsValid){
+                var user = _db.Users.Find(id);
             
-            var role = await _userManager.GetRolesAsync(user);
+                var role = await _userManager.GetRolesAsync(user);
 
-            TempData["role"] = role[0];
-            return View(user);
+                TempData["role"] = role[0];
+                return View(user);
+            }
+
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
@@ -84,6 +88,7 @@ namespace FPTBook.Controllers
         [Authorize(Roles="Admin")]
         public async Task<IActionResult> SearchUser(string search)
         {
+            if(ModelState.IsValid){
             IEnumerable<ApplicationUser> lstAccount = _db.Users.Where(u => u.Email == search || u.Email.Contains(search) || u.Email.StartsWith(search) || u.Email.EndsWith(search)).ToList();
             int count = lstAccount.Count();
             ViewData["count"] = count;
@@ -96,7 +101,9 @@ namespace FPTBook.Controllers
             }
             ViewData["role"] = lstRoles.ToList();
 
-            return View(lstAccount);
+            return View(lstAccount);                
+            }
+            return RedirectToAction("Index");
         }
         
     }

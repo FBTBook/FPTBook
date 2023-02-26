@@ -36,8 +36,7 @@ namespace LoginFPTBook.Controllers
             }
             ViewData["data"] = totalPrie.ToString();
             
-
-            return View(cartInfor);
+            return View(cartInfor);  
         }
 
         [Authorize]
@@ -71,28 +70,30 @@ namespace LoginFPTBook.Controllers
         [Authorize]
         public IActionResult DeleteCart(int id)
         {
+            if(ModelState.IsValid){
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var findCart = _db.Carts.Where(c => c.User_ID == userId).ToArray();
             var findCartDetail = _db.CartDetails.Where(cd => cd.Cart_ID == findCart[0].Cart_ID).ToArray();
 
             _db.CartDetails.Remove(findCartDetail[0]);
-            _db.SaveChanges();
-            
+            _db.SaveChanges();                
+            }
             return RedirectToAction("Index");
         }
 
         [Authorize]
-        public IActionResult Updatecart(int idCartDetail, CartDetail obj, int idBook, int idCart, int quantity)
+        public IActionResult Updatecart(int idCartDetail, int idBook, int quantity)
         {
             if(ModelState.IsValid){
                 var checkQuantity = _db.Books.Find(idBook);
                 if(quantity <= checkQuantity.Book_Quantity){
-                    obj.CartDetail_ID = idCartDetail;
-                    obj.Book_ID = idBook;
-                    obj.Cart_ID = idCart;
-                    obj.Cart_Quantity = quantity;
-                    _db.CartDetails.Update(obj);
+                    var findCartDetail = _db.CartDetails.Find(idCartDetail);
+                    findCartDetail.Cart_Quantity = quantity;
+                    _db.CartDetails.Update(findCartDetail);
                     _db.SaveChanges();
+                }
+                else{
+                    TempData["errorUpdateCart"] = "Quantity that you want to update more than current quantity";
                 }
             }
             return RedirectToAction("Index");
@@ -110,6 +111,8 @@ namespace LoginFPTBook.Controllers
             {
                 var findBook = _db.Books.Find(od.Book_ID);
                 if(od.Cart_Quantity > findBook.Book_Quantity){
+                    TempData["errorOrder"] = "Quantity of " + findBook.Book_Name + " just quantity is " 
+                    + findBook.Book_Quantity + ". So you can not order. Please update quantity again to Order";
                     return RedirectToAction("Index");
                 }
             }
