@@ -60,7 +60,7 @@
     </section>
     <div class="container">
         <section class="featured" id="featured">
-            <h1 class="heading"> <span>Featured books</span> </h1>
+            <h1 class="heading"> <span>All Books</span> </h1>
             <div class="swiper featured-slider">
                 <div class="swiper-wrapper">
                     <div class="row">
@@ -79,7 +79,8 @@
                                 </div>
                                 <div class="content">
                                     <h3>@item.Book_Name</h3>
-                                    <div class="price">$@item.Book_SalePrice<span>$@item.Book_Price</span></div>
+                                    @* <span>$@item.Book_Price</span> *@
+                                    <div class="price">$@item.Book_SalePrice</div>
                                     <a class="btn" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@item.Book_ID">Add to
                                         cart</a>
                                 </div>
