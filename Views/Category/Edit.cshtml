@@ -21,7 +21,7 @@
     <div class="container">
         <form id="updateCategoryForm" asp-action="Edit" method="post">
             <h2>Update Category</h2>
-            <button asp-controller="Category" asp-action="Index" class="w-10 btn btn-lg btn-primary">Back</button>
+            <button asp-controller="Category" asp-action="Index" class="w-10 btn btn-lg btn-primary">Back to Index</button>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <br>
@@ -37,8 +37,15 @@
                 <span asp-validation-for="Category_Description" class="text-danger"></span>
             </div>
             <br>
+<<<<<<< HEAD
             <div class="form-group">
+                <label>Status</label><br>
+=======
+            @if (User.IsInRole("Admin"))
+            {
+                <div class="form-group">
                 <label asp-for="Category_Status" class="control-label"></label><br>
+>>>>>>> refs/remotes/origin/main
                 @if(Model.Category_Status == 1){
                     <input type="radio" id="contactChoice1" value="1" asp-for="Category_Status" checked/>
                     <label for="contactChoice1">Available</label>
@@ -51,6 +58,10 @@
                     <label for="contactChoice2">Unavailable</label>
                 }
             </div>
+            }
+            else{
+                <input asp-for="Category_Status" hidden/>
+            }
             <br>    
              <div class="btnUpdate">
                 <button id="addSubmit" type="submit" class="w-10 btn btn-lg btn-primary">Update</button>

@@ -44,12 +44,16 @@ namespace FPTBook.Controllers
         [Authorize(Roles="Admin")]
         public async Task<IActionResult> updateAccount(string id)
         {
-            var user = _db.Users.Find(id);
+            if(ModelState.IsValid){
+                var user = _db.Users.Find(id);
             
-            var role = await _userManager.GetRolesAsync(user);
+                var role = await _userManager.GetRolesAsync(user);
 
-            TempData["role"] = role[0];
-            return View(user);
+                TempData["role"] = role[0];
+                return View(user);
+            }
+
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
@@ -80,19 +84,26 @@ namespace FPTBook.Controllers
             TempData["roleAdmin"] = "Admin";
             return RedirectToPage("/Account/Register", new { area = "Identity" });
         }
+
+        [Authorize(Roles="Admin")]
         public async Task<IActionResult> SearchUser(string search)
         {
+            if(ModelState.IsValid){
             IEnumerable<ApplicationUser> lstAccount = _db.Users.Where(u => u.Email == search || u.Email.Contains(search) || u.Email.StartsWith(search) || u.Email.EndsWith(search)).ToList();
-            int count = _db.Users.Count();
+            int count = lstAccount.Count();
             ViewData["count"] = count;
+
             IList<string> lstRoles = new List<string>();
             foreach (var item in lstAccount)
             {
-                lstRoles = await _userManager.GetRolesAsync(item);
+                var role = await _userManager.GetRolesAsync(item);
+                lstRoles.Add(role[0]);
             }
             ViewData["role"] = lstRoles.ToList();
 
-            return View(lstAccount);
+            return View(lstAccount);                
+            }
+            return RedirectToAction("Index");
         }
         
     }

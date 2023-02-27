@@ -29,12 +29,17 @@
                 @if (User.Identity.IsAuthenticated)
                 {
                   <a asp-area="Identity" asp-page="/Account/Manage/Index">Profile</a>
-                  <form class="form-inline" asp-area="Identity"
+                  <form  asp-area="Identity"
                                 asp-page="/Account/Logout"
                                 asp-route-returnUrl="@Url.Action("Index",
                                 "Home", new { area = "" })">
-                                        <button type="submit" class=" btn
-                                    btn-link" id="logoutandlogin">Logout</button>
+<<<<<<< HEAD
+                                        <button type="submit" class="btn"
+                                        style="font-size: 2rem; margin-left: 1.5rem; color: var(--black); cursor: pointer; text-decoration: none;">
+                                        LogOut</button> 
+=======
+                                      <button type="submit" id="logoutandlogin" style="background-color: #25aab3;"><a style="font-weight: bold;">Logout</a></button>
+>>>>>>> refs/remotes/origin/main
                                     </form>
                 }
                 else{
@@ -46,29 +51,35 @@
         </div>
     </div>
 
-    @* <div class="header-mid">
-         <form asp-controller="Home" asp-action="Search" class="search-form">
-            <input type="search" name="search" placeholder="Search here..." id="search-box" required>
-            <button style="background-color: #fff;" type="submit"><label for="search-box" class="fas fa-search"></label></button>
-        </form>
-    </div> *@
-    
-
     <div class="header-2">
         <nav class="navbar">
-            <a asp-controller="Home" asp-action="Index">home</a>
-            <a asp-controller="Home" asp-action="OrderHistory">Order History</a>
-            <div class="dropdown">
+            <a asp-controller="Home" asp-action="Index">Home</a>
+            @if (User.Identity.IsAuthenticated)
+            {
+              <a asp-controller="Home" asp-action="OrderHistory">Order History</a>
+            }
+            
+            @if (User.IsInRole("Admin") || User.IsInRole("Owner"))
+            {
+              <div class="dropdown">
                 <button class="button_dropdown">Management</button>
                 <div class="content_dropdown">
-                  <a asp-controller="Account" asp-action="Index">Account</a>
-                  <a asp-controller="Publisher" asp-action="Index">Publisher</a>
-                  <a asp-controller="Statistics" asp-action="Index">Statistical</a>
-                  <a asp-controller="Order" asp-action="Index">Order</a>
-                  <a asp-controller="Category" asp-action="Index">Category</a>
-                  <a asp-controller="Book" asp-action="Index">Book</a>
+                  @if (User.IsInRole("Admin"))
+                  {
+                    <a asp-controller="Account" asp-action="Index">Account</a>
+                    <a asp-controller="Publisher" asp-action="Index">Publisher</a>
+                  }
+                  @if (User.IsInRole("Admin") || User.IsInRole("Owner"))
+                  {
+                    <a asp-controller="Order" asp-action="Index">Order</a>
+                    <a asp-controller="Category" asp-action="Index">Category</a>
+                    <a asp-controller="Book" asp-action="Index">Book</a>
+                  }
+
                 </div>
               </div>
+            }
+
         </nav>
     </div>
 

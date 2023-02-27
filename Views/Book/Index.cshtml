@@ -32,12 +32,12 @@
                             <td>@item.Book_Name</td>
                             <td>@item.Category.Category_Name</td>
                             <td>@item.Book_AuthorName</td>
-                            <td>@item.Book_Price</td>
-                            <td>@item.Book_SalePrice</td>
+                            <td>@item.Book_Price$</td>
+                            <td>@item.Book_SalePrice$</td>
                             <td>@item.Book_Quantity</td>
                             @if (@item.Book_Status == 1)
                             {
-                                <td>Avalable</td>
+                                <td>Available</td>
                             }
                             else
                             {
@@ -48,8 +48,6 @@
                             </td>
                             <td>
                                 <a class="btn btn-outline-primary rounded-pill" asp-action="Edit" asp-route-id="@item.Book_ID">Edit</a>
-                                <a class="btn btn-outline-primary rounded-pill" asp-action="Delete" asp-route-id="@item.Book_ID"
-                                    onclick="return confirm('Are sure wants to delete?');">Delete</a>
                             </td>
                         </tr>
                     }

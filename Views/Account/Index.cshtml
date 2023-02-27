@@ -80,7 +80,18 @@
                                     <td>@Model.ElementAt(i).PhoneNumber</td>
                                     <td>@Model.ElementAt(i).User_Address</td> 
                                     <td>@data[i]</td>
-                                    <td>@Model.ElementAt(i).User_Status</td>
+                                    @if (@Model.ElementAt(i).User_Status == 0)
+                                    {
+                                        <td>
+                                            Unavailable
+                                        </td>
+                                    }
+                                    else{
+                                        <td>
+                                            Available
+                                        </td>
+                                    }
+                                    
                                     <td>
                                         <a asp-controller="Account" asp-action="updateAccount" asp-route-id="@Model.ElementAt(i).Id" class="btn btn-outline-primary rounded-pill"> Update </a>
                                     </td>

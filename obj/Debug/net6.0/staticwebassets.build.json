@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "gXezzTUFuSYIAK3NZTAk/4vpPvJCJXs/To4GCkz4BaQ=",
+  "Hash": "OPM4oX3MTbXEtDRbM0PlXF3YVsjrY1ox2ikBRqBsqKw=",
   "Source": "LoginFPTBook",
   "BasePath": "_content/LoginFPTBook",
   "Mode": "Default",
@@ -1428,6 +1428,23 @@
       "OriginalItemSpec": "wwwroot\\img\\book-10.png"
     },
     {
+      "Identity": "D:\\Application_Development(1670)\\FPTBook\\wwwroot\\img\\book-2 copy.png",
+      "SourceId": "LoginFPTBook",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Application_Development(1670)\\FPTBook\\wwwroot\\",
+      "BasePath": "_content/LoginFPTBook",
+      "RelativePath": "img/book-2 copy.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\book-2 copy.png"
+    },
+    {
       "Identity": "D:\\Application_Development(1670)\\FPTBook\\wwwroot\\img\\book-2.png",
       "SourceId": "LoginFPTBook",
       "SourceType": "Discovered",
@@ -1562,6 +1579,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\book-9.png"
+    },
+    {
+      "Identity": "D:\\Application_Development(1670)\\FPTBook\\wwwroot\\img\\book3.png",
+      "SourceId": "LoginFPTBook",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Application_Development(1670)\\FPTBook\\wwwroot\\",
+      "BasePath": "_content/LoginFPTBook",
+      "RelativePath": "img/book3.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\book3.png"
     },
     {
       "Identity": "D:\\Application_Development(1670)\\FPTBook\\wwwroot\\img\\d0a0f85f10ed47f0a66cdfcfd8a0fcab.png",
@@ -1732,6 +1766,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\than-dieu-dai-hiep-top-6-cao-thu-out-trinh-duong-qua-gom-nhung-ai_6305f807422e8.png"
+    },
+    {
+      "Identity": "D:\\Application_Development(1670)\\FPTBook\\wwwroot\\img\\VLHDKy8m4BttL-G82lu0Xs50gpCSL1pGgvEsAqJJf9DiHnp7_susjQ4rnGk4bxTlF_AMXKLki2vbag102UnslRtI-Zr9SicjPNHcNmbZv_wuIjab4mgPHzPr9eNTfnp1mVI5eWH_TQyVNjTy1xRXU-onvieb-Un06ovXRKHEy.png",
+      "SourceId": "LoginFPTBook",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Application_Development(1670)\\FPTBook\\wwwroot\\",
+      "BasePath": "_content/LoginFPTBook",
+      "RelativePath": "img/VLHDKy8m4BttL-G82lu0Xs50gpCSL1pGgvEsAqJJf9DiHnp7_susjQ4rnGk4bxTlF_AMXKLki2vbag102UnslRtI-Zr9SicjPNHcNmbZv_wuIjab4mgPHzPr9eNTfnp1mVI5eWH_TQyVNjTy1xRXU-onvieb-Un06ovXRKHEy.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\VLHDKy8m4BttL-G82lu0Xs50gpCSL1pGgvEsAqJJf9DiHnp7_susjQ4rnGk4bxTlF_AMXKLki2vbag102UnslRtI-Zr9SicjPNHcNmbZv_wuIjab4mgPHzPr9eNTfnp1mVI5eWH_TQyVNjTy1xRXU-onvieb-Un06ovXRKHEy.png"
     },
     {
       "Identity": "D:\\Application_Development(1670)\\FPTBook\\wwwroot\\img\\z3516059442309_e64d3855a51b08e9b30e516e1c06a3b7.jpg",

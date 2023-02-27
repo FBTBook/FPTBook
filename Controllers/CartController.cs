@@ -35,85 +35,88 @@ namespace LoginFPTBook.Controllers
                 totalPrie += (p.Cart_Quantity*p.Book.Book_SalePrice);
             }
             ViewData["data"] = totalPrie.ToString();
-
-            return View(cartInfor);
+            
+            return View(cartInfor);  
         }
 
+        [Authorize]
         public IActionResult AddToCart(int id)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var findCart = _db.Carts.Where(c => c.User_ID == userId).ToArray();
-            var findCartDetail = _db.CartDetails.Where(cd => cd.Cart_ID == findCart[0].Cart_ID && cd.Book_ID == id).ToArray();
+            if(ModelState.IsValid){
+                var findBook = _db.Books.Find(id);
+                if(findBook.Book_Quantity >0){
+                    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                    var findCart = _db.Carts.Where(c => c.User_ID == userId).ToArray();
+                    var findCartDetail = _db.CartDetails.Where(cd => cd.Cart_ID == findCart[0].Cart_ID && cd.Book_ID == id).ToArray();
 
-            if(findCartDetail.Count() != 0){
-                findCartDetail[0].Cart_Quantity += 1;
-                _db.CartDetails.Update(findCartDetail[0]);
+                    if(findCartDetail.Count() != 0){
+                        findCartDetail[0].Cart_Quantity += 1;
+                        _db.CartDetails.Update(findCartDetail[0]);
+                    }
+                    else{
+                        CartDetail cartDetail = new CartDetail();
+
+                        cartDetail.Cart_Quantity = 1;
+                        cartDetail.Cart_ID = findCart[0].Cart_ID;
+                        cartDetail.Book_ID = id;
+                        _db.CartDetails.Add(cartDetail);
+                    }  
+                    _db.SaveChanges();  
+                }
             }
-            else{
-
-                CartDetail cartDetail = new CartDetail();
-
-                cartDetail.Cart_Quantity = 1;
-                cartDetail.Cart_ID = findCart[0].Cart_ID;
-                cartDetail.Book_ID = id;
-                _db.CartDetails.Add(cartDetail);
-            }  
-            _db.SaveChanges();
-            
             return RedirectToAction("Index");
         }
 
+        [Authorize]
         public IActionResult DeleteCart(int id)
         {
+            if(ModelState.IsValid){
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var findCart = _db.Carts.Where(c => c.User_ID == userId).ToArray();
             var findCartDetail = _db.CartDetails.Where(cd => cd.Cart_ID == findCart[0].Cart_ID).ToArray();
 
             _db.CartDetails.Remove(findCartDetail[0]);
-            _db.SaveChanges();
-            
+            _db.SaveChanges();                
+            }
             return RedirectToAction("Index");
         }
 
-        public IActionResult Updatecart(int idCartDetail, CartDetail obj, int idBook, int idCart, int quantity)
+        [Authorize]
+        public IActionResult Updatecart(int idCartDetail, int idBook, int quantity)
         {
-            obj.CartDetail_ID = idCartDetail;
-            obj.Book_ID = idBook;
-            obj.Cart_ID = idCart;
-            obj.Cart_Quantity = quantity;
-            _db.CartDetails.Update(obj);
-            _db.SaveChanges();
-
+            if(ModelState.IsValid){
+                var checkQuantity = _db.Books.Find(idBook);
+                if(quantity <= checkQuantity.Book_Quantity){
+                    var findCartDetail = _db.CartDetails.Find(idCartDetail);
+                    findCartDetail.Cart_Quantity = quantity;
+                    _db.CartDetails.Update(findCartDetail);
+                    _db.SaveChanges();
+                }
+                else{
+                    TempData["errorUpdateCart"] = "Quantity that you want to update more than current quantity";
+                }
+            }
             return RedirectToAction("Index");
         }
 
-        // public IActionResult OrderCart(List<CartDetail> lstCartDetail)
-        // {
-        //     var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        //     Order order = new Order();
-        //     order.Order_OrderDate = DateTime.Now;
-        //     order.Order_DeliveryDate = null;
-        //     order.Order_Status = 0;
-        //     order.User_ID = userId;
-        //     _db.Orders.Add(order);
-        //     _db.SaveChanges();
-        //     foreach (var od in lstCartDetail)
-        //     {
-        //         OrderDetail orderDetail = new OrderDetail();
-        //         orderDetail.OrderDetail_Quantity = od.Cart_Quantity;
-        //         orderDetail.OrderDetail_Price = od.Book.Book_Price;
-        //         orderDetail.Order_ID = order.Order_ID;
-        //         orderDetail.Book_ID = od.Book_ID;
-        //         _db.OrderDetails.Add(orderDetail);
-        //     }
-        //     _db.SaveChanges();
-        //     return RedirectToAction("Index", "Home");
-        // }
-
+        [Authorize]
         public IActionResult OrderCart(int idCart)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            
+            if(ModelState.IsValid){
+
+            var findCartDetail = _db.CartDetails.Where(cd => cd.Cart_ID == idCart).Include(c => c.Book).ToArray();
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); 
+
+            foreach (var od in findCartDetail)
+            {
+                var findBook = _db.Books.Find(od.Book_ID);
+                if(od.Cart_Quantity > findBook.Book_Quantity){
+                    TempData["errorOrder"] = "Quantity of " + findBook.Book_Name + " just quantity is " 
+                    + findBook.Book_Quantity + ". So you can not order. Please update quantity again to Order";
+                    return RedirectToAction("Index");
+                }
+            }
+
             Order order = new Order();
             order.Order_OrderDate = DateTime.Now;
             order.Order_DeliveryDate = null;
@@ -121,9 +124,13 @@ namespace LoginFPTBook.Controllers
             order.User_ID = userId;
             _db.Orders.Add(order);
             _db.SaveChanges();
-            var findCartDetail = _db.CartDetails.Where(cd => cd.Cart_ID == idCart).Include(c => c.Book).ToArray();
+            
             foreach (var od in findCartDetail)
             {
+                var findBook = _db.Books.Find(od.Book_ID);
+                if(od.Cart_Quantity > findBook.Book_Quantity){
+                    return RedirectToAction("Index");
+                }
                 OrderDetail orderDetail = new OrderDetail();
                 orderDetail.OrderDetail_Quantity = od.Cart_Quantity;
                 orderDetail.OrderDetail_Price = od.Book.Book_SalePrice;
@@ -137,6 +144,8 @@ namespace LoginFPTBook.Controllers
             }
             _db.SaveChanges();
             return RedirectToAction("Index", "Home");
+            }
+            return RedirectToAction("Index");
         }
     }
 }

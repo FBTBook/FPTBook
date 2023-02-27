@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using LoginFPTBook.Constants;
 using LoginFPTBook.Data;
 using LoginFPTBook.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +22,8 @@ namespace FPTBook.Controllers
         {
             _db = db;
         }
+        
+        [Authorize(Roles="Admin, Owner")]
         public async Task<IActionResult> Index()
         {
             IEnumerable<Book> books = _db.Books.Include(b => b.Category).Include(b => b.Publisher).ToList();
@@ -27,26 +31,25 @@ namespace FPTBook.Controllers
         }
         public async Task<IActionResult> Details(int id)
         {
-            if (id == null || _db.Books == null)
-            {
-                return NotFound();
-            }
+            if(ModelState.IsValid){
             var product = await _db.Books
                 .Include(p => p.Category).Include(p => p.Publisher)
                 .FirstOrDefaultAsync(m => m.Book_ID == id);
-            if (product == null)
-            {
-                return NotFound();
+            return View(product);                
             }
-            return View(product);
+            return RedirectToAction("Index");
         }
+
+        [Authorize(Roles="Admin, Owner")]
         public IActionResult Create()
         {
             ViewData["Category"] = _db.Categories.Where(c => c.Category_Status == 1).ToList();
             ViewData["Publisher"] = _db.Publishers.Where(p => p.Publisher_Status == 1).ToList();
             return View();
         }
+
         [HttpPost]
+        [Authorize(Roles="Admin, Owner")]
         public async Task<IActionResult> Create(Book obj, IFormFile Book_Image)
         {
             ViewData["Category"] = _db.Categories.Where(c => c.Category_Status == 1).ToList();
@@ -77,8 +80,11 @@ namespace FPTBook.Controllers
             }
             return View(obj);
         }
+
+        [Authorize(Roles="Admin, Owner")]
         public IActionResult Edit(int id)
         {
+            if(ModelState.IsValid){
             Book book = _db.Books.Find(id);
             if (book == null)
             {
@@ -88,12 +94,13 @@ namespace FPTBook.Controllers
             {
                 ViewData["Category"] = _db.Categories.Where(c => c.Category_Status == 1).ToList();
                 ViewData["Publisher"] = _db.Publishers.Where(p => p.Publisher_Status == 1).ToList();
-                // ViewData["Category_ID"] = new SelectList(_db.Categories, "Category_ID", "Category_Name", book.Category_ID);
-                // ViewData["Publisher_ID"] = new SelectList(_db.Publishers, "Publisher_ID", "Publisher_Name", book.Publisher_ID);
                 return View(book);
+            }                
             }
+            return RedirectToAction("Index");
         }
         [HttpPost]
+        [Authorize(Roles="Admin, Owner")]
         public async Task<IActionResult> Edit(Book obj, IFormFile? UpdateImg)
         {
             if (!ModelState.IsValid)
@@ -115,31 +122,19 @@ namespace FPTBook.Controllers
                     }
                     obj.Book_Image = UpdateImg.FileName;
                 }
+                if(obj.Book_Status == 0){
+                    var findCartDetail = _db.CartDetails.ToArray();
+                    foreach (var item in findCartDetail)
+                    {
+                        if(obj.Book_ID == item.Book_ID){
+                            _db.CartDetails.Remove(item);
+                        }
+                    }
+                }
                 _db.Books.Update(obj);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-        }
-        public IActionResult Delete(int id)
-        {
-            Book obj = _db.Books.Find(id);
-            if (obj != null)
-            {
-                obj.Book_Status = 0;
-                _db.Books.Update(obj);
-                _db.SaveChanges();
-            }
-            return RedirectToAction("Index");
-        }
-        public IActionResult DeleteForever(int id)
-        {
-            Book obj = _db.Books.Find(id);
-            if (obj != null)
-            {
-                _db.Books.Remove(obj);
-                _db.SaveChanges();
-            }
-            return RedirectToAction("Index");
         }
     }
 }

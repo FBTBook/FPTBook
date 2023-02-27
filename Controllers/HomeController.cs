@@ -24,17 +24,36 @@ namespace LoginFPTBook.Controllers
         }
         public IActionResult Search(string search)
         {
+            if(ModelState.IsValid){
             IEnumerable<Book> books = _db.Books.Where(b => b.Book_Status == 1 && (b.Book_Name==search || b.Book_Name.Contains(search) || b.Book_Name.StartsWith(search) || b.Book_Name.EndsWith(search))).ToList();
-            return View(books);
+            return View(books);                
+            }
+            return RedirectToAction("Index");
         }
 
         [Authorize]
         public IActionResult OrderHistory()
         {
+            if(ModelState.IsValid){
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var findOrder = _db.Orders.Where(c => c.User_ID == userId).Include(c => c.ApplicationUser).Include(c => c.OrderDetail).ToList();
 
-            return View(findOrder);
+            return View(findOrder);                
+            }
+            return RedirectToAction("Index");
         }
+
+        [Authorize]
+        public IActionResult CancelOrder(int idOrder)
+        {
+            if(ModelState.IsValid){
+                var findOrder = _db.Orders.Find(idOrder);
+                findOrder.Order_Status = 1;
+                _db.Orders.Update(findOrder);
+                _db.SaveChanges();
+            }
+            return RedirectToAction("OrderHistory");
+        }
+        
     }
 }
