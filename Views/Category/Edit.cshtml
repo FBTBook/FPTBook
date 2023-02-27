@@ -37,15 +37,10 @@
                 <span asp-validation-for="Category_Description" class="text-danger"></span>
             </div>
             <br>
-<<<<<<< HEAD
-            <div class="form-group">
-                <label>Status</label><br>
-=======
             @if (User.IsInRole("Admin"))
             {
                 <div class="form-group">
                 <label asp-for="Category_Status" class="control-label"></label><br>
->>>>>>> refs/remotes/origin/main
                 @if(Model.Category_Status == 1){
                     <input type="radio" id="contactChoice1" value="1" asp-for="Category_Status" checked/>
                     <label for="contactChoice1">Available</label>

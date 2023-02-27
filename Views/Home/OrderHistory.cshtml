@@ -71,7 +71,7 @@
                                             asp-action="CancelOrder" asp-route-idOrder="@o.Order_ID" 
                                             asp-route-orderDate = "@o.Order_OrderDate"> Cancel</a>  
                                         }
-                                        <a class="btn btn-outline-primary rounded-pill"> Buy More </a>
+                                        <a asp-controller="Home" asp-action="Index" class="btn btn-outline-primary rounded-pill"> Buy More </a>
                                     </td>
                                 </tr>
                             }                                                                                  
