@@ -16,7 +16,6 @@ namespace LoginFPTBook.Controllers
         {
             _db = db;
         }
-
         public IActionResult Index()
         {
             IEnumerable<Book> books = _db.Books.Where(b => b.Book_Status == 1).ToList();
@@ -30,19 +29,16 @@ namespace LoginFPTBook.Controllers
             }
             return RedirectToAction("Index");
         }
-
         [Authorize]
         public IActionResult OrderHistory()
         {
             if(ModelState.IsValid){
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var findOrder = _db.Orders.Where(c => c.User_ID == userId).Include(c => c.ApplicationUser).Include(c => c.OrderDetail).ToList();
-
             return View(findOrder);                
             }
             return RedirectToAction("Index");
         }
-
         [Authorize]
         public IActionResult CancelOrder(int idOrder)
         {
@@ -54,6 +50,9 @@ namespace LoginFPTBook.Controllers
             }
             return RedirectToAction("OrderHistory");
         }
-        
+        public IActionResult Help()
+        {
+            return View();
+        }
     }
 }

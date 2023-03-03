@@ -1,3 +1,4 @@
+//chưa explain
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -74,7 +75,6 @@ namespace LoginFPTBook.Controllers
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var findCart = _db.Carts.Where(c => c.User_ID == userId).ToArray();
             var findCartDetail = _db.CartDetails.Where(cd => cd.Cart_ID == findCart[0].Cart_ID).ToArray();
-
             _db.CartDetails.Remove(findCartDetail[0]);
             _db.SaveChanges();                
             }

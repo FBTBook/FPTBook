@@ -22,7 +22,6 @@ namespace FPTBook.Controllers
         {
             _db = db;
         }
-        
         [Authorize(Roles="Admin, Owner")]
         public async Task<IActionResult> Index()
         {
@@ -39,7 +38,6 @@ namespace FPTBook.Controllers
             }
             return RedirectToAction("Index");
         }
-
         [Authorize(Roles="Admin, Owner")]
         public IActionResult Create()
         {
@@ -99,6 +97,7 @@ namespace FPTBook.Controllers
             }
             return RedirectToAction("Index");
         }
+
         [HttpPost]
         [Authorize(Roles="Admin, Owner")]
         public async Task<IActionResult> Edit(Book obj, IFormFile? UpdateImg)

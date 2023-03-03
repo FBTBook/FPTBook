@@ -18,21 +18,19 @@ namespace FPTBook.Controllers
         {
             _db = db;
         }
-
-        [Authorize(Roles="Admin, Owner")]
+        [Authorize(Roles = "Admin, Owner")]
         public IActionResult Index()
         {
             IEnumerable<Category> categories = _db.Categories.ToList();
             return View(categories);
         }
-
-        [Authorize(Roles="Admin, Owner")]
+        [Authorize(Roles = "Admin, Owner")]
         public IActionResult Create()
         {
             return View();
         }
         [HttpPost]
-        [Authorize(Roles="Admin, Owner")]
+        [Authorize(Roles = "Admin, Owner")]
         public IActionResult Create(Category obj)
         {
             if (ModelState.IsValid)
@@ -43,23 +41,22 @@ namespace FPTBook.Controllers
             }
             return View(obj);
         }
-
-        [Authorize(Roles="Admin, Owner")]
+        [Authorize(Roles = "Admin, Owner")]
         public IActionResult Edit(int id)
         {
-            if(ModelState.IsValid){
-            Category category = _db.Categories.Find(id);
-            if (category == null)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Index");
-            }
-            return View(category);                
+                Category category = _db.Categories.Find(id);
+                if (category == null)
+                {
+                    return RedirectToAction("Index");
+                }
+                return View(category);
             }
             return RedirectToAction("Index");
         }
-
         [HttpPost]
-        [Authorize(Roles="Admin, Owner")]
+        [Authorize(Roles = "Admin, Owner")]
         public IActionResult Edit(int id, Category obj)
         {
             obj.Category_ID = id;

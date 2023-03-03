@@ -59,7 +59,6 @@ namespace FPTBook.Controllers
                         od.Book.Book_Quantity = od.Book.Book_Quantity - od.OrderDetail_Quantity;
                         _db.Update(od.Book);
                     }
-
                 }
                 else{
                     obj.Order_Status = status;   
