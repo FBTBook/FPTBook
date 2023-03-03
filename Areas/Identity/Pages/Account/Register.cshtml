@@ -17,7 +17,18 @@
         display: flex;
     }
 </style>
-
+@if (@TempData["errorEmail"] != null)
+{
+    <script type="text/javascript">
+        alert("@TempData["errorEmail"]");
+    </script> 
+}
+@if (@TempData["errorDate"] != null)
+    {
+        <script type="text/javascript">
+            alert("@TempData["errorDate"]");
+        </script> 
+    }
 <div class="row">
     <div class="container">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">

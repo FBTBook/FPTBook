@@ -54,6 +54,10 @@ namespace FPTBook.Controllers
             ViewData["Publisher"] = _db.Publishers.Where(p => p.Publisher_Status == 1).ToList();
             if (ModelState.IsValid)
             {
+                if(DateTime.Compare(obj.Book_PublishDate, DateTime.Now) > 0){
+                    TempData["errorDate"] = "Please enter Publish Date is earlier than or same time with current date";
+                    return View(obj);
+                }
                 var filePaths = new List<string>();
                 if (Book_Image.Length > 0)
                 {
@@ -110,6 +114,10 @@ namespace FPTBook.Controllers
             }
             else
             {
+                if(DateTime.Compare(obj.Book_PublishDate, DateTime.Now) > 0){
+                    TempData["errorDate"] = "Please enter Publish Date is earlier than or same time with current date";
+                    return RedirectToAction("Edit", new { id = obj.Book_ID });
+                }
                 if (UpdateImg != null)
                 {
                     var filePaths = new List<string>();

@@ -115,8 +115,19 @@ namespace LoginFPTBook.Areas.Identity.Pages.Account
                 user.User_Birthdate = Input.User_Birthdate;
                 user.User_Status = 1;
 
-                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
+                var checkEmail = _db.Users.Any(x => x.Email == Input.Email);
+                
+                if(checkEmail){
+                    TempData["errorEmail"] = "Email already exists. Please enter another email";
+                    return Page();
+                }
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);                 
+                
+                if(DateTime.Compare(Input.User_Birthdate, DateTime.Now) > 0){
+                    TempData["errorDate"] = "Please enter BirthDate is earlier than current date";
+                    return Page();
+                }
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
@@ -125,7 +136,7 @@ namespace LoginFPTBook.Areas.Identity.Pages.Account
                     cart.User_ID = user.Id;
                     _db.Carts.Add(cart);
                     _db.SaveChanges();
-                    if(TempData["roleAdmin"] != null ){
+                    if(ViewData["roleAdmin"] != null ){
                         await _userManager.AddToRoleAsync(user, Roles.Owner.ToString());
                     }
                     else{
@@ -150,7 +161,7 @@ namespace LoginFPTBook.Areas.Identity.Pages.Account
                     {
                         return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
                     }
-                    else if(TempData["roleAdmin"] == null)
+                    else if(ViewData["roleAdmin"] == null)
                     {
                         await _signInManager.SignInAsync(user, isPersistent: false);
                         return LocalRedirect(returnUrl);

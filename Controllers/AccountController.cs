@@ -80,7 +80,7 @@ namespace FPTBook.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult createOwnerAccount()
         {
-            TempData["roleAdmin"] = "Admin";
+            ViewData["roleAdmin"] = "Admin";
             return RedirectToPage("/Account/Register", new { area = "Identity" });
         }
         [Authorize(Roles = "Admin")]
