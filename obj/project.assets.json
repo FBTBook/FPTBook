@@ -10460,19 +10460,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Asus\\.nuget\\packages\\": {}
+    "C:\\Users\\KHOI\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Application_Development(1670)\\FPTBook\\LoginFPTBook.csproj",
+      "projectUniqueName": "c:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\LoginFPTBook.csproj",
       "projectName": "LoginFPTBook",
-      "projectPath": "D:\\Application_Development(1670)\\FPTBook\\LoginFPTBook.csproj",
-      "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-      "outputPath": "D:\\Application_Development(1670)\\FPTBook\\obj\\",
+      "projectPath": "c:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\LoginFPTBook.csproj",
+      "packagesPath": "C:\\Users\\KHOI\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\KHOI\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
