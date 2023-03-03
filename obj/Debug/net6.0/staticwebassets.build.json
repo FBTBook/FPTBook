@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "5syLdTEhVYw6pt7ZBSWqOzAJPJUllNIWtNZtayh6DEU=",
+  "Hash": "nGaw72oPpPSSqBFvCFEzxV83jBN1mjNPBGlJPohHdtQ=",
   "Source": "LoginFPTBook",
   "BasePath": "_content/LoginFPTBook",
   "Mode": "Default",
@@ -1647,6 +1647,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\FB_IMG_1654926124627.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\wwwroot\\img\\Flutter.png",
+      "SourceId": "LoginFPTBook",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\wwwroot\\",
+      "BasePath": "_content/LoginFPTBook",
+      "RelativePath": "img/Flutter.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Flutter.png"
     },
     {
       "Identity": "C:\\Users\\KHOI\\OneDrive\\Documents\\Greenwich\\1670\\LoginFPTBook\\LoginFPTBook\\wwwroot\\img\\KietSpiderMan (2).png",

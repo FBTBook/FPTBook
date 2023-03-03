@@ -18,6 +18,12 @@
         text-align: center;
     }
 </style>
+    @if (@TempData["errorDate"] != null)
+        {
+                <script type="text/javascript">
+                    alert("@TempData["errorDate"]");
+                </script> 
+        }
 <div class="row">
     <div class="container">
         <form asp-action="Create" id="addBookForm" enctype="multipart/form-data" method="post">
@@ -125,6 +131,7 @@
         </form>
     </div>
 </div>
+
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
