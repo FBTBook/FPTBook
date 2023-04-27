@@ -104,13 +104,13 @@ namespace FPTBook.Controllers
 
         [HttpPost]
         [Authorize(Roles="Admin, Owner")]
-        public async Task<IActionResult> Edit(Book obj, IFormFile? UpdateImg)
+        public async Task<IActionResult> Edit(Book obj, IFormFile? UpdateImg, int id)
         {
             if (!ModelState.IsValid)
             {
                 ViewData["Category"] = _db.Categories.Where(c => c.Category_Status == 1).ToList();
                 ViewData["Publisher"] = _db.Publishers.Where(p => p.Publisher_Status == 1).ToList();
-                return RedirectToAction("Edit", new { id = obj.Book_ID });
+                return RedirectToAction("Edit", new { id = id });
             }
             else
             {
@@ -120,6 +120,14 @@ namespace FPTBook.Controllers
                 }
                 if (UpdateImg != null)
                 {
+                    string fileType = Path.GetExtension(UpdateImg.FileName).ToLower().Trim();
+                    if (fileType != ".jpg" && fileType != ".png")
+                    {
+                        ViewData["Category"] = _db.Categories.Where(c => c.Category_Status == 1).ToList();
+                        ViewData["Publisher"] = _db.Publishers.Where(p => p.Publisher_Status == 1).ToList();
+                        TempData["msg"] = "File Format Not Supported. Only .jpg and .png!";
+                        return View(obj);
+                    }
                     var filePaths = new List<string>();
                     var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", UpdateImg.FileName);
                     filePaths.Add(filePath);
